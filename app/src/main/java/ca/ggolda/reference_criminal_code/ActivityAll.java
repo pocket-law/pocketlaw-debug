@@ -2,27 +2,41 @@ package ca.ggolda.reference_criminal_code;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by gcgol on 01/06/2017.
  */
 
-public class ActivitySection extends AppCompatActivity {
+public class ActivityAll extends AppCompatActivity {
 
     private ArrayList<InstanceProvision> provisions;
     private AdapterProvision mAdapterProvision;
     private ListView mListView;
+
+    private LinearLayout mDummy;
+    private LinearLayout mLocal;
+    private LinearLayout mOnline;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_section);
+
+        mDummy = (LinearLayout) findViewById(R.id.dummy);
+        mLocal = (LinearLayout) findViewById(R.id.local_html);
+        mOnline = (LinearLayout) findViewById(R.id.online);
+        mDummy.setVisibility(View.VISIBLE);
+        mLocal.setVisibility(View.VISIBLE);
+        mOnline.setVisibility(View.VISIBLE);
+
 
 
         provisions = new ArrayList<>();
@@ -59,8 +73,8 @@ public class ActivitySection extends AppCompatActivity {
 
 
 
-        mAdapterProvision = new AdapterProvision(ActivitySection.this, R.layout.card_provision, provisions);
-        mListView = (ListView) findViewById(R.id.list_view);
+        mAdapterProvision = new AdapterProvision(ActivityAll.this, R.layout.card_provision, provisions);
+        mListView = (ListView) findViewById(R.id.provision_list);
         mListView.setAdapter(mAdapterProvision);
 
     }
