@@ -2,6 +2,7 @@ package ca.ggolda.reference_criminal_code;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -39,6 +40,21 @@ public class ActivitySection extends AppCompatActivity {
         provisions.add(tempSub1);
         provisions.add(tempSub2);
         provisions.add(tempCite);
+
+        provisions.add(tempProv1);
+        provisions.add(tempProv2);
+        provisions.add(tempSub1);
+        provisions.add(tempSub2);
+        provisions.add(tempCite);
+        // TODO: remove above...
+
+        // Webview from web
+        WebView myWebView = (WebView) findViewById(R.id.webview);
+        myWebView.loadUrl("http://laws-lois.justice.gc.ca/eng/acts/C-46/FullText.html");
+
+        // Webview from local
+        WebView myWebViewLocal = (WebView) findViewById(R.id.webview_local);
+        myWebViewLocal.loadUrl("file:///android_res/raw/criminal_code_english.html");
 
 
 
