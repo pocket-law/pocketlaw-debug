@@ -1,4 +1,4 @@
-# <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/logos/ccc-logo1.jpg" width="32"> Android Canadian Criminal Code Reference 
+# <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/logos/logo2.png" width="32"> Android Canadian Criminal Code Reference 
 
 <hr>
 ## Screenshots
