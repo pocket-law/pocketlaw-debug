@@ -32,7 +32,7 @@
     <TextView
         android:id="@+id/btn_online"
         android:layout_width="match_parent"
-        android:text="Online HTML"
+        android:text="Parse Online XML"
         android:gravity="center"
         android:textSize="54sp"
         android:textStyle="bold"

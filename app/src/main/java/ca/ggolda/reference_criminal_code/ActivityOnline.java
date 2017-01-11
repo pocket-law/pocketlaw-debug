@@ -3,6 +3,7 @@ package ca.ggolda.reference_criminal_code;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
@@ -98,14 +99,18 @@ public class ActivityOnline extends AppCompatActivity {
         // XmlParser returns a List (called "sections") of Section objects.
         // Each Section object represents a single section in the XML feed.
         // Each entry is displayed in the UI.
-        StringBuilder definedTermString = new StringBuilder();
+//        StringBuilder definedTermString = new StringBuilder();
 //        for (XmlParser.Section section : sections) {
-//            definedTermString.append(section.DefinedTermEn);
+//
+//            Log.e("XML", "ActivityOnline" + section);
 //
 //            //TODO: stuff here
 //
 //        }
-        return definedTermString.toString();
+
+        Log.e("XML sections.get(0)", "" + sections.get(0));
+
+        return ""+sections.size();
     }
 
     // Given a string representation of a URL, sets up a connection and gets

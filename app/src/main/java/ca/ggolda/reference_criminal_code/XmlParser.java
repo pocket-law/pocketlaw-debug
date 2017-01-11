@@ -70,30 +70,30 @@ public class XmlParser {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("Section")) {
-                Log.e("XML", "Section");
-                readSection(parser);
+            if (name.equals("Heading")) {
+                Log.e("XML", "Heading");
+                readHeading(parser);
             } else {
                 skip(parser);
             }
         }
 
-        Log.e("XML END", ""+sections.size());
+        Log.e("XML ENDSIZE", ""+sections.size());
 
     }
 
     // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
     // to their respective "read" methods for processing. Otherwise, skips the tag.
-    private void readSection(XmlPullParser parser) throws XmlPullParserException, IOException {
-        parser.require(XmlPullParser.START_TAG, ns, "Section");
+    private void readHeading(XmlPullParser parser) throws XmlPullParserException, IOException {
+        parser.require(XmlPullParser.START_TAG, ns, "Heading");
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("Label")) {
-                Log.e("XML", "Label");
+            if (name.equals("TitleText")) {
+                Log.e("XML", "TitleText");
                 readText(parser);
             } else {
                 skip(parser);
@@ -114,8 +114,7 @@ public class XmlParser {
             result = parser.getText();
 
             sections.add(result);
-            Log.e("XML", "sections.add( "+result+" )");
-
+            Log.e("XML", "sections.add( " + result + " )");
 
             parser.nextTag();
 
