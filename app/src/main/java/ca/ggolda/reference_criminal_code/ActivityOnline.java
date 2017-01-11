@@ -4,14 +4,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.webkit.WebView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
 
@@ -26,19 +29,40 @@ public class ActivityOnline extends AppCompatActivity {
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
 
+    private List parsedLists;
 
+    private List<Heading> headings;
+    private AdapterHeading mAdapterHeading;
+    private ListView mListViewHeadings;
 
+    private LinearLayout mDummy;
+    private LinearLayout mLocal;
     private LinearLayout mOnline;
+
+    private ImageView mBtnParts;
+    private LinearLayout mParts;
+    private ImageView mBtnComments;
+    private LinearLayout mComments;
+
+    private int commentsVisible = 0;
+    private int partsVisible = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_network);
+        setContentView(R.layout.activity_main);
 
+        mDummy = (LinearLayout) findViewById(R.id.dummy);
+        mLocal = (LinearLayout) findViewById(R.id.local_html);
         mOnline = (LinearLayout) findViewById(R.id.online);
+        mDummy.setVisibility(View.VISIBLE);
+        mLocal.setVisibility(View.GONE);
+        mOnline.setVisibility(View.GONE);
+
 
         loadPage();
+
     }
 
 
@@ -58,10 +82,48 @@ public class ActivityOnline extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            setContentView(R.layout.activity_network);
-            // Displays the HTML string in the UI via a WebView
-            WebView myWebView = (WebView) findViewById(R.id.webview);
-            myWebView.loadData(result, "text/html", null);
+            setContentView(R.layout.activity_main);
+
+            mAdapterHeading = new AdapterHeading(ActivityOnline.this, R.layout.card_heading, headings);
+            mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
+            mListViewHeadings.setAdapter(mAdapterHeading);
+
+            // bring comments up or down
+            mBtnComments = (ImageView) findViewById(R.id.btn_comments);
+            mComments = (LinearLayout) findViewById(R.id.comments);
+            mBtnComments.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (commentsVisible == 0) {
+                        mComments.setVisibility(View.VISIBLE);
+                        commentsVisible = 1;
+                    } else if (commentsVisible == 1) {
+                        mComments.setVisibility(View.GONE);
+                        commentsVisible = 0;
+                    }
+
+                }
+            });
+
+            // bring parts up or down
+            mBtnParts = (ImageView) findViewById(R.id.btn_parts);
+            mParts = (LinearLayout) findViewById(R.id.parts);
+            mBtnParts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (partsVisible == 0) {
+                        mParts.setVisibility(View.VISIBLE);
+                        partsVisible = 1;
+                    } else if (partsVisible == 1) {
+                        mParts.setVisibility(View.GONE);
+                        partsVisible = 0;
+                    }
+
+                }
+            });
+
 
         }
     }
@@ -75,19 +137,21 @@ public class ActivityOnline extends AppCompatActivity {
 
     // Uploads XML from online source
     private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
-        InputStream stream = null;
+
+       InputStream stream = null;
+
         // Instantiate the parser
         XmlParser xmlParser = new XmlParser();
-        List<XmlParser.Section> sections = null;
-        String definedTermEn = null;
-
-
+        parsedLists = null;
 
         try {
             stream = downloadUrl(urlString);
-            sections = xmlParser.parse(stream);
+            parsedLists = xmlParser.parse(stream);
             // Makes sure that the InputStream is closed after the app is
             // finished using it.
+
+            headings = parsedLists;
+
         } finally {
             if (stream != null) {
                 stream.close();
@@ -95,26 +159,18 @@ public class ActivityOnline extends AppCompatActivity {
         }
 
 
-
-        // XmlParser returns a List (called "sections") of Section objects.
-        // Each Section object represents a single section in the XML feed.
-        // Each entry is displayed in the UI.
-//        StringBuilder definedTermString = new StringBuilder();
-//        for (XmlParser.Section section : sections) {
-//
-//            Log.e("XML", "ActivityOnline" + section);
 //
 //            //TODO: stuff here
-//
-//        }
 
-        Log.e("XML sections.get(0)", "" + sections.get(0));
 
-        return ""+sections.size();
+        Log.e("XML sections.get(0)", "" + headings.get(0));
+
+        return ""+headings.size();
+        
     }
 
     // Given a string representation of a URL, sets up a connection and gets
-// an input stream.
+    // an input stream.
     private InputStream downloadUrl(String urlString) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

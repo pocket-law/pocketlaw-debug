@@ -28,7 +28,6 @@ public class ActivityLaunch extends AppCompatActivity {
         btnLocal = (TextView) findViewById(R.id.btn_local);
         btnOnline = (TextView) findViewById(R.id.btn_online);
         btnDummy = (TextView) findViewById(R.id.btn_dummy);
-        btnAll = (TextView) findViewById(R.id.btn_all);
 
         btnLocal.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -57,15 +56,6 @@ public class ActivityLaunch extends AppCompatActivity {
             }
         });
 
-
-        btnAll.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityLaunch.this, ActivityParse.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
-                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
-            }
-        });
 
 
     }

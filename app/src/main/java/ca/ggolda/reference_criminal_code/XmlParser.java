@@ -19,7 +19,9 @@ public class XmlParser {
     // We don't use namespaces
     private static final String ns = null;
 
+    private List headings;
     private List sections;
+
 
     public List parse(InputStream in) throws XmlPullParserException, IOException {
         try {
@@ -36,7 +38,7 @@ public class XmlParser {
 
     private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 
-        sections = new ArrayList();
+        headings = new ArrayList();
 
         Log.e("XML", "readFeed");
 
@@ -57,7 +59,8 @@ public class XmlParser {
                 skip(parser);
             }
         }
-        return sections;
+
+        return headings;
     }
 
     // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
@@ -78,7 +81,7 @@ public class XmlParser {
             }
         }
 
-        Log.e("XML ENDSIZE", ""+sections.size());
+        Log.e("XML ENDSIZE", ""+ headings.size());
 
     }
 
@@ -94,12 +97,19 @@ public class XmlParser {
             String name = parser.getName();
             if (name.equals("TitleText")) {
                 Log.e("XML", "TitleText");
-                readText(parser);
+
+                int level = 1;
+
+                Log.e("XML", "level" + level);
+
+//                level = Integer.valueOf(parser.getAttributeValue(1));
+//
+//                Log.e("XML", "levelTrue" + level);
+
+                readText(parser, level);
             } else {
                 skip(parser);
             }
-
-
 
 
         }
@@ -107,19 +117,22 @@ public class XmlParser {
     }
 
 
-    // For the tags text values.
-    private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String result = "";
-        if (parser.next() == XmlPullParser.TEXT) {
-            result = parser.getText();
+    // For the tags text and level values.
+    private List readText(XmlPullParser parser, int level) throws IOException, XmlPullParserException {
+        Heading resultObject = null;
 
-            sections.add(result);
-            Log.e("XML", "sections.add( " + result + " )");
+        if (parser.next() == XmlPullParser.TEXT) {
+
+            String result = parser.getText();
+            resultObject = new Heading(result, level);
+
+            headings.add(resultObject);
+            Log.e("XML", "headings.add( " + result +" , " + level + " )");
 
             parser.nextTag();
 
         }
-        return result;
+        return headings;
     }
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {

@@ -3,7 +3,7 @@ package ca.ggolda.reference_criminal_code;
 /**
  * Created by gcgol on 11/01/2016.
  */
-public class InstanceProvision {
+public class Provision {
 
 
     private int mProvisionType;
@@ -13,26 +13,26 @@ public class InstanceProvision {
 
 
     // Required for firebase
-    public InstanceProvision() {
+    public Provision() {
     }
 
-    // Constructor for InstanceProvision with all attributes (sections)
-    public InstanceProvision(int provision_type, String provision_name, String provision_number, String provision_text) {
+    // Constructor for Provision with all attributes (sections)
+    public Provision(int provision_type, String provision_name, String provision_number, String provision_text) {
         mProvisionType = provision_type;
         mProvisionName = provision_name;
         mProvisionNumber = provision_number;
         mProvisionText = provision_text;
     }
 
-    // Constructor for InstanceProvision subs
-    public InstanceProvision(int provision_type, String provision_number, String provision_text) {
+    // Constructor for Provision subs
+    public Provision(int provision_type, String provision_number, String provision_text) {
         mProvisionType = provision_type;
         mProvisionNumber = provision_number;
         mProvisionText = provision_text;
     }
 
-    // Constructor for InstanceProvision citations
-    public InstanceProvision(int provision_type, String provision_text) {
+    // Constructor for Provision citations
+    public Provision(int provision_type, String provision_text) {
         mProvisionType = provision_type;
         mProvisionText = provision_text;
     }

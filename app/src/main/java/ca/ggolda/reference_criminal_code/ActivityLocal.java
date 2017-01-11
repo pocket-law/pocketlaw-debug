@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ActivityLocal extends AppCompatActivity {
 
-    private ArrayList<InstanceProvision> provisions;
+    private ArrayList<Provision> provisions;
     private AdapterProvision mAdapterProvision;
     private ListView mListView;
 
@@ -28,7 +28,7 @@ public class ActivityLocal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_section);
+        setContentView(R.layout.activity_main);
 
         mDummy = (LinearLayout) findViewById(R.id.dummy);
         mLocal = (LinearLayout) findViewById(R.id.local_html);
@@ -43,11 +43,11 @@ public class ActivityLocal extends AppCompatActivity {
 
 
         //TODO: get provisions from a source
-        InstanceProvision tempProv1 = new InstanceProvision(1, "Possession of weapon for dangerous purpose", "88(1)", "Every person commits an offence who carries or possesses a weapon, an imitation of a weapon, a prohibited device or any ammunition or prohibited ammunition for a purpose dangerous to the public peace or for the purpose of committing an offence.");
-        InstanceProvision tempProv2 = new InstanceProvision(1, "Punishment", "(2)", "Every person who commits an offence under subsection (1)");
-        InstanceProvision tempSub1 = new InstanceProvision(2, "(a)", "is guilty of an indictable offence and liable to imprisonment for a term not exceeding ten years; or");
-        InstanceProvision tempSub2 = new InstanceProvision(2, "(b)", "is guilty of an offence punishable on summary conviction.");
-        InstanceProvision tempCite = new InstanceProvision(3, "R.S., 1985, c. C-46, s. 89; 1995, c. 39, s. 139.");
+        Provision tempProv1 = new Provision(1, "Possession of weapon for dangerous purpose", "88(1)", "Every person commits an offence who carries or possesses a weapon, an imitation of a weapon, a prohibited device or any ammunition or prohibited ammunition for a purpose dangerous to the public peace or for the purpose of committing an offence.");
+        Provision tempProv2 = new Provision(1, "Punishment", "(2)", "Every person who commits an offence under subsection (1)");
+        Provision tempSub1 = new Provision(2, "(a)", "is guilty of an indictable offence and liable to imprisonment for a term not exceeding ten years; or");
+        Provision tempSub2 = new Provision(2, "(b)", "is guilty of an offence punishable on summary conviction.");
+        Provision tempCite = new Provision(3, "R.S., 1985, c. C-46, s. 89; 1995, c. 39, s. 139.");
 
         provisions.add(tempProv1);
         provisions.add(tempProv2);
@@ -74,7 +74,7 @@ public class ActivityLocal extends AppCompatActivity {
 
 
         mAdapterProvision = new AdapterProvision(ActivityLocal.this, R.layout.card_provision, provisions);
-        mListView = (ListView) findViewById(R.id.provision_list);
+        mListView = (ListView) findViewById(R.id.main_listview);
         mListView.setAdapter(mAdapterProvision);
 
     }

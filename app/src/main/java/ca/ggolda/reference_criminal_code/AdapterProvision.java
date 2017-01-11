@@ -14,15 +14,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class AdapterProvision extends ArrayAdapter<InstanceProvision> {
+public class AdapterProvision extends ArrayAdapter<Provision> {
 
 
     private Context mContext;
 
-    private InstanceProvision provision;
+    private Provision provision;
 
 
-    public AdapterProvision(Context context, int resource, List<InstanceProvision> objects) {
+    public AdapterProvision(Context context, int resource, List<Provision> objects) {
         super(context, resource, objects);
 
         mContext = context;
@@ -35,7 +35,7 @@ public class AdapterProvision extends ArrayAdapter<InstanceProvision> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_provision, parent, false);
         }
 
-        final InstanceProvision current = getItem(position);
+        final Provision current = getItem(position);
 
 
         LinearLayout provisionLayout = (LinearLayout) convertView.findViewById(R.id.provision_layout);
