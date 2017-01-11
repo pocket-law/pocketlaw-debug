@@ -19,6 +19,8 @@ public class XmlParser {
     // We don't use namespaces
     private static final String ns = null;
 
+    private List sections;
+
     public List parse(InputStream in) throws XmlPullParserException, IOException {
         try {
             XmlPullParser parser = Xml.newPullParser();
@@ -33,62 +35,75 @@ public class XmlParser {
 
 
     private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
-        List entries = new ArrayList();
 
-        parser.require(XmlPullParser.START_TAG, ns, "feed");
+        sections = new ArrayList();
+
+        Log.e("XML", "readFeed");
+
+        parser.require(XmlPullParser.START_TAG, ns, "Statute");
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String name = parser.getName();
+            Log.e("XML", "getName" + name);
+
+            // Starts by looking for the Text tag
             // Starts by looking for the entry tag
-            if (name.equals("Text")) {
-                entries.add(readEntry(parser));
+            if (name.equals("Body")) {
+                Log.e("XML", "SectionYO");
+                readBody(parser);
             } else {
                 skip(parser);
             }
         }
-        return entries;
-    }
-
-    public static class Object {
-
-        public final String DefinedTermEn;
-
-        private Object(String DefinedTermEn) {
-            this.DefinedTermEn = DefinedTermEn;
-        }
+        return sections;
     }
 
     // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
     // to their respective "read" methods for processing. Otherwise, skips the tag.
-     private Object readEntry(XmlPullParser parser) throws XmlPullParserException, IOException {
-        parser.require(XmlPullParser.START_TAG, ns, "Text");
-        String DefinedTermEn = null;
+    private void readBody(XmlPullParser parser) throws XmlPullParserException, IOException {
+        parser.require(XmlPullParser.START_TAG, ns, "Body");
+
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("DefinedTermEn")) {
-                DefinedTermEn = readDefinedTermEn(parser);
+            if (name.equals("Section")) {
+                Log.e("XML", "Section");
+                readSection(parser);
             } else {
                 skip(parser);
             }
         }
-        return new Object(DefinedTermEn);
+
+        Log.e("XML END", ""+sections.size());
+
     }
 
+    // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
+    // to their respective "read" methods for processing. Otherwise, skips the tag.
+    private void readSection(XmlPullParser parser) throws XmlPullParserException, IOException {
+        parser.require(XmlPullParser.START_TAG, ns, "Section");
 
-    // Processes Label tags in the feed.
-    private String readDefinedTermEn(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "DefinedTermEn");
-        String definedTermEn = readText(parser);
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String name = parser.getName();
+            if (name.equals("Label")) {
+                Log.e("XML", "Label");
+                readText(parser);
+            } else {
+                skip(parser);
+            }
 
-        Log.e("String", "DefTE"+ definedTermEn);
 
-        parser.require(XmlPullParser.END_TAG, ns, "DefinedTermEn");
-        return definedTermEn;
+
+
+        }
+
     }
 
 
@@ -97,7 +112,13 @@ public class XmlParser {
         String result = "";
         if (parser.next() == XmlPullParser.TEXT) {
             result = parser.getText();
+
+            sections.add(result);
+            Log.e("XML", "sections.add( "+result+" )");
+
+
             parser.nextTag();
+
         }
         return result;
     }
@@ -116,6 +137,15 @@ public class XmlParser {
                     depth++;
                     break;
             }
+        }
+    }
+
+    public static class Section {
+
+        public final String DefinedTermEn;
+
+        private Section(String DefinedTermEn) {
+            this.DefinedTermEn = DefinedTermEn;
         }
     }
 }

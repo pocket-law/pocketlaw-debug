@@ -29,7 +29,7 @@
 
         <activity android:name="ca.ggolda.reference_criminal_code.ActivityDummy" android:screenOrientation="portrait"/>
 
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityAll" android:screenOrientation="portrait"/>
+        <activity android:name="ca.ggolda.reference_criminal_code.ActivityParse" android:screenOrientation="portrait"/>
 
     </application>
 
