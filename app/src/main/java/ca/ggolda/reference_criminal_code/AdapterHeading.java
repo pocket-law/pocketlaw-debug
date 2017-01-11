@@ -38,8 +38,16 @@ public class AdapterHeading extends ArrayAdapter<Heading> {
         TextView headingOne = (TextView) convertView.findViewById(R.id.heading1);
         TextView headingTwo = (TextView) convertView.findViewById(R.id.heading2);
 
-        headingOne.setText(current.getHeading_text());
-        headingTwo.setText(""+current.getLevel());
+        if (current.getLevel() == 2) {
+            headingTwo.setVisibility(View.VISIBLE);
+            headingTwo.setText(""+current.getHeading_text());
+            headingOne.setVisibility(View.GONE);
+        } else {
+            headingOne.setVisibility(View.VISIBLE);
+            headingOne.setText(""+current.getHeading_text());
+            headingTwo.setVisibility(View.GONE);
+        }
+
 
         //TODO: open corresponding part
         convertView.setOnClickListener(new View.OnClickListener() {

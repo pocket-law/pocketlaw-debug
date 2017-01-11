@@ -75,19 +75,49 @@ public class XmlParser {
             String name = parser.getName();
             if (name.equals("Heading")) {
                 Log.e("XML", "Heading");
-                readHeading(parser);
+
+                int level = 1;
+                String section = "";
+
+                Log.e("XML", "level " + level);
+
+                if ((parser.getAttributeValue(null, "level")) != null) {
+                    level = Integer.valueOf(parser.getAttributeValue(null, "level"));
+
+                    Log.e("XML", "levelTrue " + level);
+
+                }
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+
+                    Log.e("XML", "codeTrue" + (parser.getAttributeValue(null, "Code")));
+
+                    if (code.length > 3) {
+                        section = code[3];
+                    }
+
+                    Log.e("XML", "sectionTrue :" + section);
+
+                }
+
+
+
+                Log.e("XML", "valof " + parser.getAttributeValue(0));
+
+
+                readHeading(parser, level);
             } else {
                 skip(parser);
             }
         }
 
-        Log.e("XML ENDSIZE", ""+ headings.size());
+        Log.e("XML ENDSIZE", "" + headings.size());
 
     }
 
     // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
     // to their respective "read" methods for processing. Otherwise, skips the tag.
-    private void readHeading(XmlPullParser parser) throws XmlPullParserException, IOException {
+    private void readHeading(XmlPullParser parser, int level) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Heading");
 
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -98,13 +128,6 @@ public class XmlParser {
             if (name.equals("TitleText")) {
                 Log.e("XML", "TitleText");
 
-                int level = 1;
-
-                Log.e("XML", "level" + level);
-
-//                level = Integer.valueOf(parser.getAttributeValue(1));
-//
-//                Log.e("XML", "levelTrue" + level);
 
                 readText(parser, level);
             } else {
@@ -127,7 +150,7 @@ public class XmlParser {
             resultObject = new Heading(result, level);
 
             headings.add(resultObject);
-            Log.e("XML", "headings.add( " + result +" , " + level + " )");
+            Log.e("XML", "headings.add( " + result + " , " + level + " )");
 
             parser.nextTag();
 
