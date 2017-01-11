@@ -38,14 +38,25 @@ public class AdapterHeading extends ArrayAdapter<Heading> {
         TextView headingOne = (TextView) convertView.findViewById(R.id.heading1);
         TextView headingTwo = (TextView) convertView.findViewById(R.id.heading2);
 
+        TextView sectionOne = (TextView) convertView.findViewById(R.id.section1);
+        TextView sectionTwo = (TextView) convertView.findViewById(R.id.section2);
+
         if (current.getLevel() == 2) {
             headingTwo.setVisibility(View.VISIBLE);
             headingTwo.setText(""+current.getHeading_text());
             headingOne.setVisibility(View.GONE);
+
+            sectionTwo.setVisibility(View.VISIBLE);
+            sectionTwo.setText(""+current.getSection());
+            sectionOne.setVisibility(View.GONE);
         } else {
             headingOne.setVisibility(View.VISIBLE);
             headingOne.setText(""+current.getHeading_text());
             headingTwo.setVisibility(View.GONE);
+
+            sectionOne.setVisibility(View.VISIBLE);
+            sectionOne.setText(""+current.getSection());
+            sectionTwo.setVisibility(View.GONE);
         }
 
 

@@ -8,13 +8,15 @@ public class Heading {
 
     private String mHeadingText;
     private int mLevel;
+    private String mSection;
 
 
 
     // Constructor for Heading with all attributes
-    public Heading(String heading_text, int level) {
-        mHeadingText = heading_text;
+    public Heading(String text, int level, String section) {
+        mHeadingText = text;
         mLevel = level;
+        mSection = section;
 
     }
 
@@ -31,6 +33,13 @@ public class Heading {
     }
     public void setLevel(int mLevel) {
         this.mLevel = mLevel;
+    }
+
+    public String getSection() {
+        return mSection;
+    }
+    public void setSection(String mSection) {
+        this.mSection = mSection;
     }
 
 

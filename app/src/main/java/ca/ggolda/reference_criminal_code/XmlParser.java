@@ -87,25 +87,12 @@ public class XmlParser {
                     Log.e("XML", "levelTrue " + level);
 
                 }
-                if ((parser.getAttributeValue(null, "Code")) != null) {
-                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
-
-                    Log.e("XML", "codeTrue" + (parser.getAttributeValue(null, "Code")));
-
-                    if (code.length > 3) {
-                        section = code[3];
-                    }
-
-                    Log.e("XML", "sectionTrue :" + section);
-
-                }
-
 
 
                 Log.e("XML", "valof " + parser.getAttributeValue(0));
 
 
-                readHeading(parser, level);
+                readHeading(parser, level, section);
             } else {
                 skip(parser);
             }
@@ -117,7 +104,7 @@ public class XmlParser {
 
     // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
     // to their respective "read" methods for processing. Otherwise, skips the tag.
-    private void readHeading(XmlPullParser parser, int level) throws XmlPullParserException, IOException {
+    private void readHeading(XmlPullParser parser, int level, String section) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Heading");
 
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -128,8 +115,23 @@ public class XmlParser {
             if (name.equals("TitleText")) {
                 Log.e("XML", "TitleText");
 
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
 
-                readText(parser, level);
+                    Log.e("XML", "codeTrue" + (parser.getAttributeValue(null, "Code")));
+
+                    Log.e("XML", "codeLength : " + code.length);
+
+                    if (code.length > 5) {
+                        section = code[3];
+                    } else {
+                        section = code[1];
+                    }
+                    Log.e("XML", "sectionTrue : " + section);
+
+                }
+
+                readText(parser, level, section);
             } else {
                 skip(parser);
             }
@@ -141,13 +143,13 @@ public class XmlParser {
 
 
     // For the tags text and level values.
-    private List readText(XmlPullParser parser, int level) throws IOException, XmlPullParserException {
+    private List readText(XmlPullParser parser, int level, String section) throws IOException, XmlPullParserException {
         Heading resultObject = null;
 
         if (parser.next() == XmlPullParser.TEXT) {
 
             String result = parser.getText();
-            resultObject = new Heading(result, level);
+            resultObject = new Heading(result, level, section);
 
             headings.add(resultObject);
             Log.e("XML", "headings.add( " + result + " , " + level + " )");
