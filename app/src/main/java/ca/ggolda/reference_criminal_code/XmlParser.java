@@ -48,7 +48,7 @@ public class XmlParser {
                 continue;
             }
             String name = parser.getName();
-            Log.e("XML", "getName" + name);
+            Log.e("XML", "getName: " + name);
 
             // Starts by looking for the Text tag
             // Starts by looking for the entry tag

@@ -21,7 +21,7 @@ import java.net.URL;
  * Created by gcgol on 01/10/2017.
  */
 
-public class ActivityOnline extends AppCompatActivity {
+public class ActivityXml extends AppCompatActivity {
     public static final String ANY = "Any";
     private static final String URL = "http://laws-lois.justice.gc.ca/eng/XML/C-46.xml";
 
@@ -83,7 +83,7 @@ public class ActivityOnline extends AppCompatActivity {
         protected void onPostExecute(String result) {
             setContentView(R.layout.activity_main);
 
-            mAdapterHeading = new AdapterHeading(ActivityOnline.this, R.layout.card_heading, headings);
+            mAdapterHeading = new AdapterHeading(ActivityXml.this, R.layout.card_heading, headings);
             mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
             mListViewHeadings.setAdapter(mAdapterHeading);
 
@@ -144,7 +144,11 @@ public class ActivityOnline extends AppCompatActivity {
         parsedLists = null;
 
         try {
-            stream = downloadUrl(urlString);
+            // TODO: use downloadUrl as source when updating
+            // stream = downloadUrl(urlString);
+
+            stream = getResources().openRawResource(R.raw.c46);
+
             parsedLists = xmlParser.parse(stream);
             // Makes sure that the InputStream is closed after the app is
             // finished using it.

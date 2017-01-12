@@ -30,9 +30,9 @@
         android:background="#0000FF"/>
 
     <TextView
-        android:id="@+id/btn_online"
+        android:id="@+id/btn_xml"
         android:layout_width="match_parent"
-        android:text="Parse Online XML"
+        android:text="Parse Local XML"
         android:gravity="center"
         android:textSize="54sp"
         android:textStyle="bold"

@@ -26,7 +26,7 @@ public class ActivityLaunch extends AppCompatActivity {
         setContentView(R.layout.layout_launch);
 
         btnLocal = (TextView) findViewById(R.id.btn_local);
-        btnOnline = (TextView) findViewById(R.id.btn_online);
+        btnOnline = (TextView) findViewById(R.id.btn_xml);
         btnDummy = (TextView) findViewById(R.id.btn_dummy);
 
         btnLocal.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +40,7 @@ public class ActivityLaunch extends AppCompatActivity {
 
         btnOnline.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityLaunch.this, ActivityOnline.class);
+                Intent intent = new Intent(ActivityLaunch.this, ActivityXml.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);

@@ -8,8 +8,10 @@
 
 ## Todo
 * Search
+* Bookmarks
+* Comments
 * Options like adjustable text-size
-* Quiz mode?
+
 
 
 
