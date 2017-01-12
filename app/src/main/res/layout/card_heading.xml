@@ -2,27 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    tools:background="@color/colorPrimaryDark">
 
     <LinearLayout
+        android:id="@+id/level1"
+        android:background="#41ffffff"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/section1"
-            android:layout_width="80dp"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
+            android:textColor="#FFFFFF"
             android:text="Section 1"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/heading1"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
             android:text="Heading 1"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -30,14 +33,16 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="16dp"
+        android:id="@+id/level2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/section2"
-            android:layout_width="80dp"
+            android:textColor="#FFFFFF"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
             android:text="Section 2"
             android:textSize="16sp" />
 
@@ -45,8 +50,8 @@
             android:id="@+id/heading2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
             android:text="Heading 2"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
 
