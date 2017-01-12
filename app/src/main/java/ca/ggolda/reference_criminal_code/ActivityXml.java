@@ -145,7 +145,7 @@ public class ActivityXml extends AppCompatActivity {
 
         try {
             // TODO: use downloadUrl as source when updating
-            // stream = downloadUrl(urlString);
+             //stream = downloadUrl(urlString);
 
             stream = getResources().openRawResource(R.raw.c46);
 
