@@ -15,15 +15,11 @@ import java.util.List;
  * Created by gcgol on 01/09/2017.
  */
 
-public class XmlParser {
+public class XmlSectionParser {
     // We don't use namespaces
     private static final String ns = null;
 
-    private List headings;
     private List sections;
-
-    private int tempIntSectionCount = 0;
-
 
     public List parse(InputStream in) throws XmlPullParserException, IOException {
         try {
@@ -40,7 +36,7 @@ public class XmlParser {
 
     private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 
-        headings = new ArrayList();
+        sections = new ArrayList();
 
         Log.e("XML", "readFeed");
 
@@ -61,7 +57,9 @@ public class XmlParser {
             }
         }
 
-        return headings;
+        Log.e("XML ENDSIZE", "" + sections.size());
+
+        return sections;
     }
 
     // Parses the contents of the body for Heading and Section tags and hands them off
@@ -74,40 +72,7 @@ public class XmlParser {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("Heading")) {
-
-                // Get the level of the Heading
-                int level = 1;
-                if ((parser.getAttributeValue(null, "level")) != null) {
-                    level = Integer.valueOf(parser.getAttributeValue(null, "level"));
-                    Log.e("XML", "level: " + level);
-                }
-
-                readHeading(parser, level);
-
-            } else {
-                skip(parser);
-            }
-
-
-        }
-
-        Log.e("XML ENDSIZE", "" + headings.size());
-
-    }
-
-    // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
-    // to their respective "read" methods for processing. Otherwise, skips the tag.
-    private void readHeading(XmlPullParser parser, int level) throws XmlPullParserException, IOException {
-        parser.require(XmlPullParser.START_TAG, ns, "Heading");
-
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if (name.equals("TitleText")) {
-                Log.e("XML", "TitleText");
+            if (name.equals("Section")) {
 
                 // Get the section number from the TitleText code
                 String section = "";
@@ -115,15 +80,35 @@ public class XmlParser {
 
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
 
-                    if (code.length > 5) {
-                        section = code[3];
-                    } else {
-                        section = code[1];
-                    }
+                    section = code[1];
+
                     Log.e("XML", "sectionTrue : " + section);
                 }
 
-                readText(parser, level, section);
+                readSection(parser, section);
+
+            } else {
+                skip(parser);
+            }
+
+        }
+
+    }
+
+    // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
+    // to their respective "read" methods for processing. Otherwise, skips the tag.
+    private void readSection(XmlPullParser parser, String section) throws XmlPullParserException, IOException {
+        parser.require(XmlPullParser.START_TAG, ns, "Section");
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String name = parser.getName();
+            if (name.equals("MarginalNote")) {
+                Log.e("XML", "TitleText");
+
+                readText(parser, section);
             } else {
                 skip(parser);
             }
@@ -133,9 +118,9 @@ public class XmlParser {
     }
 
 
-    // For the tags text and level values.
-    private List readText(XmlPullParser parser, int level, String section) throws IOException, XmlPullParserException {
-        Heading resultObject = null;
+    // For the section marginal note value.
+    private List readText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+        Section resultObject = null;
 
         Log.e("XML", "parser next: " + parser.next());
 
@@ -143,19 +128,20 @@ public class XmlParser {
 
         Log.e("XML", "text: " + text);
 
-        resultObject = new Heading(text, level, section);
+        resultObject = new Section(section, text);
 
-        headings.add(resultObject);
-        Log.e("XML", "headings.add( " + text + " , " + level + " " + section + " )");
+        sections.add(resultObject);
 
-        Log.e("XML", "headings.size in parser :" + headings.size());
+        Log.e("XML", "sections.add( " + section + " , " + text + " )");
+
+        Log.e("XML", "sections.size in parser :" + sections.size());
 
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
         }
 
 
-        return headings;
+        return sections;
     }
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {

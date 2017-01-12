@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityLocal" android:screenOrientation="portrait"/>
+        <activity android:name="ca.ggolda.reference_criminal_code.ActivityLocalHtml" android:screenOrientation="portrait"/>
 
         <activity android:name="ca.ggolda.reference_criminal_code.ActivityXml" android:screenOrientation="portrait"/>
 

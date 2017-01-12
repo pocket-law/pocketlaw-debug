@@ -30,9 +30,13 @@ public class ActivityXml extends AppCompatActivity {
 
     private List parsedLists;
 
+    private List sectionsList;
+
     private List<Heading> headings;
     private AdapterHeading mAdapterHeading;
     private ListView mListViewHeadings;
+
+    private List<Heading> sections;
 
     private LinearLayout mDummy;
     private LinearLayout mLocal;
@@ -59,12 +63,74 @@ public class ActivityXml extends AppCompatActivity {
         mLocal.setVisibility(View.GONE);
         mOnline.setVisibility(View.GONE);
 
+        // bring comments up or down
+        mBtnComments = (ImageView) findViewById(R.id.btn_comments);
+        mComments = (LinearLayout) findViewById(R.id.comments);
+        mBtnComments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (commentsVisible == 0) {
+                    mComments.setVisibility(View.VISIBLE);
+                    commentsVisible = 1;
+                } else if (commentsVisible == 1) {
+                    mComments.setVisibility(View.GONE);
+                    commentsVisible = 0;
+                }
+
+            }
+        });
+
 
         loadPage();
 
     }
 
 
+    // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
+    private class DownloadSectionXmlTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                return loadSectionXmlFromNetwork(urls[0]);
+            } catch (IOException e) {
+                return "connection error";
+            } catch (XmlPullParserException e) {
+                return "xml error";
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            setContentView(R.layout.activity_main);
+
+            mAdapterHeading = new AdapterHeading(ActivityXml.this, R.layout.card_heading, headings);
+            mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
+            mListViewHeadings.setAdapter(mAdapterHeading);
+
+
+            // bring parts up or down
+            mBtnParts = (ImageView) findViewById(R.id.btn_parts);
+            mParts = (LinearLayout) findViewById(R.id.parts);
+            mBtnParts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (partsVisible == 0) {
+                        mParts.setVisibility(View.VISIBLE);
+                        partsVisible = 1;
+                    } else if (partsVisible == 1) {
+                        mParts.setVisibility(View.GONE);
+                        partsVisible = 0;
+                    }
+
+                }
+            });
+
+
+        }
+    }
 
     // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
     private class DownloadXmlTask extends AsyncTask<String, Void, String> {
@@ -77,6 +143,7 @@ public class ActivityXml extends AppCompatActivity {
             } catch (XmlPullParserException e) {
                 return "xml error";
             }
+
         }
 
         @Override
@@ -87,23 +154,6 @@ public class ActivityXml extends AppCompatActivity {
             mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
             mListViewHeadings.setAdapter(mAdapterHeading);
 
-            // bring comments up or down
-            mBtnComments = (ImageView) findViewById(R.id.btn_comments);
-            mComments = (LinearLayout) findViewById(R.id.comments);
-            mBtnComments.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if (commentsVisible == 0) {
-                        mComments.setVisibility(View.VISIBLE);
-                        commentsVisible = 1;
-                    } else if (commentsVisible == 1) {
-                        mComments.setVisibility(View.GONE);
-                        commentsVisible = 0;
-                    }
-
-                }
-            });
 
             // bring parts up or down
             mBtnParts = (ImageView) findViewById(R.id.btn_parts);
@@ -131,21 +181,22 @@ public class ActivityXml extends AppCompatActivity {
     public void loadPage() {
 
             new DownloadXmlTask().execute(URL);
+            new DownloadSectionXmlTask().execute(URL);
 
     }
 
     // Uploads XML from online source
     private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
 
-       InputStream stream = null;
+        InputStream stream = null;
 
         // Instantiate the parser
-        XmlParser xmlParser = new XmlParser();
+        XmlHeadingParser xmlParser = new XmlHeadingParser();
         parsedLists = null;
 
         try {
             // TODO: use downloadUrl as source when updating
-             //stream = downloadUrl(urlString);
+            //stream = downloadUrl(urlString);
 
             stream = getResources().openRawResource(R.raw.c46);
 
@@ -171,7 +222,46 @@ public class ActivityXml extends AppCompatActivity {
         }
 
         return ""+headings.size();
-        
+
+    }
+
+    // Loads section from XML
+    private String loadSectionXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
+
+        InputStream stream = null;
+
+        // Instantiate the parser
+        XmlSectionParser xmlParser = new XmlSectionParser();
+
+        try {
+            // TODO: use downloadUrl as source when updating
+            //stream = downloadUrl(urlString);
+
+            stream = getResources().openRawResource(R.raw.c46);
+
+            sectionsList = xmlParser.parse(stream);
+            // Makes sure that the InputStream is closed after the app is
+            // finished using it.
+
+            sections = sectionsList;
+
+        } finally {
+            if (stream != null) {
+                stream.close();
+            }
+        }
+
+
+//
+//            //TODO: stuff here
+
+
+        if (sections.size() > 0) {
+            Log.e("XML sections.get(0)", "" + sections.get(0));
+        }
+
+        return ""+sections.size();
+
     }
 
     // Given a string representation of a URL, sets up a connection and gets

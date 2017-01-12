@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by gcgol on 01/06/2017.
  */
 
-public class ActivityLocal extends AppCompatActivity {
+public class ActivityLocalHtml extends AppCompatActivity {
 
     private ArrayList<Provision> provisions;
     private AdapterProvision mAdapterProvision;
@@ -73,7 +73,7 @@ public class ActivityLocal extends AppCompatActivity {
 
 
 
-        mAdapterProvision = new AdapterProvision(ActivityLocal.this, R.layout.card_provision, provisions);
+        mAdapterProvision = new AdapterProvision(ActivityLocalHtml.this, R.layout.card_provision, provisions);
         mListView = (ListView) findViewById(R.id.main_listview);
         mListView.setAdapter(mAdapterProvision);
 
