@@ -162,7 +162,9 @@ public class ActivityOnline extends AppCompatActivity {
 //            //TODO: stuff here
 
 
-        Log.e("XML sections.get(0)", "" + headings.get(0));
+        if (headings.size() > 0) {
+            Log.e("XML sections.get(0)", "" + headings.get(0));
+        }
 
         return ""+headings.size();
         

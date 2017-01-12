@@ -82,6 +82,7 @@ public class XmlParser {
                 Log.e("XML", "level " + level);
 
                 if ((parser.getAttributeValue(null, "level")) != null) {
+
                     level = Integer.valueOf(parser.getAttributeValue(null, "level"));
 
                     Log.e("XML", "levelTrue " + level);
@@ -146,17 +147,24 @@ public class XmlParser {
     private List readText(XmlPullParser parser, int level, String section) throws IOException, XmlPullParserException {
         Heading resultObject = null;
 
-        if (parser.next() == XmlPullParser.TEXT) {
+        Log.e("XML", "parser next: " + parser.next());
 
-            String result = parser.getText();
-            resultObject = new Heading(result, level, section);
+        String text = parser.getText();
 
-            headings.add(resultObject);
-            Log.e("XML", "headings.add( " + result + " , " + level + " )");
+        Log.e("XML", "text: " + text);
 
-            parser.nextTag();
+        resultObject = new Heading(text, level, section);
 
+        headings.add(resultObject);
+        Log.e("XML", "headings.add( " + text + " , " + level + " " + section + " )");
+
+        Log.e("XML", "headings.size in parser :" + headings.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
         }
+
+
         return headings;
     }
 
@@ -174,15 +182,6 @@ public class XmlParser {
                     depth++;
                     break;
             }
-        }
-    }
-
-    public static class Section {
-
-        public final String DefinedTermEn;
-
-        private Section(String DefinedTermEn) {
-            this.DefinedTermEn = DefinedTermEn;
         }
     }
 }
