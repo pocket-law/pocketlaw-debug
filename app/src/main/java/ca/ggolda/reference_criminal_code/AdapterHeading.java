@@ -36,10 +36,10 @@ public class AdapterHeading extends ArrayAdapter<Heading> {
 
         final Heading current = getItem(position);
 
-        TextView headingOne = (TextView) convertView.findViewById(R.id.heading1);
+        TextView headingOne = (TextView) convertView.findViewById(R.id.marginal_note);
         TextView headingTwo = (TextView) convertView.findViewById(R.id.heading2);
 
-        TextView sectionOne = (TextView) convertView.findViewById(R.id.section1);
+        TextView sectionOne = (TextView) convertView.findViewById(R.id.section);
         TextView sectionTwo = (TextView) convertView.findViewById(R.id.section2);
 
         LinearLayout levelOne = (LinearLayout) convertView.findViewById(R.id.level1);

@@ -128,7 +128,7 @@ public class ActivityDummy extends AppCompatActivity {
 
 
         mAdapterProvision = new AdapterProvision(ActivityDummy.this, R.layout.card_provision, provisions);
-        mListView = (ListView) findViewById(R.id.main_listview);
+        mListView = (ListView) findViewById(R.id.listview_section);
         mListView.setAdapter(mAdapterProvision);
 
     }

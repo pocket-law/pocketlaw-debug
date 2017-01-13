@@ -28,15 +28,13 @@ public class ActivityXml extends AppCompatActivity {
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
 
-    private List parsedLists;
-
-    private List sectionsList;
-
     private List<Heading> headings;
     private AdapterHeading mAdapterHeading;
     private ListView mListViewHeadings;
 
-    private List<Heading> sections;
+    private List<Section> sections;
+    private AdapterSection mAdapterSection;
+    private ListView mListViewSections;
 
     private LinearLayout mDummy;
     private LinearLayout mLocal;
@@ -103,11 +101,12 @@ public class ActivityXml extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            setContentView(R.layout.activity_main);
 
-            mAdapterHeading = new AdapterHeading(ActivityXml.this, R.layout.card_heading, headings);
-            mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
-            mListViewHeadings.setAdapter(mAdapterHeading);
+
+
+            mAdapterSection = new AdapterSection(ActivityXml.this, R.layout.card_heading, sections);
+            mListViewSections = (ListView) findViewById(R.id.listview_section);
+            mListViewSections.setAdapter(mAdapterSection);
 
 
             // bring parts up or down
@@ -133,7 +132,7 @@ public class ActivityXml extends AppCompatActivity {
     }
 
     // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
-    private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+    private class DownloadHeadingsXmlTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             try {
@@ -148,7 +147,7 @@ public class ActivityXml extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            setContentView(R.layout.activity_main);
+
 
             mAdapterHeading = new AdapterHeading(ActivityXml.this, R.layout.card_heading, headings);
             mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
@@ -180,7 +179,7 @@ public class ActivityXml extends AppCompatActivity {
     // Uses AsyncTask to download the XML feed from laws-lois.justice.gc.ca.
     public void loadPage() {
 
-            new DownloadXmlTask().execute(URL);
+            new DownloadHeadingsXmlTask().execute(URL);
             new DownloadSectionXmlTask().execute(URL);
 
     }
@@ -192,7 +191,7 @@ public class ActivityXml extends AppCompatActivity {
 
         // Instantiate the parser
         XmlHeadingParser xmlParser = new XmlHeadingParser();
-        parsedLists = null;
+        headings = null;
 
         try {
             // TODO: use downloadUrl as source when updating
@@ -200,22 +199,15 @@ public class ActivityXml extends AppCompatActivity {
 
             stream = getResources().openRawResource(R.raw.c46mod);
 
-            parsedLists = xmlParser.parse(stream);
+            headings = xmlParser.parse(stream);
+
             // Makes sure that the InputStream is closed after the app is
             // finished using it.
-
-            headings = parsedLists;
-
         } finally {
             if (stream != null) {
                 stream.close();
             }
         }
-
-
-//
-//            //TODO: stuff here
-
 
         if (headings.size() > 0) {
             Log.e("XML sections.get(0)", "" + headings.get(0));
@@ -239,21 +231,15 @@ public class ActivityXml extends AppCompatActivity {
 
             stream = getResources().openRawResource(R.raw.c46mod);
 
-            sectionsList = xmlParser.parse(stream);
+            sections = xmlParser.parse(stream);
+
             // Makes sure that the InputStream is closed after the app is
             // finished using it.
-
-            sections = sectionsList;
-
         } finally {
             if (stream != null) {
                 stream.close();
             }
         }
-
-
-//
-//            //TODO: stuff here
 
 
         if (sections.size() > 0) {
