@@ -1,5 +1,7 @@
 package ca.ggolda.reference_criminal_code;
 
+import android.os.Build;
+import android.text.Html;
 import android.util.Log;
 import android.util.Xml;
 
@@ -140,9 +142,25 @@ public class XmlSectionParser {
             skip(parser);
         }
 
+//        Log.e("XML", "STRip section" + stripHtml(parser.getText()));
 
         return sections;
     }
+
+//    @SuppressWarnings("deprecation")
+//    public String stripHtml(String html) {
+//
+//        if (html != null) {
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                return Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY).toString();
+//            } else {
+//                return Html.fromHtml(html).toString();
+//            }
+//        } else {
+//            return "STRIPHTML NULL STRING";
+//        }
+//    }
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
         if (parser.getEventType() != XmlPullParser.START_TAG) {

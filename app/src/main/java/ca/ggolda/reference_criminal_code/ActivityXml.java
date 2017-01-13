@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -40,6 +41,8 @@ public class ActivityXml extends AppCompatActivity {
     private LinearLayout mLocal;
     private LinearLayout mOnline;
 
+    private TextView mRedHeading;
+
     private ImageView mBtnParts;
     private LinearLayout mParts;
     private ImageView mBtnComments;
@@ -54,12 +57,16 @@ public class ActivityXml extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mRedHeading = (TextView) findViewById(R.id.offence_type);
+        mBtnParts = (ImageView) findViewById(R.id.btn_parts);
+        mParts = (LinearLayout) findViewById(R.id.parts);
         mDummy = (LinearLayout) findViewById(R.id.dummy);
         mLocal = (LinearLayout) findViewById(R.id.local_html);
         mOnline = (LinearLayout) findViewById(R.id.online);
         mDummy.setVisibility(View.VISIBLE);
         mLocal.setVisibility(View.GONE);
         mOnline.setVisibility(View.GONE);
+
 
         // bring comments up or down
         mBtnComments = (ImageView) findViewById(R.id.btn_comments);
@@ -79,13 +86,12 @@ public class ActivityXml extends AppCompatActivity {
             }
         });
 
-
         loadPage();
 
     }
 
 
-    // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
+    // Implementation of AsyncTask used to download Sections from XML feed.
     private class DownloadSectionXmlTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -102,36 +108,14 @@ public class ActivityXml extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-
-
             mAdapterSection = new AdapterSection(ActivityXml.this, R.layout.card_heading, sections);
             mListViewSections = (ListView) findViewById(R.id.listview_section);
             mListViewSections.setAdapter(mAdapterSection);
 
-
-            // bring parts up or down
-            mBtnParts = (ImageView) findViewById(R.id.btn_parts);
-            mParts = (LinearLayout) findViewById(R.id.parts);
-            mBtnParts.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if (partsVisible == 0) {
-                        mParts.setVisibility(View.VISIBLE);
-                        partsVisible = 1;
-                    } else if (partsVisible == 1) {
-                        mParts.setVisibility(View.GONE);
-                        partsVisible = 0;
-                    }
-
-                }
-            });
-
-
         }
     }
 
-    // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
+    // Implementation of AsyncTask used to download Headings from XML feed.
     private class DownloadHeadingsXmlTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -148,24 +132,24 @@ public class ActivityXml extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
 
-
             mAdapterHeading = new AdapterHeading(ActivityXml.this, R.layout.card_heading, headings);
             mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
             mListViewHeadings.setAdapter(mAdapterHeading);
 
-
             // bring parts up or down
-            mBtnParts = (ImageView) findViewById(R.id.btn_parts);
-            mParts = (LinearLayout) findViewById(R.id.parts);
             mBtnParts.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     if (partsVisible == 0) {
                         mParts.setVisibility(View.VISIBLE);
+                        mBtnComments.setVisibility(View.INVISIBLE);
+                        mRedHeading.setVisibility(View.INVISIBLE);
                         partsVisible = 1;
                     } else if (partsVisible == 1) {
                         mParts.setVisibility(View.GONE);
+                        mBtnComments.setVisibility(View.VISIBLE);
+                        mRedHeading.setVisibility(View.VISIBLE);
                         partsVisible = 0;
                     }
 
@@ -251,7 +235,7 @@ public class ActivityXml extends AppCompatActivity {
     }
 
     // Given a string representation of a URL, sets up a connection and gets
-    // an input stream.
+    // an input stream. TODO: use for updating
     private InputStream downloadUrl(String urlString) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -158,7 +158,6 @@
                 android:divider="@null" />
 
 
-
             <LinearLayout
                 android:id="@+id/parts"
                 android:layout_width="match_parent"
