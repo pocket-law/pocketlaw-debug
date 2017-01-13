@@ -198,7 +198,7 @@ public class ActivityXml extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-            stream = getResources().openRawResource(R.raw.c46);
+            stream = getResources().openRawResource(R.raw.c46mod);
 
             parsedLists = xmlParser.parse(stream);
             // Makes sure that the InputStream is closed after the app is
@@ -237,7 +237,7 @@ public class ActivityXml extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-            stream = getResources().openRawResource(R.raw.c46);
+            stream = getResources().openRawResource(R.raw.c46mod);
 
             sectionsList = xmlParser.parse(stream);
             // Makes sure that the InputStream is closed after the app is
