@@ -9,6 +9,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -32,15 +33,39 @@ public class AdapterSection extends ArrayAdapter<Section> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_section, parent, false);
         }
 
+        TextView text = (TextView) convertView.findViewById(R.id.text_section);
+        TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
+        TextView section = (TextView) convertView.findViewById(R.id.section);
+
+        LinearLayout sectionLayout = (LinearLayout) convertView.findViewById(R.id.section_layout);
+        LinearLayout subSectionLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
+
+        TextView historicalNote = (TextView) convertView.findViewById(R.id.historical_note);
+
+
+
         final Section current = getItem(position);
 
-        TextView sectionTwo = (TextView) convertView.findViewById(R.id.section);
-        TextView headingTwo = (TextView) convertView.findViewById(R.id.marginal_note);
+            // Section Marginal Note
+        if (current.getType() == 1) {
+            marginalNote.setText("" + current.getSectionText());
+            marginalNote.setVisibility(View.VISIBLE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.GONE);
 
+            // Section Text
+        } else if (current.getType() == 2) {
+            text.setText("" + current.getSectionText());
+            marginalNote.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.VISIBLE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.GONE);
+        } else {
 
-        headingTwo.setText("" + current.getMarginalNote());
-        sectionTwo.setText("" + current.getSection());
+        }
 
+        section.setText("" + current.getSection());
 
         //TODO: open corresponding part
         convertView.setOnClickListener(new View.OnClickListener() {

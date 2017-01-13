@@ -2,34 +2,112 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:background="@color/colorPrimaryDark">
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <LinearLayout
-        android:id="@+id/level1"
-        android:background="#41ffffff"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/section"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="section"
-            android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/provision_layout">
 
         <TextView
             android:id="@+id/marginal_note"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_width="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="marginal_note"
-            android:textSize="20sp"
+            android:text="Possession of weapon for dangerous purpose"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:id="@+id/section_layout"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/section"
+                android:layout_height="wrap_content"
+                android:text="88 (1)"
+                android:textColor="#000000"
+                android:paddingRight="2dp"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/text_section"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:text="Every person commits an offence who carries or possesses a weapon, an imitation of a weapon, a prohibited device or any ammunition or prohibited ammunition for a purpose dangerous to the public peace or for the purpose of committing an offence."
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/subsection_layout"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="          "
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(a)"
+                android:paddingRight="2dp"
+                android:id="@+id/sub_number"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sub_text"
+                android:paddingBottom="4dp"
+                android:text="Every person commits an offence who carries or possesses a weapon, an imitation of a weapon, a prohibited device or any ammunition or prohibited ammunition for a purpose dangerous to the public peace or for the purpose of committing an offence."
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/historical_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textSize="10sp"
+        android:text="R.S., 1985, c. C-46, s. 88; 1995, c. 39, s. 139."/>
+
 
 </LinearLayout>

@@ -127,7 +127,7 @@ public class ActivityDummy extends AppCompatActivity {
         myWebViewLocal.loadUrl("file:///android_res/raw/criminal_code_english.html");
 
 
-        mAdapterProvision = new AdapterProvision(ActivityDummy.this, R.layout.card_provision, provisions);
+        mAdapterProvision = new AdapterProvision(ActivityDummy.this, R.layout.card_section, provisions);
         mListView = (ListView) findViewById(R.id.listview_section);
         mListView.setAdapter(mAdapterProvision);
 

@@ -73,7 +73,7 @@ public class ActivityLocalHtml extends AppCompatActivity {
 
 
 
-        mAdapterProvision = new AdapterProvision(ActivityLocalHtml.this, R.layout.card_provision, provisions);
+        mAdapterProvision = new AdapterProvision(ActivityLocalHtml.this, R.layout.card_section, provisions);
         mListView = (ListView) findViewById(R.id.listview_section);
         mListView.setAdapter(mAdapterProvision);
 

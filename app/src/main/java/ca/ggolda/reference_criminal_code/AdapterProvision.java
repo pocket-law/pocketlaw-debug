@@ -32,22 +32,22 @@ public class AdapterProvision extends ArrayAdapter<Provision> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_provision, parent, false);
+            convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_section, parent, false);
         }
 
         final Provision current = getItem(position);
 
 
         LinearLayout provisionLayout = (LinearLayout) convertView.findViewById(R.id.provision_layout);
-        TextView provisionName = (TextView) convertView.findViewById(R.id.provision_name);
-        TextView provisionNumber = (TextView) convertView.findViewById(R.id.provision_number);
-        TextView provisionText = (TextView) convertView.findViewById(R.id.provision_text);
+        TextView provisionName = (TextView) convertView.findViewById(R.id.marginal_note);
+        TextView provisionNumber = (TextView) convertView.findViewById(R.id.section);
+        TextView provisionText = (TextView) convertView.findViewById(R.id.text);
 
-        LinearLayout subLayout = (LinearLayout) convertView.findViewById(R.id.sub_layout);
+        LinearLayout subLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
         TextView subNumber = (TextView) convertView.findViewById(R.id.sub_number);
         TextView subText = (TextView) convertView.findViewById(R.id.sub_text);
 
-        TextView citationText = (TextView) convertView.findViewById(R.id.cite_text);
+        TextView citationText = (TextView) convertView.findViewById(R.id.historical_note);
 
 
         switch(current.getProvision_type()) {

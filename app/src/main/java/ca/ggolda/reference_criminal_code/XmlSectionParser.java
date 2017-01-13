@@ -1,7 +1,5 @@
 package ca.ggolda.reference_criminal_code;
 
-import android.os.Build;
-import android.text.Html;
 import android.util.Log;
 import android.util.Xml;
 
@@ -76,12 +74,10 @@ public class XmlSectionParser {
             String name = parser.getName();
             if (name.equals("Section")) {
 
-                // Get the section number from the TitleText code
+                // Get the section number from the Section Code
                 String section = "";
                 if ((parser.getAttributeValue(null, "Code")) != null) {
-
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
-
                     section = code[1];
 
                     Log.e("XML", "sectionTrue : " + section);
@@ -108,9 +104,15 @@ public class XmlSectionParser {
             }
             String name = parser.getName();
             if (name.equals("MarginalNote")) {
-                Log.e("XML", "TitleText");
+                Log.e("XML", "MarginalNote");
+
+                readMarginalNote(parser, section);
+
+            } else if (name.equals("Text")) {
+                Log.e("XML", "Text");
 
                 readText(parser, section);
+
             } else {
                 skip(parser);
             }
@@ -121,46 +123,48 @@ public class XmlSectionParser {
 
 
     // For the section marginal note value.
-    private List readText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
-        Section resultObject = null;
+    private List readMarginalNote(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
 
-        Log.e("XML", "parser next: " + parser.next());
+        //TODO: read the documentation man
+        //
+        parser.next();
 
         String text = parser.getText();
-
-        Log.e("XML", "text: " + text);
-
-        resultObject = new Section(section, text);
-
+        Section resultObject = new Section(1, section, text);
         sections.add(resultObject);
 
-        Log.e("XML", "sections.add( " + section + " , " + text + " )");
-
+        Log.e("XML", "sections.addMargNote( " + section + " , " + text + " )");
         Log.e("XML", "sections.size in parser :" + sections.size());
 
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
         }
 
-//        Log.e("XML", "STRip section" + stripHtml(parser.getText()));
+        return sections;
+    }
+
+    // For the section marginal note value.
+    private List readText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String text = parser.getText();
+        Section resultObject = new Section(2, section, text);
+        sections.add(resultObject);
+
+        Log.e("XML", "sections.addText( " + section + " , " + text + " )");
+        Log.e("XML", "sections.size in parser :" + sections.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
 
         return sections;
     }
 
-//    @SuppressWarnings("deprecation")
-//    public String stripHtml(String html) {
-//
-//        if (html != null) {
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                return Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY).toString();
-//            } else {
-//                return Html.fromHtml(html).toString();
-//            }
-//        } else {
-//            return "STRIPHTML NULL STRING";
-//        }
-//    }
+
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
         if (parser.getEventType() != XmlPullParser.START_TAG) {
