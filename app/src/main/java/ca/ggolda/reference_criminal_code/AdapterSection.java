@@ -33,6 +33,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_section, parent, false);
         }
 
+        TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
+        TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
+
         TextView text = (TextView) convertView.findViewById(R.id.text_section);
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
         TextView section = (TextView) convertView.findViewById(R.id.section);
@@ -61,6 +64,24 @@ public class AdapterSection extends ArrayAdapter<Section> {
             sectionLayout.setVisibility(View.VISIBLE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
+
+            // Section Subsection
+        } else if (current.getType() == 3) {
+            marginalNote.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.VISIBLE);
+            historicalNote.setVisibility(View.GONE);
+
+            subtext.setText(""+current.getSectionText());
+            subnumber.setText(""+current.getSection());
+
+            // HistoricalNote
+        } else if (current.getType() == 4) {
+            historicalNote.setText("" + current.getSectionText());
+            marginalNote.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.VISIBLE);
         } else {
 
         }

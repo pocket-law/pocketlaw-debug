@@ -10,6 +10,7 @@ public class Section {
     // mType will determine weather:
     // 1: Section MarginalNote
     // 2: Section Text
+    // 3: Section HistoricalNote
     private int mType;
     private String mSection;
     private String mMarginalNote;

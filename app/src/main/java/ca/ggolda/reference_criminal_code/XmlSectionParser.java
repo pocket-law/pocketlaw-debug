@@ -113,6 +113,16 @@ public class XmlSectionParser {
 
                 readText(parser, section);
 
+            } else if (name.equals("HistoricalNote")) {
+                Log.e("XML", "HistoricalNote");
+
+                readHistoricalNote(parser);
+
+            } else if (name.equals("Subsection")) {
+                Log.e("XML", "Subsection");
+
+                readSubsection(parser);
+
             } else {
                 skip(parser);
             }
@@ -121,6 +131,35 @@ public class XmlSectionParser {
 
     }
 
+    // For the section Subsection value.
+    private List readSubsection(XmlPullParser parser) throws IOException, XmlPullParserException {
+
+        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + ".getName"+  parser.getName());
+
+        Section subSection = new Section(3, "subsection", "subsection");
+        sections.add(subSection);
+
+        skip(parser);
+
+        //TODO: do
+
+        return sections;
+    }
+
+    // For the section HistoricalNote value.
+    private List readHistoricalNote(XmlPullParser parser) throws IOException, XmlPullParserException {
+
+        Log.e("XML", "readHistoricalNote");
+
+        Section histNote = new Section(4, "historicalnote", "historicalnote");
+        sections.add(histNote);
+
+        skip(parser);
+
+        //TODO: do
+
+        return sections;
+    }
 
     // For the section marginal note value.
     private List readMarginalNote(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
@@ -164,8 +203,7 @@ public class XmlSectionParser {
         return sections;
     }
 
-
-
+    // For skipping.
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
         if (parser.getEventType() != XmlPullParser.START_TAG) {
             throw new IllegalStateException();
