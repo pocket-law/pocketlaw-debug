@@ -137,7 +137,7 @@ public class XmlSectionParser {
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
                     subsection = "(" + code[3] + ")";
-                    
+
                 }
 
                 readParagraph(parser, subsection);
@@ -218,7 +218,6 @@ public class XmlSectionParser {
         }
     }
 
-
     // Parses the contents of a Subsection.
     private void readSubsection(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
@@ -234,6 +233,10 @@ public class XmlSectionParser {
             if (parser.getName().equals("Text")) {
 
                 readSubsectionText(parser, subsection);
+
+            } else if (parser.getName().equals("MarginalNote")) {
+
+                readSubMarginalNote(parser, subsection);
 
             } else {
                 skip(parser);
@@ -263,6 +266,28 @@ public class XmlSectionParser {
         return sections;
     }
 
+    // For the subsection MarginalNote value.
+    private List readSubMarginalNote(XmlPullParser parser, String section) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String text = parser.getText();
+        Section resultObject = new Section(5, section, text);
+        sections.add(resultObject);
+
+        Log.e("XML", "sections.addMargNote( " + section + " , " + text + " )");
+        Log.e("XML", "sections.size in parser :" + sections.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
     // For Paragraph text values.
     private List readParagraphText(XmlPullParser parser, String subsection) throws
             IOException, XmlPullParserException {
@@ -284,7 +309,6 @@ public class XmlSectionParser {
 
         return sections;
     }
-
 
     // For the section HistoricalNote value.
     private List readHistoricalNote(XmlPullParser parser) throws

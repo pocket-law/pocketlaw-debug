@@ -49,7 +49,11 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
         TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
 
+        // SubMarginalNote text/number
+        TextView subMarginalNote = (TextView) convertView.findViewById(R.id.submarginal_note);
+        TextView subMarginalNumber = (TextView) convertView.findViewById(R.id.submarginal_number);
 
+        LinearLayout subMarginalLayout = (LinearLayout) convertView.findViewById(R.id.submarginal_layout);
         LinearLayout marginalLayout = (LinearLayout) convertView.findViewById(R.id.marginal_layout);
         LinearLayout sectionLayout = (LinearLayout) convertView.findViewById(R.id.section_layout);
         LinearLayout subSectionLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
@@ -66,6 +70,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             marginalNote.setText("" + current.getSectionText());
             marginalNumber.setText("" + current.getSection());
             marginalLayout.setVisibility(View.VISIBLE);
+            subMarginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
@@ -78,6 +83,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             sectionLayout.setVisibility(View.VISIBLE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
+            subMarginalLayout.setVisibility(View.GONE);
             paragraphLayout.setVisibility(View.GONE);
 
             // Section Subsection Text
@@ -86,6 +92,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.VISIBLE);
             historicalNote.setVisibility(View.GONE);
+            subMarginalLayout.setVisibility(View.GONE);
             paragraphLayout.setVisibility(View.GONE);
 
             subtext.setText("" + current.getSectionText());
@@ -98,15 +105,29 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
             paragraphLayout.setVisibility(View.VISIBLE);
+            subMarginalLayout.setVisibility(View.GONE);
 
             paratext.setText("" + current.getSectionText());
             paranumber.setText("" + current.getSection());
+
+            // SubMarginalNote
+        } else if (current.getType() == 5) {
+            marginalLayout.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.GONE);
+            subMarginalLayout.setVisibility(View.VISIBLE);
+
+            subMarginalNote.setText("" + current.getSectionText());
+            subMarginalNumber.setText("" + current.getSection());
 
             // HistoricalNote
         } else if (current.getType() == 9) {
             historicalNote.setText("" + current.getSectionText());
             marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
+            subMarginalLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.VISIBLE);
             paragraphLayout.setVisibility(View.GONE);
