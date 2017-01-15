@@ -38,13 +38,14 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         TextView text = (TextView) convertView.findViewById(R.id.text_section);
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
+        TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
         TextView section = (TextView) convertView.findViewById(R.id.section);
 
+        LinearLayout marginalLayout = (LinearLayout) convertView.findViewById(R.id.marginal_layout);
         LinearLayout sectionLayout = (LinearLayout) convertView.findViewById(R.id.section_layout);
         LinearLayout subSectionLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
 
         TextView historicalNote = (TextView) convertView.findViewById(R.id.historical_note);
-
 
 
         final Section current = getItem(position);
@@ -52,7 +53,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
             // Section Marginal Note
         if (current.getType() == 1) {
             marginalNote.setText("" + current.getSectionText());
-            marginalNote.setVisibility(View.VISIBLE);
+            marginalNumber.setText("" + current.getSection());
+            marginalLayout.setVisibility(View.VISIBLE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
@@ -60,14 +62,14 @@ public class AdapterSection extends ArrayAdapter<Section> {
             // Section Text
         } else if (current.getType() == 2) {
             text.setText("" + current.getSectionText());
-            marginalNote.setVisibility(View.GONE);
+            marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.VISIBLE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
 
             // Section Subsection
         } else if (current.getType() == 3) {
-            marginalNote.setVisibility(View.GONE);
+            marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.VISIBLE);
             historicalNote.setVisibility(View.GONE);
