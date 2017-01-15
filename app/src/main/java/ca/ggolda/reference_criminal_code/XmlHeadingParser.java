@@ -95,8 +95,7 @@ public class XmlHeadingParser {
 
     }
 
-    // Parses the contents of an entry. If it encounters a DefinedTermEn, hands them off
-    // to their respective "read" methods for processing. Otherwise, skips the tag.
+    // Parses the contents of a Heading
     private void readHeading(XmlPullParser parser, int level) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Heading");
 

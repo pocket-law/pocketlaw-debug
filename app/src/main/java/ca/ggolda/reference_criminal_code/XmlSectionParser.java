@@ -84,12 +84,69 @@ public class XmlSectionParser {
 
                 readSection(parser, section);
 
+            } else if (parser.getName().equals("Heading")) {
+
+                Log.e("HEADING", "HEADING!");
+
+
+
+                // Get the section number from the Heading Code
+                String section = "";
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                    section = code[1];
+
+                    Log.e("XML", "heading sectionTrue : " + section);
+                }
+
+                readHeading(parser, section);
+
             } else {
                 skip(parser);
             }
 
         }
 
+    }
+
+    // Parses the contents of a Heading
+    private void readHeading(XmlPullParser parser, String section) throws XmlPullParserException, IOException {
+        parser.require(XmlPullParser.START_TAG, ns, "Heading");
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String name = parser.getName();
+            if (name.equals("TitleText")) {
+                Log.e("XML", "TitleText");
+
+                readTitleText(parser, section);
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+    // For the tags text and level values.
+    private List readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+        Section resultObject = null;
+
+        parser.next();
+
+        String text = parser.getText();
+
+        resultObject = new Section(0, section, text);
+
+        sections.add(resultObject);
+        Log.e("XML", "sectionHeading.add( " + 0 + " , " + section + " " + text + " )");
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
     }
 
     // Parses the contents of a Section.
