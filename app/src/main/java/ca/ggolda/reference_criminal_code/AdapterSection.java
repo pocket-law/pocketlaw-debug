@@ -80,7 +80,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             // HistoricalNote
         } else if (current.getType() == 4) {
             historicalNote.setText("" + current.getSectionText());
-            marginalNote.setVisibility(View.GONE);
+            marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.VISIBLE);
