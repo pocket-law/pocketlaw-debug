@@ -31,7 +31,7 @@ public class ActivityLaunch extends AppCompatActivity {
 
         btnLocal.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityLaunch.this, ActivityLocalHtml.class);
+                Intent intent = new Intent(ActivityLaunch.this, ActivityXmlTwo.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
