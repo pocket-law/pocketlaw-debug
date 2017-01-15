@@ -116,6 +116,51 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/paragraph_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FF0000"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="                "
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/para_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="2dp"
+                android:text="(a)"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/para_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:text="Every person commits an offence who carries or possesses a weapon, an imitation of a weapon, a prohibited device or any ammunition or prohibited ammunition for a purpose dangerous to the public peace or for the purpose of committing an offence."
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/historical_note"
         android:layout_width="match_parent"

@@ -33,24 +33,35 @@ public class AdapterSection extends ArrayAdapter<Section> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_section, parent, false);
         }
 
+        // Subsection text/number
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
 
+        // Paragraph text/number
+        TextView paratext = (TextView) convertView.findViewById(R.id.para_text);
+        TextView paranumber = (TextView) convertView.findViewById(R.id.para_number);
+
+        // Section text/number
+        TextView section = (TextView) convertView.findViewById(R.id.section);
         TextView text = (TextView) convertView.findViewById(R.id.text_section);
+
+        // MarginalNote text/number
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
         TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
-        TextView section = (TextView) convertView.findViewById(R.id.section);
+
 
         LinearLayout marginalLayout = (LinearLayout) convertView.findViewById(R.id.marginal_layout);
         LinearLayout sectionLayout = (LinearLayout) convertView.findViewById(R.id.section_layout);
         LinearLayout subSectionLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
+        LinearLayout paragraphLayout = (LinearLayout) convertView.findViewById(R.id.paragraph_layout);
+
 
         TextView historicalNote = (TextView) convertView.findViewById(R.id.historical_note);
 
 
         final Section current = getItem(position);
 
-            // Section Marginal Note
+        // Section Marginal Note
         if (current.getType() == 1) {
             marginalNote.setText("" + current.getSectionText());
             marginalNumber.setText("" + current.getSection());
@@ -58,6 +69,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.GONE);
 
             // Section Text
         } else if (current.getType() == 2) {
@@ -66,24 +78,38 @@ public class AdapterSection extends ArrayAdapter<Section> {
             sectionLayout.setVisibility(View.VISIBLE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.GONE);
 
-            // Section Subsection
+            // Section Subsection Text
         } else if (current.getType() == 3) {
             marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.VISIBLE);
             historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.GONE);
 
-            subtext.setText(""+current.getSectionText());
-            subnumber.setText(""+current.getSection());
+            subtext.setText("" + current.getSectionText());
+            subnumber.setText("" + current.getSection());
+
+            // Section Paragraph Text
+        } else if (current.getType() == 4) {
+            marginalLayout.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.VISIBLE);
+
+            paratext.setText("" + current.getSectionText());
+            paranumber.setText("" + current.getSection());
 
             // HistoricalNote
-        } else if (current.getType() == 4) {
+        } else if (current.getType() == 9) {
             historicalNote.setText("" + current.getSectionText());
             marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
             subSectionLayout.setVisibility(View.GONE);
             historicalNote.setVisibility(View.VISIBLE);
+            paragraphLayout.setVisibility(View.GONE);
         } else {
 
         }
