@@ -174,26 +174,44 @@ public class XmlSectionParser {
         return sections;
     }
 
-    // For Section text values.
-    private List readSectionText(XmlPullParser parser, String section) throws
-            IOException, XmlPullParserException {
 
-        //TODO: read the documentation man
-        //
-        parser.next();
+    // Parses the contents of a Subsection.
+    private void readSubsection(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
-        String text = parser.getText();
-        Section resultObject = new Section(2, section, text);
-        sections.add(resultObject);
+        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
-        Log.e("XML", "sections.addText( " + section + " , " + text + " )");
-        Log.e("XML", "sections.size in parser :" + sections.size());
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
 
-        if (parser.next() == XmlPullParser.START_TAG) {
-            skip(parser);
+            Log.e("XML", "readSubsection aftwhile" + parser.getName());
+
+            if (parser.getName().equals("Text")) {
+
+                readSubsectionText(parser, subsection);
+
+            } else if (parser.getName().equals("MarginalNote")) {
+
+                readSubMarginalNote(parser, subsection);
+
+            } else if (parser.getName().equals("Paragraph")) {
+                Log.e("XML", "Paragraph");
+
+                String subparasection = null;
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                    subparasection = "(" + code[5] + ")";
+
+                }
+
+                readSubsectionParagraph(parser, subparasection);
+
+
+            } else {
+                skip(parser);
+            }
         }
-
-        return sections;
     }
 
     // Parses the contents of a Paragraph.
@@ -218,25 +236,21 @@ public class XmlSectionParser {
         }
     }
 
-    // Parses the contents of a Subsection.
-    private void readSubsection(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+    // Parses the contents of a Subsection Paragraph.
+    private void readSubsectionParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
-        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
+        Log.e("XML", "readSubsectionParagraph, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
 
-            Log.e("XML", "readSubsection aftwhile" + parser.getName());
-
             if (parser.getName().equals("Text")) {
 
-                readSubsectionText(parser, subsection);
+                Log.e("XML", "Subsection Paragraph Text" + parser.getName());
 
-            } else if (parser.getName().equals("MarginalNote")) {
-
-                readSubMarginalNote(parser, subsection);
+                readSubsectionParagraphText(parser, subsection);
 
             } else {
                 skip(parser);
@@ -310,6 +324,28 @@ public class XmlSectionParser {
         return sections;
     }
 
+    // For Subsection Paragraph text values.
+    private List readSubsectionParagraphText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String paratext = parser.getText();
+
+        Log.e("XML", "paragraph.addText( " + " 6, " + paratext + " )");
+
+        Section subsection_text = new Section(6, subsection, paratext);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
     // For the section HistoricalNote value.
     private List readHistoricalNote(XmlPullParser parser) throws
             IOException, XmlPullParserException {
@@ -322,6 +358,28 @@ public class XmlSectionParser {
         skip(parser);
 
         //TODO: do
+
+        return sections;
+    }
+
+    // For Section text values.
+    private List readSectionText(XmlPullParser parser, String section) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String text = parser.getText();
+        Section resultObject = new Section(2, section, text);
+        sections.add(resultObject);
+
+        Log.e("XML", "sections.addText( " + section + " , " + text + " )");
+        Log.e("XML", "sections.size in parser :" + sections.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
 
         return sections;
     }
