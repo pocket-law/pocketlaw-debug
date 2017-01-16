@@ -303,18 +303,23 @@ public class XmlSectionParser {
             } else if (parser.getName().equals("Text")) {
 
                 readDefinitionText(parser, subsection);
-//
-//            } else if (parser.getName().equals("Paragraph")) {
-//                Log.e("XML", "Paragraph");
-//
-//                String subparasection = null;
-//                if ((parser.getAttributeValue(null, "Code")) != null) {
-//                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
-//                    subparasection = "(" + code[5] + ")";
-//
-//                }
-//
-//                readSubsectionParagraph(parser, subparasection);
+
+                //Recursively call to use the readDefinitionText since the formatting is the same
+            } else if (parser.getName().equals("ContinuedDefinition")) {
+
+                readDefinition(parser, subsection);
+
+            } else if (parser.getName().equals("Paragraph")) {
+                Log.e("XML", "Definition Paragraph");
+
+                String definition_section = null;
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                    definition_section = "(" + code[5] + ")";
+
+                }
+
+                readDefinitionParagraph(parser, definition_section);
 
 
             } else {
@@ -326,7 +331,7 @@ public class XmlSectionParser {
     // Parses the contents of a Paragraph.
     private void readParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
-        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
+        Log.e("XML", "readParagraph, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -341,16 +346,66 @@ public class XmlSectionParser {
 
             } else if (parser.getName().equals("Subparagraph")) {
 
-                Log.e("XML", "Subaragraph");
+                Log.e("XML", "Subparagraph");
 
                 String subpara_section = null;
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
+
                     subpara_section = "(" + code[5] + ")";
 
                 }
 
-                readSubParagraph(parser, subpara_section);
+                readSubparagraph(parser, subpara_section);
+
+            } else if (parser.getName().equals("ContinuedParagraph")) {
+
+                Log.e("XML", "Continued Paragraph");
+
+                readContinuedParagraph(parser, subsection);
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+    // Parses the contents of a Definition Paragraph.
+    private void readDefinitionParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+
+        Log.e("XML", "readParagraph, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+
+                Log.e("XML", "Paragraph Text" + parser.getName());
+
+                readParagraphText(parser, subsection);
+
+            } else if (parser.getName().equals("Subparagraph")) {
+
+                Log.e("XML", "Subparagraph");
+
+                String subpara_section = null;
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+
+                    subpara_section = "(" + code[7] + ")";
+
+
+                }
+
+                readSubparagraph(parser, subpara_section);
+
+            } else if (parser.getName().equals("ContinuedParagraph")) {
+
+                Log.e("XML", "Continued Paragraph" + parser.getName());
+
+                readContinuedParagraph(parser, subsection);
 
             } else {
                 skip(parser);
@@ -394,7 +449,7 @@ public class XmlSectionParser {
     }
 
     // Parses the contents of a Subparagraph.
-    private void readSubParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+    private void readSubparagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
         Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
@@ -539,6 +594,47 @@ public class XmlSectionParser {
         Log.e("XML", "paragraph.addText( " + " 4, " + paratext + " )");
 
         Section subsection_text = new Section(4, subsection, paratext);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+    
+    // For continued paragraph
+    private void readContinuedParagraph(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+
+                Log.e("XML", "Paragraph Text" + parser.getName());
+
+                readContinuedParagraphText(parser, subsection);
+
+            }
+        }
+    }
+
+    // For Paragraph text values.
+    private List readContinuedParagraphText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String paratext = parser.getText();
+
+        Log.e("XML", "continued paragraph.addText( " + " 12, " + paratext + " )");
+
+        Section subsection_text = new Section(12, subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {

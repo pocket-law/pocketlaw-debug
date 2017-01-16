@@ -32,6 +32,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     LinearLayout definitionMarginalLayout;
     LinearLayout definitionTextLayout;
     LinearLayout historicalLayout;
+    LinearLayout continuedParagraphLayout;
 
 
 
@@ -65,6 +66,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
         // Paragraph text/number
         TextView paratext = (TextView) convertView.findViewById(R.id.para_text);
         TextView paranumber = (TextView) convertView.findViewById(R.id.para_number);
+
+        // Continued Paragraph text/number
+        TextView continuedParatext = (TextView) convertView.findViewById(R.id.cont_para_text);
+        TextView continuedParanumber = (TextView) convertView.findViewById(R.id.cont_para_number);
 
         // Paragraph text/number
         TextView subsectionParatext = (TextView) convertView.findViewById(R.id.subsection_para_text);
@@ -100,6 +105,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         sectionLayout = (LinearLayout) convertView.findViewById(R.id.section_layout);
         subSectionLayout = (LinearLayout) convertView.findViewById(R.id.subsection_layout);
         paragraphLayout = (LinearLayout) convertView.findViewById(R.id.paragraph_layout);
+        continuedParagraphLayout = (LinearLayout) convertView.findViewById(R.id.cont_paragraph_layout);
         headingLayout = (LinearLayout) convertView.findViewById(R.id.heading_layout);
         subparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subparagraph_layout);
         subsectionSubparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subsection_subparagraph_layout);
@@ -171,7 +177,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             subsectionParagraphLayout.setVisibility(View.VISIBLE);
 
-            // Subsection Paragraph
+            // Subparagraph
         } else if (current.getType() == 7) {
 
             subParaText.setText("" + current.getSectionText());
@@ -209,6 +215,13 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             definitionTextLayout.setVisibility(View.VISIBLE);
 
+            // Section Paragraph
+        } else if (current.getType() == 12) {
+
+            continuedParatext.setText("" + current.getSectionText());
+            continuedParanumber.setText("" + current.getSection());
+
+            continuedParagraphLayout.setVisibility(View.VISIBLE);
 
         } else {
 
@@ -245,6 +258,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
         headingLayout.setVisibility(View.GONE);
         subparagraphLayout.setVisibility(View.GONE);
         subsectionSubparagraphLayout.setVisibility(View.GONE);
+        continuedParagraphLayout.setVisibility(View.GONE);
+
+        //TODO: consider nulling all textviews as well
 
     }
 
