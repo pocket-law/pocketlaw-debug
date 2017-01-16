@@ -66,6 +66,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView subParaText = (TextView) convertView.findViewById(R.id.subpara_text);
         TextView subParaNumber = (TextView) convertView.findViewById(R.id.subpara_number);
 
+        // Subsection Subparagraph text/number
+        TextView subsectionSubParaText = (TextView) convertView.findViewById(R.id.subsection_subpara_text);
+        TextView subsectionSubParaNumber = (TextView) convertView.findViewById(R.id.subsection_subpara_number);
 
 
         LinearLayout subsectionParagraphLayout = (LinearLayout) convertView.findViewById(R.id.subsection_paragraph_layout);
@@ -76,6 +79,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         LinearLayout paragraphLayout = (LinearLayout) convertView.findViewById(R.id.paragraph_layout);
         LinearLayout headingLayout = (LinearLayout) convertView.findViewById(R.id.heading_layout);
         LinearLayout subparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subparagraph_layout);
+        LinearLayout subsectionSubparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subsection_subparagraph_layout);
 
         TextView historicalNote = (TextView) convertView.findViewById(R.id.historical_note);
 
@@ -94,6 +98,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subsectionParagraphLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.VISIBLE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             headingText.setText("" + current.getSectionText());
             headingNumber.setText("" + current.getSection());
@@ -112,6 +117,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subsectionParagraphLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             // Section Text
         } else if (current.getType() == 2) {
@@ -126,6 +132,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subsectionParagraphLayout.setVisibility(View.GONE);
             paragraphLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             // Section Subsection Text
         } else if (current.getType() == 3) {
@@ -138,6 +145,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             paragraphLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             subtext.setText("" + current.getSectionText());
             subnumber.setText("" + current.getSection());
@@ -153,6 +161,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subMarginalLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             paratext.setText("" + current.getSectionText());
             paranumber.setText("" + current.getSection());
@@ -168,11 +177,12 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subMarginalLayout.setVisibility(View.VISIBLE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             subMarginalNote.setText("" + current.getSectionText());
             subMarginalNumber.setText("" + current.getSection());
 
-            // Subparagraph
+            // Subsection paragraph
         } else if (current.getType() == 6) {
             marginalLayout.setVisibility(View.GONE);
             sectionLayout.setVisibility(View.GONE);
@@ -180,9 +190,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
             historicalNote.setVisibility(View.GONE);
             paragraphLayout.setVisibility(View.GONE);
             subMarginalLayout.setVisibility(View.GONE);
-            subsectionParagraphLayout.setVisibility(View.GONE);
+            subsectionParagraphLayout.setVisibility(View.VISIBLE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             subsectionParatext.setText("" + current.getSectionText());
             subsectionParanumber.setText("" + current.getSection());
@@ -198,9 +209,26 @@ public class AdapterSection extends ArrayAdapter<Section> {
             subsectionParagraphLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.VISIBLE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
 
             subParaText.setText("" + current.getSectionText());
             subParaNumber.setText("" + current.getSection());
+
+            // Subsection subParagraph
+        } else if (current.getType() == 8) {
+            marginalLayout.setVisibility(View.GONE);
+            sectionLayout.setVisibility(View.GONE);
+            subSectionLayout.setVisibility(View.GONE);
+            historicalNote.setVisibility(View.GONE);
+            paragraphLayout.setVisibility(View.GONE);
+            subMarginalLayout.setVisibility(View.GONE);
+            subsectionParagraphLayout.setVisibility(View.GONE);
+            headingLayout.setVisibility(View.GONE);
+            subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.VISIBLE);
+
+            subsectionSubParaText.setText("" + current.getSectionText());
+            subsectionSubParaNumber.setText("" + current.getSection());
 
             // HistoricalNote
         } else if (current.getType() == 9) {
@@ -215,6 +243,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
             paragraphLayout.setVisibility(View.GONE);
             headingLayout.setVisibility(View.GONE);
             subparagraphLayout.setVisibility(View.GONE);
+            subsectionSubparagraphLayout.setVisibility(View.GONE);
         } else {
 
         }
