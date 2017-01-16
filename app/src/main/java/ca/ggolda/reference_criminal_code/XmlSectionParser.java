@@ -287,11 +287,49 @@ public class XmlSectionParser {
 
                 readParagraphText(parser, subsection);
 
+            } else if (parser.getName().equals("Subparagraph")) {
+
+                Log.e("XML", "Subaragraph");
+
+                String subpara_section = null;
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                    subpara_section = "(" + code[5] + ")";
+
+                }
+
+                readSubParagraph(parser, subpara_section);
+
             } else {
                 skip(parser);
             }
         }
     }
+
+    // Parses the contents of a Paragraph.
+    private void readSubParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+
+        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+
+                Log.e("XML", "Paragraph Text" + parser.getName());
+
+                readSubParagraphText(parser, subsection);
+
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+
 
     // Parses the contents of a Subsection Paragraph.
     private void readSubsectionParagraph(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
@@ -372,6 +410,28 @@ public class XmlSectionParser {
         Log.e("XML", "paragraph.addText( " + " 4, " + paratext + " )");
 
         Section subsection_text = new Section(4, subsection, paratext);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
+    // For SubParagraph text values.
+    private List readSubParagraphText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String paratext = parser.getText();
+
+        Log.e("XML", "subparagraph.addText( " + " 7, " + paratext + " )");
+
+        Section subsection_text = new Section(7, subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
