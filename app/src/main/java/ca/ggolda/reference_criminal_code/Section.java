@@ -6,7 +6,6 @@ package ca.ggolda.reference_criminal_code;
 
 public class Section {
 
-
     // mType will determine weather:
     // 1: Section MarginalNote
     // 2: Section Text
@@ -14,9 +13,6 @@ public class Section {
     private int mType;
     private String mSection;
     private String mMarginalNote;
-
-
-
 
 
     // Constructor for Heading with all attributes

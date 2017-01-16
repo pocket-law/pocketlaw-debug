@@ -173,6 +173,20 @@ public class XmlSectionParser {
 
                 readHistoricalNote(parser);
 
+            } else if (parser.getName().equals("Definition")) {
+                Log.e("XML", "Definition");
+
+                String subsection = null;
+
+                if ((parser.getAttributeValue(null, "Code")) != null) {
+                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                    subsection = code[1];
+
+                    Log.e("XML", "definitionTrue : " + subsection);
+                }
+
+                readDefinition(parser, subsection);
+
             } else if (parser.getName().equals("Subsection")) {
                 Log.e("XML", "Subsection");
 
@@ -231,7 +245,6 @@ public class XmlSectionParser {
         return sections;
     }
 
-
     // Parses the contents of a Subsection.
     private void readSubsection(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
 
@@ -263,6 +276,45 @@ public class XmlSectionParser {
                 }
 
                 readSubsectionParagraph(parser, subparasection);
+
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+    // Parses the contents of a Subsection.
+    private void readDefinition(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+
+        Log.e("XML", "readDefinition, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            Log.e("XML", "readDefinition aftwhile" + parser.getName());
+
+            if (parser.getName().equals("MarginalNote")) {
+
+                readDefinitionMarginalNote(parser, subsection);
+
+            } else if (parser.getName().equals("Text")) {
+
+                readDefinitionText(parser, subsection);
+//
+//            } else if (parser.getName().equals("Paragraph")) {
+//                Log.e("XML", "Paragraph");
+//
+//                String subparasection = null;
+//                if ((parser.getAttributeValue(null, "Code")) != null) {
+//                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
+//                    subparasection = "(" + code[5] + ")";
+//
+//                }
+//
+//                readSubsectionParagraph(parser, subparasection);
 
 
             } else {
@@ -408,6 +460,28 @@ public class XmlSectionParser {
         return sections;
     }
 
+    // For Subsection text values.
+    private List readDefinitionText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String sub_text = parser.getText();
+
+        Log.e("XML", "subsections.addText( " + " 11, " + sub_text + " )");
+
+        Section subsection_text = new Section(11, subsection, sub_text);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
     // For the subsection MarginalNote value.
     private List readSubMarginalNote(XmlPullParser parser, String section) throws
             IOException, XmlPullParserException {
@@ -421,6 +495,28 @@ public class XmlSectionParser {
         sections.add(resultObject);
 
         Log.e("XML", "sections.addMargNote( " + section + " , " + text + " )");
+        Log.e("XML", "sections.size in parser :" + sections.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
+    // For the subsection MarginalNote value.
+    private List readDefinitionMarginalNote(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String text = parser.getText();
+        Section resultObject = new Section(10, subsection, text);
+        sections.add(resultObject);
+
+        Log.e("XML", "sections.addDefinitionMargNote( " + 10 + " , " + text + " )");
         Log.e("XML", "sections.size in parser :" + sections.size());
 
         if (parser.next() == XmlPullParser.START_TAG) {
