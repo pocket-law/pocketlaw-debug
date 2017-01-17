@@ -89,7 +89,6 @@ public class XmlSectionParser {
                 Log.e("HEADING", "HEADING!");
 
 
-
                 // Get the section number from the Heading Code
                 String section = "";
                 if ((parser.getAttributeValue(null, "Code")) != null) {
@@ -810,14 +809,61 @@ public class XmlSectionParser {
 
         Log.e("XML", "readHistoricalNote");
 
-        Section histNote = new Section(9, "historicalnote", "historicalnote");
-        sections.add(histNote);
+        String histNote = "";
 
-        skip(parser);
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
 
-        //TODO: do
+            if (parser.getName().equals("ul")) {
+
+                while (parser.next() != XmlPullParser.END_TAG) {
+                    if (parser.getEventType() != XmlPullParser.START_TAG) {
+                        continue;
+                    }
+
+                    if (parser.getName().equals("li")) {
+
+                        if (histNote.equals("")) {
+                            histNote = readHistoryListItem(parser);
+                        } else {
+                            histNote = " " + readHistoryListItem(parser);
+                        }
+                    }
+                }
+            } else {
+                skip(parser);
+            }
+        }
+
+        Log.e("XML", "historicalnote.addText( " + " 9, " + histNote + " )");
+        Section historicalNotesSection = new Section(9, "historicalnote", histNote);
+        sections.add(historicalNotesSection);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
 
         return sections;
+
+
+
+    }
+
+    private String readHistoryListItem(XmlPullParser parser) throws IOException, XmlPullParserException {
+
+        Log.e("xML", "LISTITEMHISTORY");
+
+        String history_listitem = "";
+
+
+        parser.next();
+
+        history_listitem = parser.getText();
+
+
+        return history_listitem;
     }
 
     // For Section text values.
