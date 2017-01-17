@@ -803,6 +803,8 @@ public class XmlSectionParser {
         }
     }
 
+
+    //TODO: get more than the first HistoricalNote
     // For the section HistoricalNote value.
     private List readHistoricalNote(XmlPullParser parser) throws
             IOException, XmlPullParserException {
@@ -818,20 +820,8 @@ public class XmlSectionParser {
 
             if (parser.getName().equals("ul")) {
 
-                while (parser.next() != XmlPullParser.END_TAG) {
-                    if (parser.getEventType() != XmlPullParser.START_TAG) {
-                        continue;
-                    }
+                histNote = readHistoryListItem(parser);
 
-                    if (parser.getName().equals("li")) {
-
-                        if (histNote.equals("")) {
-                            histNote = readHistoryListItem(parser);
-                        } else {
-                            histNote = " " + readHistoryListItem(parser);
-                        }
-                    }
-                }
             } else {
                 skip(parser);
             }
@@ -853,17 +843,26 @@ public class XmlSectionParser {
 
     private String readHistoryListItem(XmlPullParser parser) throws IOException, XmlPullParserException {
 
-        Log.e("xML", "LISTITEMHISTORY");
+        String histNote = "";
 
-        String history_listitem = "";
+        while (parser.next() != XmlPullParser.END_TAG) {
+//            if (parser.getEventType() != XmlPullParser.START_TAG) {
+//                continue;
+//            }
 
+            if (parser.getName().equals("li")) {
 
-        parser.next();
+                parser.next();
 
-        history_listitem = parser.getText();
+                if (histNote.equals("")) {
+                    histNote = parser.getText();
+                } else {
+                    histNote = histNote + parser.getText();
+                }
+            }
+        }
 
-
-        return history_listitem;
+        return histNote;
     }
 
     // For Section text values.

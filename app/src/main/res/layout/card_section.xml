@@ -248,7 +248,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        android:background="#00FF00"
         tools:visibility="visible">
 
         <LinearLayout
@@ -292,7 +291,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#FF00FF"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -511,6 +509,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:background="#00FF00"
         tools:visibility="visible" >
 
         <TextView
