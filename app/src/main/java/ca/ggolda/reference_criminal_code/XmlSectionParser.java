@@ -277,11 +277,58 @@ public class XmlSectionParser {
 
                 readSubsectionParagraph(parser, subparasection);
 
+            } else if (parser.getName().equals("ContinuedSectionSubsection")) {
+                Log.e("XML", "ContinuedSectionSubsection");
+
+                readContinuedSubsection(parser, subsection);
+
 
             } else {
                 skip(parser);
             }
         }
+    }
+
+    // Parses the contents of a Subsection.
+    private void readContinuedSubsection(XmlPullParser parser, String subsection) throws IOException, XmlPullParserException {
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+                Log.e("XML", "Text");
+
+                readContinuedSubsectionText(parser, subsection);
+
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+    // For Subsection SubParagraph text values.
+    private List readContinuedSubsectionText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String paratext = parser.getText();
+
+        Log.e("XML", "subsection subparagraph.addText( " + " 14, " + paratext + " )");
+
+        Section subsection_text = new Section(14, subsection, paratext);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
     }
 
     // Parses the contents of a Subsection.
@@ -441,6 +488,12 @@ public class XmlSectionParser {
                 }
 
                 readSubsectionSubParagraph(parser, subpara_section);
+
+            } else if (parser.getName().equals("ContinuedParagraph")) {
+
+                Log.e("XML", "Continued Subsection Paragraph");
+
+                readContinuedSubsectionParagraph(parser, subsection);
 
             } else {
                 skip(parser);
@@ -602,7 +655,7 @@ public class XmlSectionParser {
 
         return sections;
     }
-    
+
     // For continued paragraph
     private void readContinuedParagraph(XmlPullParser parser, String subsection) throws
             IOException, XmlPullParserException {
@@ -622,7 +675,7 @@ public class XmlSectionParser {
         }
     }
 
-    // For Paragraph text values.
+    // For Continued Paragraph text values.
     private List readContinuedParagraphText(XmlPullParser parser, String subsection) throws
             IOException, XmlPullParserException {
 
@@ -635,6 +688,28 @@ public class XmlSectionParser {
         Log.e("XML", "continued paragraph.addText( " + " 12, " + paratext + " )");
 
         Section subsection_text = new Section(12, subsection, paratext);
+        sections.add(subsection_text);
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
+    // For Continued Subsection Paragraph text values.
+    private List readContinuedSubsectionParagraphText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String paratext = parser.getText();
+
+        Log.e("XML", "continued paragraph.addText( " + " 13, " + paratext + " )");
+
+        Section subsection_text = new Section(13, subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -708,6 +783,25 @@ public class XmlSectionParser {
         }
 
         return sections;
+    }
+
+    // For Subsection Paragraph text values.
+    private void readContinuedSubsectionParagraph(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+
+                Log.e("XML", "Continued Subsection Paragraph Text" + parser.getName());
+
+                readContinuedSubsectionParagraphText(parser, subsection);
+
+            }
+        }
     }
 
     // For the section HistoricalNote value.

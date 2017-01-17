@@ -33,6 +33,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
     LinearLayout definitionTextLayout;
     LinearLayout historicalLayout;
     LinearLayout continuedParagraphLayout;
+    LinearLayout continuedSubsectionParagraphLayout;
+    LinearLayout continuedSubsectionLayout;
 
 
 
@@ -71,6 +73,14 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView continuedParatext = (TextView) convertView.findViewById(R.id.cont_para_text);
         TextView continuedParanumber = (TextView) convertView.findViewById(R.id.cont_para_number);
 
+        // Continued Subsection Paragraph text/number
+        TextView continuedSubsectionParaText = (TextView) convertView.findViewById(R.id.cont_subsection_para_text);
+        TextView continuedSubsectionParaNumber = (TextView) convertView.findViewById(R.id.cont_subsection_para_number);
+
+        // Continued Subsection text/number
+        TextView continuedSubsectionText = (TextView) convertView.findViewById(R.id.cont_sub_text);
+        TextView continuedSubsectionNumber = (TextView) convertView.findViewById(R.id.cont_sub_number);
+
         // Paragraph text/number
         TextView subsectionParatext = (TextView) convertView.findViewById(R.id.subsection_para_text);
         TextView subsectionParanumber = (TextView) convertView.findViewById(R.id.subsection_para_number);
@@ -80,9 +90,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView section = (TextView) convertView.findViewById(R.id.section);
         TextView text = (TextView) convertView.findViewById(R.id.text_section);
 
-        // MarginalNote text/number
+        // MarginalNote text
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
-        TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
+
 
         // SubMarginalNote text/number
         TextView subMarginalNote = (TextView) convertView.findViewById(R.id.submarginal_note);
@@ -112,7 +122,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
         definitionMarginalLayout = (LinearLayout) convertView.findViewById(R.id.definition_marginal_layout);
         definitionTextLayout = (LinearLayout) convertView.findViewById(R.id.definition_text_layout);
         historicalLayout = (LinearLayout) convertView.findViewById(R.id.historical_layout);
-
+        continuedSubsectionParagraphLayout = (LinearLayout) convertView.findViewById(R.id.cont_subsection_paragraph_layout);
+        continuedSubsectionLayout = (LinearLayout) convertView.findViewById(R.id.cont_subsection_layout);
 
 
 
@@ -134,7 +145,6 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 1) {
 
             marginalNote.setText("" + current.getSectionText());
-            marginalNumber.setText("" + current.getSection());
 
             marginalLayout.setVisibility(View.VISIBLE);
 
@@ -223,6 +233,20 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             continuedParagraphLayout.setVisibility(View.VISIBLE);
 
+        } else if (current.getType() == 13) {
+
+            continuedSubsectionParaText.setText("" + current.getSectionText());
+            continuedSubsectionParaNumber.setText("" + current.getSection());
+
+            continuedSubsectionParagraphLayout.setVisibility(View.VISIBLE);
+
+        } else if (current.getType() == 14) {
+
+            continuedSubsectionText.setText("" + current.getSectionText());
+            continuedSubsectionNumber.setText("" + current.getSection());
+
+            continuedSubsectionLayout.setVisibility(View.VISIBLE);
+
         } else {
 
         }
@@ -259,6 +283,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
         subparagraphLayout.setVisibility(View.GONE);
         subsectionSubparagraphLayout.setVisibility(View.GONE);
         continuedParagraphLayout.setVisibility(View.GONE);
+        continuedSubsectionParagraphLayout.setVisibility(View.GONE);
+        continuedSubsectionLayout.setVisibility(View.GONE);
 
         //TODO: consider nulling all textviews as well
 
