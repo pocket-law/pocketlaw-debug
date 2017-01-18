@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:hint="Enter your name" />
+
+    <EditText
+        android:id="@+id/et_college"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/et_name"
+        android:layout_margin="10dp"
+        android:hint="Enter your college name" />
+
+    <EditText
+        android:id="@+id/et_userid"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/et_college"
+        android:layout_margin="10dp"
+        android:hint="Enter your user id" />
+
+    <EditText
+        android:id="@+id/et_place"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/et_userid"
+        android:layout_margin="10dp"
+        android:hint="Enter your place" />
+
+    <EditText
+        android:id="@+id/et_number"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/et_place"
+        android:layout_margin="10dp"
+        android:hint="Enter your number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_number"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="#11be11"
+            android:text="Add"
+            android:textColor="#ffffff"
+            android:layout_margin="2dp"/>
+
+        <Button
+            android:layout_margin="2dp"
+            android:id="@+id/btn_db"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="#1010b2"
+            android:text="DB"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</RelativeLayout>

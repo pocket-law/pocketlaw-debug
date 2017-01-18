@@ -15,7 +15,7 @@ import java.util.List;
  * Created by gcgol on 01/09/2017.
  */
 
-public class XmlHeadingParser {
+public class HeadingXmlParser {
     // We don't use namespaces
     private static final String ns = null;
 

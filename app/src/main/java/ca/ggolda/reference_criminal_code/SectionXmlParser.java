@@ -15,7 +15,7 @@ import java.util.List;
  * Created by gcgol on 01/09/2017.
  */
 
-public class XmlSectionParser {
+public class SectionXmlParser {
     // We don't use namespaces
     private static final String ns = null;
 

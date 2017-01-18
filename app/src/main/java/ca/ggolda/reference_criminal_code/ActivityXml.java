@@ -174,7 +174,7 @@ public class ActivityXml extends AppCompatActivity {
         InputStream stream = null;
 
         // Instantiate the parser
-        XmlHeadingParser xmlParser = new XmlHeadingParser();
+        HeadingXmlParser xmlParser = new HeadingXmlParser();
         headings = null;
 
         try {
@@ -207,7 +207,7 @@ public class ActivityXml extends AppCompatActivity {
         InputStream stream = null;
 
         // Instantiate the parser
-        XmlSectionParser xmlParser = new XmlSectionParser();
+        SectionXmlParser xmlParser = new SectionXmlParser();
 
         try {
             // TODO: use downloadUrl as source when updating
