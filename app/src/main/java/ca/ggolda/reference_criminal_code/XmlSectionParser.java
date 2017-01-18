@@ -335,6 +335,21 @@ public class XmlSectionParser {
 
         Log.e("XML", "readDefinition, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
+        if ((parser.getAttributeValue(null, "Code")) != null) {
+            String[] code = parser.getAttributeValue(null, "Code").split("\"");
+
+            //TODO: clean this up, this is horrible :(
+            String temp = code[3];
+            String[] englishAndFrenchTemp = temp.split("[}]");
+            String definedTerm =  englishAndFrenchTemp[0].substring(1);
+
+            Section definedNameSection = new Section(10, code[1], definedTerm);
+            sections.add(definedNameSection);
+            Log.e("XML", "definedTerm.addText( " + " 10, " + code[1] + " " + definedTerm + " )");
+
+        }
+
+
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
@@ -342,11 +357,7 @@ public class XmlSectionParser {
 
             Log.e("XML", "readDefinition aftwhile" + parser.getName());
 
-            if (parser.getName().equals("MarginalNote")) {
-
-                readDefinitionMarginalNote(parser, subsection);
-
-            } else if (parser.getName().equals("Text")) {
+            if (parser.getName().equals("Text")) {
 
                 readDefinitionText(parser, subsection);
 
@@ -849,17 +860,14 @@ public class XmlSectionParser {
 
     private List readHistoryListItemText(XmlPullParser parser) throws IOException, XmlPullParserException {
 
-        String histNote = "";
-
         parser.next();
 
-        histNote = parser.getText();
-
-        Log.e("XML", "historicalnote.addText( " + " 9, " + histNote + " )");
-        Section historicalNotesSection = new Section(9, "historicalnote", histNote);
+        String histNote = parser.getText();
 
         if (histNote != null) {
+            Section historicalNotesSection = new Section(9, "historicalnote", histNote);
             sections.add(historicalNotesSection);
+            Log.e("XML", "historicalnote.addText( " + " 9, " + histNote + " )");
         }
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -867,7 +875,6 @@ public class XmlSectionParser {
         }
 
         return sections;
-
     }
 
     // For Section text values.

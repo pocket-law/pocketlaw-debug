@@ -29,7 +29,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     LinearLayout headingLayout;
     LinearLayout subparagraphLayout;
     LinearLayout subsectionSubparagraphLayout;
-    LinearLayout definitionMarginalLayout;
+    LinearLayout definedNameLayout;
     LinearLayout definitionTextLayout;
     LinearLayout historicalLayout;
     LinearLayout continuedParagraphLayout;
@@ -59,8 +59,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
 
-        //Definition MarginalNote
-        TextView definitionMarginalNote = (TextView) convertView.findViewById(R.id.defined_marginal);
+        //Definition name
+        TextView definedName = (TextView) convertView.findViewById(R.id.defined_name);
 
         //Definition Text
         TextView definitionText = (TextView) convertView.findViewById(R.id.defined_text);
@@ -92,11 +92,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         // MarginalNote text
         TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
-
+        TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
 
         // SubMarginalNote text/number
         TextView subMarginalNote = (TextView) convertView.findViewById(R.id.submarginal_note);
-        TextView subMarginalNumber = (TextView) convertView.findViewById(R.id.submarginal_number);
 
         // Subparagraph text/number
         TextView subParaText = (TextView) convertView.findViewById(R.id.subpara_text);
@@ -119,7 +118,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         headingLayout = (LinearLayout) convertView.findViewById(R.id.heading_layout);
         subparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subparagraph_layout);
         subsectionSubparagraphLayout = (LinearLayout) convertView.findViewById(R.id.subsection_subparagraph_layout);
-        definitionMarginalLayout = (LinearLayout) convertView.findViewById(R.id.definition_marginal_layout);
+        definedNameLayout = (LinearLayout) convertView.findViewById(R.id.defined_name_layout);
         definitionTextLayout = (LinearLayout) convertView.findViewById(R.id.definition_text_layout);
         historicalLayout = (LinearLayout) convertView.findViewById(R.id.historical_layout);
         continuedSubsectionParagraphLayout = (LinearLayout) convertView.findViewById(R.id.cont_subsection_paragraph_layout);
@@ -145,6 +144,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 1) {
 
             marginalNote.setText("" + current.getSectionText());
+            marginalNumber.setText("" + current.getSection());
 
             marginalLayout.setVisibility(View.VISIBLE);
 
@@ -171,11 +171,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             paragraphLayout.setVisibility(View.VISIBLE);
 
-            // Subsection MarginalNote
+            // Subsection SubmarginalNote
         } else if (current.getType() == 5) {
 
             subMarginalNote.setText("" + current.getSectionText());
-            subMarginalNumber.setText("" + current.getSection());
 
             subMarginalLayout.setVisibility(View.VISIBLE);
 
@@ -210,12 +209,12 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             historicalLayout.setVisibility(View.VISIBLE);
 
-            // Definition MarginalNote
+            // Definition english name
         } else if (current.getType() == 10) {
 
-            definitionMarginalNote.setText("" + current.getSectionText());
+            definedName.setText("" + current.getSectionText());
 
-            definitionMarginalLayout.setVisibility(View.VISIBLE);
+            definedNameLayout.setVisibility(View.VISIBLE);
 
 
             // Definition MarginalNote
@@ -271,7 +270,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private void hideAll() {
 
         definitionTextLayout.setVisibility(View.GONE);
-        definitionMarginalLayout.setVisibility(View.GONE);
+        definedNameLayout.setVisibility(View.GONE);
         marginalLayout.setVisibility(View.GONE);
         sectionLayout.setVisibility(View.GONE);
         subsectionParagraphLayout.setVisibility(View.GONE);
