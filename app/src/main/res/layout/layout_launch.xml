@@ -17,9 +17,9 @@
         android:background="#FF0000"/>
 
     <TextView
-        android:id="@+id/btn_local"
+        android:id="@+id/btn_database"
         android:layout_width="match_parent"
-        android:text="Parse Local 2.0"
+        android:text="Database"
         android:gravity="center"
         android:textSize="54sp"
         android:textStyle="bold"

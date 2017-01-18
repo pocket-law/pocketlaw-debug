@@ -23,13 +23,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityXmlTwo" android:screenOrientation="portrait"/>
+        <activity android:name="ca.ggolda.reference_criminal_code.ActivityDatabase" android:screenOrientation="portrait"/>
 
         <activity android:name="ca.ggolda.reference_criminal_code.ActivityXml" android:screenOrientation="portrait"/>
 
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityDummy" android:screenOrientation="portrait"/>
-
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityParse" android:screenOrientation="portrait"/>
 
     </application>
 

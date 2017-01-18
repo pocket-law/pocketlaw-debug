@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 public class ActivityLaunch extends AppCompatActivity {
 
-    TextView btnLocal;
-    TextView btnOnline;
+    TextView btnDatabase;
+    TextView btnXml;
 
 
     @Override
@@ -22,19 +22,19 @@ public class ActivityLaunch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_launch);
 
-        btnLocal = (TextView) findViewById(R.id.btn_local);
-        btnOnline = (TextView) findViewById(R.id.btn_xml);
+        btnDatabase = (TextView) findViewById(R.id.btn_database);
+        btnXml = (TextView) findViewById(R.id.btn_xml);
 
-        btnLocal.setOnClickListener(new View.OnClickListener() {
+        btnDatabase.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityLaunch.this, ActivityXmlTwo.class);
+                Intent intent = new Intent(ActivityLaunch.this, ActivityDatabase.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
 
-        btnOnline.setOnClickListener(new View.OnClickListener() {
+        btnXml.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityLaunch.this, ActivityXml.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
