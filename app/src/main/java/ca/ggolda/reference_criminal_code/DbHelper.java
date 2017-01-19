@@ -15,7 +15,7 @@ import java.util.List;
  * Created by gcgol on 01/18/2017.
  */
 
-public class TestDbHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DbHelper";
 
@@ -30,18 +30,19 @@ public class TestDbHelper extends SQLiteOpenHelper {
     // Criminal Code Table Columns
     private static final String _ID = "_id";
     private static final String FULLTEXT = "fulltext";
+    private static final String TYPE = "type";
 
-    private static TestDbHelper mTestDbHelper;
+    private static DbHelper mDbHelper;
 
 
-    public static synchronized TestDbHelper getInstance(Context context) {
+    public static synchronized DbHelper getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
 
-        if (mTestDbHelper == null) {
-            mTestDbHelper = new TestDbHelper(context.getApplicationContext());
+        if (mDbHelper == null) {
+            mDbHelper = new DbHelper(context.getApplicationContext());
         }
-        return mTestDbHelper;
+        return mDbHelper;
     }
 
 
@@ -49,7 +50,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
      * Constructor should be private to prevent direct instantiation.
      * Make a call to the static method "getInstance()" instead.
      */
-    private TestDbHelper(Context context) {
+    private DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -64,7 +65,8 @@ public class TestDbHelper extends SQLiteOpenHelper {
         String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
-                FULLTEXT + " TEXT" +
+                FULLTEXT + " TEXT," +
+                TYPE + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
     }
@@ -98,6 +100,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
         try {
             ContentValues values = new ContentValues();
             values.put(FULLTEXT, userData.getFulltext());
+            values.put(TYPE, userData.getType());
 
             db.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
             db.setTransactionSuccessful();
@@ -128,8 +131,9 @@ public class TestDbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section userData = new Section(0,"","","");
+                    Section userData = new Section(-777,"","","");
                     userData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
+                    userData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
 
 
                     usersdetail.add(userData);

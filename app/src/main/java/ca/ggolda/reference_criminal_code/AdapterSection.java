@@ -6,6 +6,7 @@ package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -128,9 +129,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         final Section current = getItem(position);
 
+        Log.e("CURRENTWHA","" + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
+
         // hide all predefined views to allow visibility setting via type
         hideAll();
-
 
         // Section Heading
         if (current.getType() == 0) {
@@ -250,7 +252,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         }
 
-        section.setText("" + current.getSection());
+
+
 
 
 

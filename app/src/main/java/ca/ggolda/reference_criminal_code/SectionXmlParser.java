@@ -20,6 +20,8 @@ public class SectionXmlParser {
 
     private Context mContext;
 
+    private DbHelper dbHelper = DbHelper.getInstance(this.mContext);
+
     // We don't use namespaces
     private static final String ns = null;
 
@@ -829,12 +831,16 @@ public class SectionXmlParser {
 
         parser.next();
 
-        String histNote = parser.getText();
+        String text = parser.getText();
 
-        if (histNote != null) {
-            Section historicalNotesSection = new Section(9, "", "historicalnote", histNote);
-            sections.add(historicalNotesSection);
-            Log.e("XML", "historicalnote.addText( " + " 9, " + histNote + " )");
+        String section = "";
+        String group = "";
+
+        if (text != null) {
+            Section resultObject = new Section(9, "", "historicalnote", text);
+            dbHelper.insertSectionDetail(resultObject);
+
+            Log.e("XML", "db add Historical Note (  9  , " + group  + section + " " + text + " )");
         }
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -845,52 +851,8 @@ public class SectionXmlParser {
     }
 
     // For Section text values.
-    private List readSectionText(XmlPullParser parser, String section) throws
+    private void readSectionText(XmlPullParser parser, String section) throws
             IOException, XmlPullParserException {
-
-        //TODO: read the documentation man
-        //
-        parser.next();
-
-        String text = parser.getText();
-        Section resultObject = new Section(2, "", section, text);
-        sections.add(resultObject);
-
-        Log.e("XML", "sections.addText( " + section + " , " + text + " )");
-        Log.e("XML", "sections.size in parser :" + sections.size());
-
-        if (parser.next() == XmlPullParser.START_TAG) {
-            skip(parser);
-        }
-
-        return sections;
-    }
-
-    // For the Definition MarginalNote value.
-    private List readDefinitionMarginalNoteText(XmlPullParser parser, String subsection) throws
-            IOException, XmlPullParserException {
-
-        //TODO: read the documentation man
-        //
-        parser.next();
-
-        String text = parser.getText();
-        Section resultObject = new Section(10, "", subsection, text);
-        sections.add(resultObject);
-
-        Log.e("XML", "sections.addDefinitionMargNote( " + 10 + " , " + text + " )");
-        Log.e("XML", "sections.size in parser :" + sections.size());
-
-        if (parser.next() == XmlPullParser.START_TAG) {
-            skip(parser);
-        }
-
-        return sections;
-    }
-
-    // For the tags TitleText and level values.
-    private List readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
-        Section resultObject = null;
 
         parser.next();
 
@@ -898,23 +860,59 @@ public class SectionXmlParser {
 
         String group = "placeholderGroup";
 
-        resultObject = new Section(0, group, section, text);
+        Section resultObject = new Section(2, group, section, text);
+        dbHelper.insertSectionDetail(resultObject);
 
-        sections.add(resultObject);
+        Log.e("XML", "db add Section Text (  2  , " + group  + section + " " + text + " )");
 
-        // TESTING DB ADDING
-        // TODO: copy paste around once we get full data push through
-        TestDbHelper testDbHelper = TestDbHelper.getInstance(this.mContext);
-        testDbHelper.insertSectionDetail(resultObject);
 
-        Log.e("XML", "db add(  0  , " + group  + section + " " + text + " )");
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+    }
+
+    // For the Definition MarginalNote value.
+    private void readDefinitionMarginalNoteText(XmlPullParser parser, String section) throws
+            IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+
+        String group = "placeholderGroup";
+
+        Section resultObject = new Section(10, group, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
+        Log.e("XML", "db add Definition Marginal Note (  10  , " + group  + section + " " + text + " )");
 
 
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
         }
 
-        return sections;
+    }
+
+    // For the tags TitleText and level values.
+    private void readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+
+        String group = "placeholderGroup";
+
+        Section resultObject = new Section(0, group, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
+        Log.e("XML", "db add TitleText (  0  , " + group  + section + " " + text + " )");
+
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+
     }
 
 }

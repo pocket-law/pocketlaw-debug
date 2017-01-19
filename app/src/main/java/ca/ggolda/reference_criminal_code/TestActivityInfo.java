@@ -16,7 +16,7 @@ public class TestActivityInfo extends AppCompatActivity {
 
     EditText et_fulltext;
     Button btn_next, btn_db;
-    TestDbHelper testDbHelper;
+    DbHelper dbHelper;
 
 
     @Override
@@ -25,7 +25,7 @@ public class TestActivityInfo extends AppCompatActivity {
         setContentView(R.layout.test_input_activity);
 
 
-        testDbHelper = TestDbHelper.getInstance(getApplicationContext());
+        dbHelper = DbHelper.getInstance(getApplicationContext());
 
         et_fulltext = (EditText) findViewById(R.id.et_fulltext);
         btn_next = (Button) findViewById(R.id.btn_add);
@@ -39,10 +39,10 @@ public class TestActivityInfo extends AppCompatActivity {
 
                 if (!et_fulltext.getText().toString().isEmpty()) {
                     Section userData = new Section(0, "", "", et_fulltext.getText().toString());
-                    testDbHelper.insertSectionDetail(userData);
+                    dbHelper.insertSectionDetail(userData);
                 }
 
-                Intent intent=new Intent(TestActivityInfo.this,TestUserDetailList.class);
+                Intent intent=new Intent(TestActivityInfo.this,TestActivityDbList.class);
                 startActivity(intent);
             }
         });
@@ -52,11 +52,19 @@ public class TestActivityInfo extends AppCompatActivity {
         btn_db.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TestActivityInfo.this,TestUserDetailList.class);
+                Intent intent=new Intent(TestActivityInfo.this,TestActivityDbList.class);
                 startActivity(intent);
             }
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, ActivityLaunch.class);
+        startActivity(intent);
+        finish();
     }
 }
