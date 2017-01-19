@@ -7,6 +7,6 @@ import java.io.Serializable;
  */
 public class TestUserData implements Serializable {
 
-    String name,college,place,user_id,number;
+    String fulltext,college,place,user_id,number;
 
 }

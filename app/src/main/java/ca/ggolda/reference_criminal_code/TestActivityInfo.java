@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class TestActivityInfo extends AppCompatActivity {
 
-    EditText et_name, et_college, et_place, et_userid, et_number;
+    EditText et_fulltext;
     Button btn_next, btn_db;
     TestDbHelper testDbHelper;
 
@@ -27,14 +27,9 @@ public class TestActivityInfo extends AppCompatActivity {
 
         testDbHelper = TestDbHelper.getInstance(getApplicationContext());
 
-        et_name = (EditText) findViewById(R.id.et_name);
-        et_college = (EditText) findViewById(R.id.et_college);
-        et_place = (EditText) findViewById(R.id.et_place);
-        et_userid = (EditText) findViewById(R.id.et_userid);
-        et_number = (EditText) findViewById(R.id.et_number);
+        et_fulltext = (EditText) findViewById(R.id.et_fulltext);
         btn_next = (Button) findViewById(R.id.btn_add);
         btn_db = (Button) findViewById(R.id.btn_db);
-
 
 
         // add to db
@@ -43,32 +38,12 @@ public class TestActivityInfo extends AppCompatActivity {
             public void onClick(View v) {
                 TestUserData userData = new TestUserData();
 
-                if (!et_name.getText().toString().isEmpty()) {
-                    userData.name = et_name.getText().toString();
+                if (!et_fulltext.getText().toString().isEmpty()) {
+                    userData.fulltext = et_fulltext.getText().toString();
                 } else {
-                    userData.name = "";
-                }
-                if (!et_college.getText().toString().isEmpty()) {
-                    userData.college = et_college.getText().toString();
-                } else {
-                    userData.college = "";
-                }
-                if (!et_userid.getText().toString().isEmpty()) {
-                    userData.user_id = et_userid.getText().toString();
-                } else {
-                    userData.user_id = "";
-                }
-                if (!et_number.getText().toString().isEmpty()) {
-                    userData.number = et_number.getText().toString();
-                } else {
-                    userData.number = "";
+                    userData.fulltext = "";
                 }
 
-                if (!et_place.getText().toString().isEmpty()) {
-                    userData.place = et_place.getText().toString();
-                } else {
-                    userData.place = "";
-                }
 
                 testDbHelper.insertUserDetail(userData);
 

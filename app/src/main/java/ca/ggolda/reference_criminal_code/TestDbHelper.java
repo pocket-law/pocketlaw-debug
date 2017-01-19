@@ -23,12 +23,12 @@ public class TestDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
-    private static final String TABLE_USERdETAIL = "userdetail";
+    private static final String TABLE_CRIMINAL_CODE = "userdetail";
 
 
-    //userdetail Table Columns
+    // Criminal Code Table Columns
     private static final String _ID = "_id";
-    private static final String NAME = "name";
+    private static final String FULLTEXT = "fulltext";
     private static final String COLLEGE = "college";
     private static final String PLACE = "place";
     private static final String USER_ID = "userId";
@@ -65,11 +65,11 @@ public class TestDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_USERdETAIL +
+        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
                 USER_ID + " TEXT," +
-                NAME + " TEXT," +
+                FULLTEXT + " TEXT," +
                 COLLEGE + " TEXT," +
                 PLACE + " TEXT," +
                 NUMBER + " TEXT" +
@@ -87,7 +87,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERdETAIL);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRIMINAL_CODE);
 
             onCreate(db);
         }
@@ -105,13 +105,13 @@ public class TestDbHelper extends SQLiteOpenHelper {
 
         try {
             ContentValues values = new ContentValues();
-            values.put(NAME, userData.name);
+            values.put(FULLTEXT, userData.fulltext);
             values.put(COLLEGE, userData.college);
             values.put(PLACE, userData.place);
             values.put(USER_ID, userData.user_id);
             values.put(NUMBER, userData.number);
 
-            db.insertOrThrow(TABLE_USERdETAIL, null, values);
+            db.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
 
         List<TestUserData> usersdetail = new ArrayList<>();
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_USERdETAIL;
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE;
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -141,7 +141,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     TestUserData userData = new TestUserData();
-                    userData.name = cursor.getString(cursor.getColumnIndex(NAME));
+                    userData.fulltext = cursor.getString(cursor.getColumnIndex(FULLTEXT));
                     userData.college = cursor.getString(cursor.getColumnIndex(COLLEGE));
                     userData.place = cursor.getString(cursor.getColumnIndex(PLACE));
                     userData.user_id = cursor.getString(cursor.getColumnIndex(USER_ID));
@@ -173,7 +173,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
 
         try {
             db.beginTransaction();
-            db.execSQL("delete from " + TABLE_USERdETAIL + " where name ='" + name + "'");
+            db.execSQL("delete from " + TABLE_CRIMINAL_CODE + " where name ='" + name + "'");
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             Log.d(TAG, "Error while trying to delete  users detail");

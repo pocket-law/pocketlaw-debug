@@ -1,5 +1,6 @@
 package ca.ggolda.reference_criminal_code;
 
+import android.content.Context;
 import android.util.Log;
 import android.util.Xml;
 
@@ -16,6 +17,9 @@ import java.util.List;
  */
 
 public class SectionXmlParser {
+
+    private Context mContext;
+
     // We don't use namespaces
     private static final String ns = null;
 
@@ -27,17 +31,36 @@ public class SectionXmlParser {
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
             parser.nextTag();
-            return readFeed(parser);
+            return readStatute(parser);
         } finally {
             in.close();
         }
     }
 
-    private List readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
+    // For skipping.
+    private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            throw new IllegalStateException();
+        }
+        int depth = 1;
+        while (depth != 0) {
+            switch (parser.next()) {
+                case XmlPullParser.END_TAG:
+                    depth--;
+                    break;
+                case XmlPullParser.START_TAG:
+                    depth++;
+                    break;
+            }
+        }
+    }
+
+    // Start reading
+    private List readStatute(XmlPullParser parser) throws XmlPullParserException, IOException {
 
         sections = new ArrayList();
 
-        Log.e("XML", "readFeed");
+        Log.e("XML", "readStatute");
 
         parser.require(XmlPullParser.START_TAG, ns, "Statute");
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -61,8 +84,7 @@ public class SectionXmlParser {
         return sections;
     }
 
-    // Parses the contents of the body for Heading and Section tags and hands them off
-    // to their respective "read" methods for processing. Otherwise, skips the tag.
+    // Parses the contents of the body for Heading and Section
     private void readBody(XmlPullParser parser) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Body");
 
@@ -126,26 +148,6 @@ public class SectionXmlParser {
                 skip(parser);
             }
         }
-    }
-
-    // For the tags TitleText and level values.
-    private List readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
-        Section resultObject = null;
-
-        parser.next();
-
-        String text = parser.getText();
-
-        resultObject = new Section(0, section, text);
-
-        sections.add(resultObject);
-        Log.e("XML", "sectionHeading.add( " + 0 + " , " + section + " " + text + " )");
-
-        if (parser.next() == XmlPullParser.START_TAG) {
-            skip(parser);
-        }
-
-        return sections;
     }
 
     // Parses the contents of a Section.
@@ -334,21 +336,6 @@ public class SectionXmlParser {
 
         Log.e("XML", "readDefinition, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
 
-        if ((parser.getAttributeValue(null, "Code")) != null) {
-            String[] code = parser.getAttributeValue(null, "Code").split("\"");
-
-            //TODO: clean this up, this is horrible :(
-            String temp = code[3];
-            String[] englishAndFrenchTemp = temp.split("[}]");
-            String definedTerm =  englishAndFrenchTemp[0].substring(1);
-
-            Section definedNameSection = new Section(10, code[1], definedTerm);
-            sections.add(definedNameSection);
-            Log.e("XML", "definedTerm.addText( " + " 10, " + code[1] + " " + definedTerm + " )");
-
-        }
-
-
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
@@ -356,7 +343,11 @@ public class SectionXmlParser {
 
             Log.e("XML", "readDefinition aftwhile" + parser.getName());
 
-            if (parser.getName().equals("Text")) {
+            if (parser.getName().equals("MarginalNote")) {
+
+                readDefinitionMarginalNoteText(parser, subsection);
+
+            } else if (parser.getName().equals("Text")) {
 
                 readDefinitionText(parser, subsection);
 
@@ -643,7 +634,7 @@ public class SectionXmlParser {
         return sections;
     }
 
-    // For continued paragraph
+    // For Continued Paragraph
     private void readContinuedParagraph(XmlPullParser parser, String subsection) throws
             IOException, XmlPullParserException {
 
@@ -792,7 +783,6 @@ public class SectionXmlParser {
     }
 
 
-    //TODO: get more than the first HistoricalNote
     // For the section HistoricalNote value.
     private void readHistoricalNote(XmlPullParser parser) throws
             IOException, XmlPullParserException {
@@ -876,21 +866,55 @@ public class SectionXmlParser {
         return sections;
     }
 
-    // For skipping.
-    private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
-        if (parser.getEventType() != XmlPullParser.START_TAG) {
-            throw new IllegalStateException();
+    // For the Definition MarginalNote value.
+    private List readDefinitionMarginalNoteText(XmlPullParser parser, String subsection) throws
+            IOException, XmlPullParserException {
+
+        //TODO: read the documentation man
+        //
+        parser.next();
+
+        String text = parser.getText();
+        Section resultObject = new Section(10, subsection, text);
+        sections.add(resultObject);
+
+        Log.e("XML", "sections.addDefinitionMargNote( " + 10 + " , " + text + " )");
+        Log.e("XML", "sections.size in parser :" + sections.size());
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
         }
-        int depth = 1;
-        while (depth != 0) {
-            switch (parser.next()) {
-                case XmlPullParser.END_TAG:
-                    depth--;
-                    break;
-                case XmlPullParser.START_TAG:
-                    depth++;
-                    break;
-            }
-        }
+
+        return sections;
     }
+
+    // For the tags TitleText and level values.
+    private List readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+        Section resultObject = null;
+
+        parser.next();
+
+        String text = parser.getText();
+
+        resultObject = new Section(0, section, text);
+
+        sections.add(resultObject);
+        Log.e("XML", "sectionHeading.add( " + 0 + " , " + section + " " + text + " )");
+
+
+        // TESTING DB ADDING
+        // TODO: copy paste around once we get full data push through
+        TestDbHelper testDbHelper = TestDbHelper.getInstance(this.mContext);
+        TestUserData userData = new TestUserData();
+        userData.fulltext = text;
+        testDbHelper.insertUserDetail(userData);
+
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+        return sections;
+    }
+
 }

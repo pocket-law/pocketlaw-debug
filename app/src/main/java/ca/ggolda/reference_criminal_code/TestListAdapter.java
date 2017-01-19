@@ -35,7 +35,7 @@ public class TestListAdapter extends RecyclerView.Adapter<TestListAdapter.ListVi
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View convertView = inflater.inflate(R.layout.test_card_user, parent, false);
+        View convertView = inflater.inflate(R.layout.test_card_section, parent, false);
         ListViewHolder viewHolder = new ListViewHolder(convertView);
         return viewHolder;
     }
@@ -43,18 +43,7 @@ public class TestListAdapter extends RecyclerView.Adapter<TestListAdapter.ListVi
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
 
-
-        holder.iv_delete.setTag(position);
-        holder.tv_name.setText(dataList.get(position).name);
-
-        holder.iv_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.nameToChange(dataList.get((Integer) v.getTag()).name);
-
-
-            }
-        });
+        holder.tv_fulltext.setText(dataList.get(position).fulltext);
 
     }
 
@@ -64,14 +53,12 @@ public class TestListAdapter extends RecyclerView.Adapter<TestListAdapter.ListVi
     }
 
     class ListViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_name;
-        TextView iv_delete;
+        TextView tv_fulltext;
 
         public ListViewHolder(View itemView) {
             super(itemView);
 
-            tv_name = (TextView) itemView.findViewById(R.id.tv_name);
-            iv_delete= (TextView) itemView.findViewById(R.id.iv_delete);
+            tv_fulltext = (TextView) itemView.findViewById(R.id.tv_fulltext);
 
         }
     }

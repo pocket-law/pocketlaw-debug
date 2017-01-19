@@ -24,6 +24,7 @@ public class TestUserDetailList extends AppCompatActivity implements TestListene
         testDbHelper = TestDbHelper.getInstance(getApplicationContext());
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_contactlist);
+
         adapter = new TestListAdapter(this, testDbHelper.getAllUser());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

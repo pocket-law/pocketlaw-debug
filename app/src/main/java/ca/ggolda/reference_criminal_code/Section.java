@@ -12,14 +12,14 @@ public class Section {
     // 9: Section HistoricalNote
     private int mType;
     private String mSection;
-    private String mMarginalNote;
+    private String mSectionText;
 
 
     // Constructor for Heading with all attributes
-    public Section(int type, String section, String marginalNote) {
+    public Section(int type, String section, String section_text) {
         mType = type;
         mSection = section;
-        mMarginalNote = marginalNote;
+        mSectionText = section_text;
 
     }
 
@@ -38,10 +38,10 @@ public class Section {
     }
 
     public String getSectionText() {
-        return mMarginalNote;
+        return mSectionText;
     }
-    public void setMarginalNote(String mMarginalNote) {
-        this.mMarginalNote = mMarginalNote;
+    public void setSectionText(String mSectionText) {
+        this.mSectionText = mSectionText;
     }
 
 
