@@ -17,23 +17,19 @@ import java.util.List;
 
 public class TestDbHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "TestDbHelper";
+    private static final String TAG = "DbHelper";
+
     // Database Info
-    private static final String DATABASE_NAME = "UserDatabase";
+    private static final String DATABASE_NAME = "CriminalCode";
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
-    private static final String TABLE_CRIMINAL_CODE = "userdetail";
+    private static final String TABLE_CRIMINAL_CODE = "criminalcode";
 
 
     // Criminal Code Table Columns
     private static final String _ID = "_id";
     private static final String FULLTEXT = "fulltext";
-    private static final String COLLEGE = "college";
-    private static final String PLACE = "place";
-    private static final String USER_ID = "userId";
-    private static final String NUMBER = "number";
-
 
     private static TestDbHelper mTestDbHelper;
 
@@ -68,11 +64,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
         String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
-                USER_ID + " TEXT," +
-                FULLTEXT + " TEXT," +
-                COLLEGE + " TEXT," +
-                PLACE + " TEXT," +
-                NUMBER + " TEXT" +
+                FULLTEXT + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
     }
@@ -97,7 +89,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
    Insert a  user detail into database
    */
 
-    public void insertUserDetail(TestUserData userData) {
+    public void insertSectionDetail(Section userData) {
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -105,11 +97,7 @@ public class TestDbHelper extends SQLiteOpenHelper {
 
         try {
             ContentValues values = new ContentValues();
-            values.put(FULLTEXT, userData.fulltext);
-            values.put(COLLEGE, userData.college);
-            values.put(PLACE, userData.place);
-            values.put(USER_ID, userData.user_id);
-            values.put(NUMBER, userData.number);
+            values.put(FULLTEXT, userData.getFulltext());
 
             db.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
             db.setTransactionSuccessful();
@@ -128,9 +116,9 @@ public class TestDbHelper extends SQLiteOpenHelper {
    fetch all data from UserTable
     */
 
-    public List<TestUserData> getAllUser() {
+    public List<Section> getAllUser() {
 
-        List<TestUserData> usersdetail = new ArrayList<>();
+        List<Section> usersdetail = new ArrayList<>();
 
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE;
 
@@ -140,12 +128,8 @@ public class TestDbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    TestUserData userData = new TestUserData();
-                    userData.fulltext = cursor.getString(cursor.getColumnIndex(FULLTEXT));
-                    userData.college = cursor.getString(cursor.getColumnIndex(COLLEGE));
-                    userData.place = cursor.getString(cursor.getColumnIndex(PLACE));
-                    userData.user_id = cursor.getString(cursor.getColumnIndex(USER_ID));
-                    userData.number = cursor.getString(cursor.getColumnIndex(NUMBER));
+                    Section userData = new Section(0,"","","");
+                    userData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
 
 
                     usersdetail.add(userData);
@@ -167,13 +151,13 @@ public class TestDbHelper extends SQLiteOpenHelper {
     /*
    Delete single row from UserTable
      */
-    void deleteRow(String name) {
+    void deleteRow(String fulltext) {
         SQLiteDatabase db = getWritableDatabase();
 
 
         try {
             db.beginTransaction();
-            db.execSQL("delete from " + TABLE_CRIMINAL_CODE + " where name ='" + name + "'");
+            db.execSQL("delete from " + TABLE_CRIMINAL_CODE + " where fulltext ='" + fulltext + "'");
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             Log.d(TAG, "Error while trying to delete  users detail");

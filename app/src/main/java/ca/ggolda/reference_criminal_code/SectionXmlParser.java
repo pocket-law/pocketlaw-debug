@@ -232,7 +232,7 @@ public class SectionXmlParser {
         parser.next();
 
         String text = parser.getText();
-        Section resultObject = new Section(1, section, text);
+        Section resultObject = new Section(1, "", section, text);
         sections.add(resultObject);
 
         Log.e("XML", "sections.addMargNote( " + section + " , " + text + " )");
@@ -321,7 +321,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "subsection subparagraph.addText( " + " 14, " + paratext + " )");
 
-        Section subsection_text = new Section(14, subsection, paratext);
+        Section subsection_text = new Section(14, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -558,7 +558,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "subsections.addText( " + " 3, " + sub_text + " )" + "VikaWowow");
 
-        Section subsection_text = new Section(3, subsection, sub_text);
+        Section subsection_text = new Section(3, "", subsection, sub_text);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -580,7 +580,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "subsections.addText( " + " 11, " + sub_text + " )");
 
-        Section subsection_text = new Section(11, subsection, sub_text);
+        Section subsection_text = new Section(11, "", subsection, sub_text);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -599,7 +599,7 @@ public class SectionXmlParser {
         parser.next();
 
         String text = parser.getText();
-        Section resultObject = new Section(5, section, text);
+        Section resultObject = new Section(5, "", section, text);
         sections.add(resultObject);
 
         Log.e("XML", "sections.addMargNote( " + section + " , " + text + " )");
@@ -624,7 +624,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "paragraph.addText( " + " 4, " + paratext + " )");
 
-        Section subsection_text = new Section(4, subsection, paratext);
+        Section subsection_text = new Section(4, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -665,7 +665,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "continued paragraph.addText( " + " 12, " + paratext + " )");
 
-        Section subsection_text = new Section(12, subsection, paratext);
+        Section subsection_text = new Section(12, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -687,7 +687,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "continued paragraph.addText( " + " 13, " + paratext + " )");
 
-        Section subsection_text = new Section(13, subsection, paratext);
+        Section subsection_text = new Section(13, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -709,7 +709,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "subparagraph.addText( " + " 7, " + paratext + " )");
 
-        Section subsection_text = new Section(7, subsection, paratext);
+        Section subsection_text = new Section(7, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -731,7 +731,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "subsection subparagraph.addText( " + " 8, " + paratext + " )");
 
-        Section subsection_text = new Section(8, subsection, paratext);
+        Section subsection_text = new Section(8, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -753,7 +753,7 @@ public class SectionXmlParser {
 
         Log.e("XML", "paragraph.addText( " + " 6, " + paratext + " )");
 
-        Section subsection_text = new Section(6, subsection, paratext);
+        Section subsection_text = new Section(6, "", subsection, paratext);
         sections.add(subsection_text);
 
         if (parser.next() == XmlPullParser.START_TAG) {
@@ -832,7 +832,7 @@ public class SectionXmlParser {
         String histNote = parser.getText();
 
         if (histNote != null) {
-            Section historicalNotesSection = new Section(9, "historicalnote", histNote);
+            Section historicalNotesSection = new Section(9, "", "historicalnote", histNote);
             sections.add(historicalNotesSection);
             Log.e("XML", "historicalnote.addText( " + " 9, " + histNote + " )");
         }
@@ -853,7 +853,7 @@ public class SectionXmlParser {
         parser.next();
 
         String text = parser.getText();
-        Section resultObject = new Section(2, section, text);
+        Section resultObject = new Section(2, "", section, text);
         sections.add(resultObject);
 
         Log.e("XML", "sections.addText( " + section + " , " + text + " )");
@@ -875,7 +875,7 @@ public class SectionXmlParser {
         parser.next();
 
         String text = parser.getText();
-        Section resultObject = new Section(10, subsection, text);
+        Section resultObject = new Section(10, "", subsection, text);
         sections.add(resultObject);
 
         Log.e("XML", "sections.addDefinitionMargNote( " + 10 + " , " + text + " )");
@@ -896,18 +896,18 @@ public class SectionXmlParser {
 
         String text = parser.getText();
 
-        resultObject = new Section(0, section, text);
+        String group = "placeholderGroup";
+
+        resultObject = new Section(0, group, section, text);
 
         sections.add(resultObject);
-        Log.e("XML", "sectionHeading.add( " + 0 + " , " + section + " " + text + " )");
-
 
         // TESTING DB ADDING
         // TODO: copy paste around once we get full data push through
         TestDbHelper testDbHelper = TestDbHelper.getInstance(this.mContext);
-        TestUserData userData = new TestUserData();
-        userData.fulltext = text;
-        testDbHelper.insertUserDetail(userData);
+        testDbHelper.insertSectionDetail(resultObject);
+
+        Log.e("XML", "db add(  0  , " + group  + section + " " + text + " )");
 
 
         if (parser.next() == XmlPullParser.START_TAG) {

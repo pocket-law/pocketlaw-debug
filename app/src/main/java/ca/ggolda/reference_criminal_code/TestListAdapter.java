@@ -18,11 +18,11 @@ import java.util.List;
 public class TestListAdapter extends RecyclerView.Adapter<TestListAdapter.ListViewHolder> {
 
     Context context;
-    List<TestUserData> dataList = new ArrayList<>();
+    List<Section> dataList = new ArrayList<>();
     LayoutInflater inflater;
     TestListener listener;
 
-    public TestListAdapter(Context context, List<TestUserData> dataList1) {
+    public TestListAdapter(Context context, List<Section> dataList1) {
 
         this.context = context;
         this.dataList = dataList1;
@@ -43,7 +43,7 @@ public class TestListAdapter extends RecyclerView.Adapter<TestListAdapter.ListVi
     @Override
     public void onBindViewHolder(ListViewHolder holder, int position) {
 
-        holder.tv_fulltext.setText(dataList.get(position).fulltext);
+        holder.tv_fulltext.setText(dataList.get(position).getFulltext());
 
     }
 

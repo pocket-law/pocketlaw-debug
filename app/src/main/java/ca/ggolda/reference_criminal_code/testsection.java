@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * Created by gcgol on 01/18/2017.
  */
-public class TestUserData implements Serializable {
+public class TestSection implements Serializable {
 
-    String fulltext,college,place,user_id,number;
+    String type, group, pinpoint, fulltext;
 
 }

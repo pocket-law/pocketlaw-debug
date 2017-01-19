@@ -36,16 +36,11 @@ public class TestActivityInfo extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TestUserData userData = new TestUserData();
 
                 if (!et_fulltext.getText().toString().isEmpty()) {
-                    userData.fulltext = et_fulltext.getText().toString();
-                } else {
-                    userData.fulltext = "";
+                    Section userData = new Section(0, "", "", et_fulltext.getText().toString());
+                    testDbHelper.insertSectionDetail(userData);
                 }
-
-
-                testDbHelper.insertUserDetail(userData);
 
                 Intent intent=new Intent(TestActivityInfo.this,TestUserDetailList.class);
                 startActivity(intent);

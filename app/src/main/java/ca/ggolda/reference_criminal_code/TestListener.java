@@ -6,5 +6,5 @@ package ca.ggolda.reference_criminal_code;
 
 public interface TestListener {
 
-    void nameToChange(String name);
+    void fulltextToChange(String fulltext);
 }
