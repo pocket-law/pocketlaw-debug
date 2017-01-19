@@ -154,6 +154,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 2) {
 
             text.setText("" + current.getFulltext());
+            section.setText(""+current.getSection());
 
             sectionLayout.setVisibility(View.VISIBLE);
 

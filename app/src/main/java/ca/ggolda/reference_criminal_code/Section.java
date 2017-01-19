@@ -10,16 +10,15 @@ public class Section implements Serializable {
 
     // mType will determine whether:
     private int mType;
-
-    private String mGroup;
+    private String mPinpoint;
     private String mSection;
     private String mFulltext;
 
 
     // Constructor for Heading with all attributes
-    public Section(int type, String group, String section, String fulltext) {
+    public Section(int type, String pinpoint, String section, String fulltext) {
         mType = type;
-        mGroup = group;
+        mPinpoint = pinpoint;
         mSection = section;
         mFulltext = fulltext;
 
@@ -32,11 +31,11 @@ public class Section implements Serializable {
         this.mType = mType;
     }
 
-    public String getGroup() {
-        return mGroup;
+    public String getPinpoint() {
+        return mPinpoint;
     }
-    public void setGroup(String mGroup) {
-        this.mGroup = mGroup;
+    public void setPinpoint(String mPinpoint) {
+        this.mPinpoint = mPinpoint;
     }
 
     public String getSection() {

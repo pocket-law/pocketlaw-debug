@@ -31,6 +31,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String _ID = "_id";
     private static final String FULLTEXT = "fulltext";
     private static final String TYPE = "type";
+    private static final String SECTION = "section";
+    private static final String PINPOINT = "pinpoint";
 
     private static DbHelper mDbHelper;
 
@@ -61,14 +63,22 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
-                FULLTEXT + " TEXT," +
-                TYPE + " TEXT" +
+                FULLTEXT + " TEXT, " +
+                TYPE + " TEXT, " +
+                SECTION + " TEXT, " +
+                PINPOINT + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
+
+
+
+//                "(_id INTEGER PRIMARY KEY , fulltext TEXT, type TEXT, section TEXT, pinpoint TEXT)";
+//        db.execSQL(CREATE_USERDETAIL_TABLE);
+
+
     }
 
 
@@ -101,6 +111,8 @@ public class DbHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put(FULLTEXT, userData.getFulltext());
             values.put(TYPE, userData.getType());
+            values.put(SECTION, userData.getSection());
+            values.put(PINPOINT, userData.getPinpoint());
 
             db.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
             db.setTransactionSuccessful();
@@ -121,7 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public List<Section> getAllUser() {
 
-        List<Section> usersdetail = new ArrayList<>();
+        List<Section> sectionDetail = new ArrayList<>();
 
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE;
 
@@ -131,12 +143,16 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section userData = new Section(-777,"","","");
-                    userData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
-                    userData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
+                    Section sectionData = new Section(-777,"dbhelper","dbhelper","dbhelper");
+                    sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
+                    sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
+                    sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
+                    sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
+
+                    sectionDetail.add(sectionData);
 
 
-                    usersdetail.add(userData);
+
 
                 } while (cursor.moveToNext());
             }
@@ -148,7 +164,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        return usersdetail;
+        return sectionDetail;
 
     }
 
