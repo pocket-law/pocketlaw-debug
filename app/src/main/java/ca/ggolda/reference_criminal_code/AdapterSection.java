@@ -146,7 +146,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 1) {
 
             marginalNote.setText("" + current.getFulltext());
-            marginalNumber.setText("" + current.getSection());
+     //       marginalNumber.setText("" + current.getSection());
 
             marginalLayout.setVisibility(View.VISIBLE);
 
