@@ -73,12 +73,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
 
-
-
-//                "(_id INTEGER PRIMARY KEY , fulltext TEXT, type TEXT, section TEXT, pinpoint TEXT)";
-//        db.execSQL(CREATE_USERDETAIL_TABLE);
-
-
     }
 
 

@@ -129,7 +129,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         final Section current = getItem(position);
 
-        Log.e("CURRENTWHA","" + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
+        Log.e("CURRENTWHA","" + "pinpoint: " + current.getPinpoint() + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
         // hide all predefined views to allow visibility setting via type
         hideAll();
@@ -162,7 +162,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 3) {
 
             subtext.setText("" + current.getFulltext());
-            subnumber.setText("" + current.getSection());
+            subnumber.setText("" + current.getSection() + current.getPinpoint());
 
             subSectionLayout.setVisibility(View.VISIBLE);
 

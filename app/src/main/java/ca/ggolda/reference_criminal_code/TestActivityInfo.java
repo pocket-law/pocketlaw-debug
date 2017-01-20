@@ -37,12 +37,13 @@ public class TestActivityInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!et_fulltext.getText().toString().isEmpty()) {
-                    Section userData = new Section(0, "", "", et_fulltext.getText().toString());
-                    dbHelper.insertSectionDetail(userData);
-                }
+                // tODO: something here where it goes straight to DB if already populated
+//                if (!et_fulltext.getText().toString().isEmpty()) {
+//                    Section userData = new Section(0, "", "", et_fulltext.getText().toString());
+//                    dbHelper.insertSectionDetail(userData);
+//                }
 
-                Intent intent=new Intent(TestActivityInfo.this,TestActivityDbList.class);
+                Intent intent=new Intent(TestActivityInfo.this,ActivityXml.class);
                 startActivity(intent);
             }
         });
@@ -58,13 +59,5 @@ public class TestActivityInfo extends AppCompatActivity {
         });
 
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(this, ActivityLaunch.class);
-        startActivity(intent);
-        finish();
     }
 }
