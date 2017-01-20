@@ -162,7 +162,11 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 3) {
 
             subtext.setText("" + current.getFulltext());
-            subnumber.setText("" + current.getSection() + current.getPinpoint());
+            if(current.getPinpoint().equals("(1)")) {
+                subnumber.setText("" + current.getSection() + current.getPinpoint());
+            } else {
+                subnumber.setText("" + current.getPinpoint());
+            }
 
             subSectionLayout.setVisibility(View.VISIBLE);
 
