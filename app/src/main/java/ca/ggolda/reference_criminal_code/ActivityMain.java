@@ -9,7 +9,7 @@ import android.widget.ListView;
  * Created by gcgol on 01/18/2017.
  */
 
-public class TestActivityDbList extends AppCompatActivity implements TestListener {
+public class ActivityMain extends AppCompatActivity {
 
     ListView mListViewSections;
     AdapterSection mAdapterSection;
@@ -24,7 +24,7 @@ public class TestActivityDbList extends AppCompatActivity implements TestListene
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
-        mAdapterSection = new AdapterSection(TestActivityDbList.this, R.layout.card_heading, dbHelper.getAllUser());
+        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_heading, dbHelper.getAllUser());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
         mListViewSections.setAdapter(mAdapterSection);
 
@@ -33,18 +33,9 @@ public class TestActivityDbList extends AppCompatActivity implements TestListene
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, TestActivityInfo.class);
+        Intent intent = new Intent(this, ActivityTestLaunch.class);
         startActivity(intent);
         finish();
     }
 
-    @Override
-    public void fulltextToChange(String name) {
-        dbHelper.deleteRow(name);
-
-        mAdapterSection = new AdapterSection(TestActivityDbList.this, R.layout.card_heading, dbHelper.getAllUser());
-        mListViewSections = (ListView) findViewById(R.id.listview_section);
-        mListViewSections.setAdapter(mAdapterSection);
-
-    }
 }

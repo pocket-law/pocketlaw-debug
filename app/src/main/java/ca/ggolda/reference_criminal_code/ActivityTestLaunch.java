@@ -12,9 +12,8 @@ import android.widget.EditText;
  * Created by gcgol on 01/18/2017.
  */
 
-public class TestActivityInfo extends AppCompatActivity {
+public class ActivityTestLaunch extends AppCompatActivity {
 
-    EditText et_fulltext;
     Button btn_next, btn_db;
     DbHelper dbHelper;
 
@@ -22,12 +21,11 @@ public class TestActivityInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_input_activity);
+        setContentView(R.layout.layout_launch);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
-        et_fulltext = (EditText) findViewById(R.id.et_fulltext);
         btn_next = (Button) findViewById(R.id.btn_add);
         btn_db = (Button) findViewById(R.id.btn_db);
 
@@ -43,7 +41,7 @@ public class TestActivityInfo extends AppCompatActivity {
 //                    dbHelper.insertSectionDetail(userData);
 //                }
 
-                Intent intent=new Intent(TestActivityInfo.this,ActivityXml.class);
+                Intent intent=new Intent(ActivityTestLaunch.this,ActivityXml.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +51,7 @@ public class TestActivityInfo extends AppCompatActivity {
         btn_db.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TestActivityInfo.this,TestActivityDbList.class);
+                Intent intent=new Intent(ActivityTestLaunch.this,ActivityMain.class);
                 startActivity(intent);
             }
         });

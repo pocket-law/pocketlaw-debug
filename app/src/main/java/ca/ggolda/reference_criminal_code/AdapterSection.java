@@ -185,7 +185,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 6) {
 
             subsectionParatext.setText("" + current.getFulltext());
-            subsectionParanumber.setText("" + current.getSection());
+            subsectionParanumber.setText("" + current.getPinpoint());
 
             subsectionParagraphLayout.setVisibility(View.VISIBLE);
 

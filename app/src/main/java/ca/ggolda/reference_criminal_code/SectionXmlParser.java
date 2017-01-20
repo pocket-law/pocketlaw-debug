@@ -225,8 +225,6 @@ public class SectionXmlParser {
     // Parses the contents of a Subsection.
     private void readSubsection(XmlPullParser parser, String section, String pinpoint) throws IOException, XmlPullParserException {
 
-        Log.e("XML", "readSubsection, parser.getText: " + parser.getText() + " .getName: " + parser.getName());
-
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
@@ -241,21 +239,17 @@ public class SectionXmlParser {
                 readSubMarginalText(parser, section, pinpoint);
 
             } else if (parser.getName().equals("Paragraph")) {
-                Log.e("XML", "Paragraph");
 
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
                     pinpoint = "(" + code[5] + ")";
-
                 }
 
                 readSubsectionParagraph(parser, section, pinpoint);
 
             } else if (parser.getName().equals("ContinuedSectionSubsection")) {
-                Log.e("XML", "ContinuedSectionSubsection");
 
                 readContinuedSubsection(parser, section, pinpoint);
-
 
             } else {
                 skip(parser);

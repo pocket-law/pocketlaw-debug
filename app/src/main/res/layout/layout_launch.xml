@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:gravity="center"
     android:background="#000000">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:text="CCC MODE"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:layout_margin="2dp"
-        android:background="#FF0000"/>
 
     <TextView
-        android:id="@+id/btn_database"
+        android:id="@+id/et_fulltext"
         android:layout_width="match_parent"
-        android:text="Database"
-        android:gravity="center"
-        android:textSize="54sp"
-        android:textStyle="bold"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="2dp"
-        android:background="#0000FF"/>
+        android:background="#FF0000"
+        android:text="CCC Test Mode"
+        android:textSize="40sp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp" />
 
-    <TextView
-        android:id="@+id/btn_xml"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:text="Parse Local XML"
-        android:gravity="center"
-        android:textSize="54sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="2dp"
-        android:background="#0000FF"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
 
+        <Button
+            android:layout_margin="2dp"
+            android:id="@+id/btn_db"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#1010b2"
+            android:text="DB"
+            android:textColor="#FFFFFF" />
 
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#11be11"
+            android:text="Add"
+            android:textColor="#ffffff"
+            android:layout_margin="2dp"/>
+
+    </LinearLayout>
 </LinearLayout>
