@@ -129,7 +129,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         final Section current = getItem(position);
 
-        Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
+        Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + ", section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
         // hide all predefined views to allow visibility setting via type
         hideAll();
