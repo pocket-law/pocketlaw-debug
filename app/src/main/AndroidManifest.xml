@@ -25,7 +25,7 @@
 
         <activity android:name="ca.ggolda.reference_criminal_code.ActivityMain" android:screenOrientation="portrait"/>
 
-        <activity android:name="ca.ggolda.reference_criminal_code.ActivityXml" android:screenOrientation="portrait"/>
+        <activity android:name="ca.ggolda.reference_criminal_code.ActivityPopulate" android:screenOrientation="portrait"/>
 
 
     </application>

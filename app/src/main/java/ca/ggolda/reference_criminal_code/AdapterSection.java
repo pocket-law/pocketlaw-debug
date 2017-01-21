@@ -129,7 +129,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         final Section current = getItem(position);
 
-        Log.e("CURRENTWHA","" + "pinpoint: " + current.getPinpoint() + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
+        Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + "section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
         // hide all predefined views to allow visibility setting via type
         hideAll();
@@ -174,7 +174,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 4) {
 
             paratext.setText("" + current.getFulltext());
-            paranumber.setText("" + current.getSection());
+            paranumber.setText("" + current.getPinpoint());
 
             paragraphLayout.setVisibility(View.VISIBLE);
 
@@ -197,7 +197,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 7) {
 
             subParaText.setText("" + current.getFulltext());
-            subParaNumber.setText("" + current.getSection());
+            subParaNumber.setText("" + current.getPinpoint());
 
             subparagraphLayout.setVisibility(View.VISIBLE);
 
@@ -205,7 +205,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 8) {
 
             subsectionSubParaText.setText("" + current.getFulltext());
-            subsectionSubParaNumber.setText("" + current.getSection());
+            subsectionSubParaNumber.setText("" + current.getPinpoint());
 
             subsectionSubparagraphLayout.setVisibility(View.VISIBLE);
 
@@ -235,21 +235,21 @@ public class AdapterSection extends ArrayAdapter<Section> {
         } else if (current.getType() == 12) {
 
             continuedParatext.setText("" + current.getFulltext());
-            continuedParanumber.setText("" + current.getSection());
+            continuedParanumber.setText("" + current.getPinpoint());
 
             continuedParagraphLayout.setVisibility(View.VISIBLE);
 
         } else if (current.getType() == 13) {
 
             continuedSubsectionParaText.setText("" + current.getFulltext());
-            continuedSubsectionParaNumber.setText("" + current.getSection());
+            continuedSubsectionParaNumber.setText("" + current.getPinpoint());
 
             continuedSubsectionParagraphLayout.setVisibility(View.VISIBLE);
 
         } else if (current.getType() == 14) {
 
             continuedSubsectionText.setText("" + current.getFulltext());
-            continuedSubsectionNumber.setText("" + current.getSection());
+            continuedSubsectionNumber.setText("" + current.getPinpoint());
 
             continuedSubsectionLayout.setVisibility(View.VISIBLE);
 

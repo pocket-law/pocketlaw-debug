@@ -162,24 +162,5 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    /*
-   Delete single row from UserTable
-     */
-    void deleteRow(String fulltext) {
-        SQLiteDatabase db = getWritableDatabase();
-
-
-        try {
-            db.beginTransaction();
-            db.execSQL("delete from " + TABLE_CRIMINAL_CODE + " where fulltext ='" + fulltext + "'");
-            db.setTransactionSuccessful();
-        } catch (SQLException e) {
-            Log.d(TAG, "Error while trying to delete  users detail");
-        } finally {
-            db.endTransaction();
-        }
-
-
-    }
 
 }

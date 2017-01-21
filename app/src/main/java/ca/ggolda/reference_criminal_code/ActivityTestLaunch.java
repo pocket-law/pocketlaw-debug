@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 /**
  * Created by gcgol on 01/18/2017.
@@ -21,7 +20,7 @@ public class ActivityTestLaunch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_launch);
+        setContentView(R.layout.activity_launch);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
@@ -41,7 +40,7 @@ public class ActivityTestLaunch extends AppCompatActivity {
 //                    dbHelper.insertSectionDetail(userData);
 //                }
 
-                Intent intent=new Intent(ActivityTestLaunch.this,ActivityXml.class);
+                Intent intent=new Intent(ActivityTestLaunch.this, ActivityPopulate.class);
                 startActivity(intent);
             }
         });
