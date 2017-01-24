@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
 
     private Context mContext;
+    private ListView listviewSection;
 
 
     public AdapterHeading(Context context, int resource, List<Section> objects) {
@@ -45,14 +47,16 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         LinearLayout levelOne = (LinearLayout) convertView.findViewById(R.id.level1);
         LinearLayout levelTwo = (LinearLayout) convertView.findViewById(R.id.level2);
 
+        listviewSection = (ListView) ((ActivityMain)mContext).findViewById(R.id.listview_section);
+
         // Set section and heading text
         levelOne.setVisibility(View.VISIBLE);
         headingOne.setText("" + current.getFulltext());
         levelTwo.setVisibility(View.GONE);
         sectionOne.setText("" + current.getSection());
 
-        // TODO: remove (TESTING getID)
-        Log.e("XMLXML", ""+current.getID());
+
+        Log.e("XMLXML1", ""+current.getID());
 
 
 
@@ -60,6 +64,11 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Set section listview on basis of TOC selection
+                listviewSection.setSelection(current.getID() - 1);
+                ActivityMain.partsHideShow();
+
 
             }
         });

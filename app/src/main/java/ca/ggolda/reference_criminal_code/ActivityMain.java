@@ -23,11 +23,11 @@ public class ActivityMain extends AppCompatActivity {
     private ListView mListViewHeadings;
 
     private ImageView mBtnParts;
-    private LinearLayout mParts;
+    public static LinearLayout mParts;
 
     DbHelper dbHelper;
 
-    private int partsVisible = 0;
+    public static int partsVisible = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +51,20 @@ public class ActivityMain extends AppCompatActivity {
         mBtnParts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (partsVisible == 0) {
-                    mParts.setVisibility(View.VISIBLE);
-
-                    partsVisible = 1;
-                } else if (partsVisible == 1) {
-                    mParts.setVisibility(View.GONE);
-
-                    partsVisible = 0;
-                }
-
+                partsHideShow();
             }
         });
 
+    }
+
+    public static void partsHideShow() {
+        if (partsVisible == 0) {
+            mParts.setVisibility(View.VISIBLE);
+            partsVisible = 1;
+        } else if (partsVisible == 1) {
+            mParts.setVisibility(View.GONE);
+            partsVisible = 0;
+        }
     }
 
     @Override
