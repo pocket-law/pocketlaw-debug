@@ -163,4 +163,45 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
+     /*
+   fetch all headings from UserTable
+    */
+
+    public List<Section> getAllHeading() {
+
+        List<Section> sectionDetail = new ArrayList<>();
+
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE type = '0'";
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    Section sectionData = new Section(-777,"dbhelper","dbhelper","dbhelper");
+                    sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
+                    sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
+                    sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
+                    sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
+
+                    sectionDetail.add(sectionData);
+
+
+
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return sectionDetail;
+
+    }
+
 }

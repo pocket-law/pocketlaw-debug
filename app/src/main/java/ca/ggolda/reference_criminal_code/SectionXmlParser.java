@@ -739,6 +739,9 @@ public class SectionXmlParser {
         String text = parser.getText();
 
         if (text != null) {
+            // if the history item starts with a space, remove it
+            text = text.startsWith(" ") ? text.substring(1) : text;
+
             Section resultObject = new Section(9, "nopinpoint", section, text);
             dbHelper.insertSectionDetail(resultObject);
 
