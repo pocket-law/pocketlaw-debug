@@ -108,12 +108,25 @@ public class SectionXmlParser {
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
 
-                    String[] split_code = code[1].split("_");
-                    if (split_code.length > 0) {
-                        section = split_code[1];
+                    // If a longer code, this generally corresponds to heading level 2,
+                    // which to pinpoint require code[3]
+                    if (code.length > 4) {
+                        String[] split_code = code[3].split("_");
+                        if (split_code.length > 0) {
+                            section = split_code[1];
+                        } else {
+                            section = split_code[0];
+                        }
                     } else {
-                        section = split_code[0];
+                        String[] split_code = code[1].split("_");
+                        if (split_code.length > 0) {
+                            section = split_code[1];
+                        } else {
+                            section = split_code[0];
+                        }
                     }
+
+
 
                 }
 
@@ -745,6 +758,7 @@ public class SectionXmlParser {
             Section resultObject = new Section(9, "nopinpoint", section, text);
             dbHelper.insertSectionDetail(resultObject);
 
+            Log.e("XML", "db add Historical Note (  9  , " + "nopinpoint" + section + " " + text + " )");
         }
 
         if (parser.next() == XmlPullParser.START_TAG) {
