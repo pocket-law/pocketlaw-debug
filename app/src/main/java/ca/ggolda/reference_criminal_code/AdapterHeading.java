@@ -6,6 +6,7 @@ package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,14 +15,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class AdapterHeading extends ArrayAdapter<Heading> {
+public class AdapterHeading extends ArrayAdapter<Section> {
 
 
     private Context mContext;
 
 
-
-    public AdapterHeading(Context context, int resource, List<Heading> objects) {
+    public AdapterHeading(Context context, int resource, List<Section> objects) {
         super(context, resource, objects);
 
         mContext = context;
@@ -34,7 +34,7 @@ public class AdapterHeading extends ArrayAdapter<Heading> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_heading, parent, false);
         }
 
-        final Heading current = getItem(position);
+        final Section current = getItem(position);
 
         TextView headingOne = (TextView) convertView.findViewById(R.id.marginal_note);
         TextView headingTwo = (TextView) convertView.findViewById(R.id.heading2);
@@ -45,21 +45,15 @@ public class AdapterHeading extends ArrayAdapter<Heading> {
         LinearLayout levelOne = (LinearLayout) convertView.findViewById(R.id.level1);
         LinearLayout levelTwo = (LinearLayout) convertView.findViewById(R.id.level2);
 
-        if (current.getLevel() == 2) {
-            levelTwo.setVisibility(View.VISIBLE);
-            headingTwo.setText(""+current.getHeading_text());
-            levelOne.setVisibility(View.GONE);
+        // Set section and heading text
+        levelOne.setVisibility(View.VISIBLE);
+        headingOne.setText("" + current.getFulltext());
+        levelTwo.setVisibility(View.GONE);
+        sectionOne.setText("" + current.getSection());
 
-            sectionTwo.setText(""+current.getSection());
+        // TODO: remove (TESTING getID)
+        Log.e("XMLXML", ""+current.getID());
 
-        } else {
-            levelOne.setVisibility(View.VISIBLE);
-            headingOne.setText(""+current.getHeading_text());
-            levelTwo.setVisibility(View.GONE);
-
-            sectionOne.setText(""+current.getSection());
-
-        }
 
 
         //TODO: open corresponding part

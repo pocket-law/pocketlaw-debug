@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Section implements Serializable {
 
     // mType will determine whether:
+    private int mID;
     private int mType;
     private String mPinpoint;
     private String mSection;
@@ -16,12 +17,29 @@ public class Section implements Serializable {
 
 
     // Constructor for Heading with all attributes
+    public Section(int id, int type, String pinpoint, String section, String fulltext) {
+        mID = id;
+        mType = type;
+        mPinpoint = pinpoint;
+        mSection = section;
+        mFulltext = fulltext;
+
+    }
+
+    // Constructor for Heading with all attributes except ID
     public Section(int type, String pinpoint, String section, String fulltext) {
         mType = type;
         mPinpoint = pinpoint;
         mSection = section;
         mFulltext = fulltext;
 
+    }
+
+    public int getID() {
+        return mID;
+    }
+    public void setID(int mID) {
+        this.mID = mID;
     }
 
     public int getType() {

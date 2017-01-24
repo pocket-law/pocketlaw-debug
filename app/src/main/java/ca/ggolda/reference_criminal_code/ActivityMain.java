@@ -19,7 +19,7 @@ public class ActivityMain extends AppCompatActivity {
     private ListView mListViewSections;
     private AdapterSection mAdapterSection;
 
-    private AdapterSection mAdapterHeading;
+    private AdapterHeading mAdapterHeading;
     private ListView mListViewHeadings;
 
     private ImageView mBtnParts;
@@ -43,7 +43,7 @@ public class ActivityMain extends AppCompatActivity {
         mListViewSections = (ListView) findViewById(R.id.listview_section);
         mListViewSections.setAdapter(mAdapterSection);
 
-        mAdapterHeading = new AdapterSection(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
+        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
         mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
         mListViewHeadings.setAdapter(mAdapterHeading);
 

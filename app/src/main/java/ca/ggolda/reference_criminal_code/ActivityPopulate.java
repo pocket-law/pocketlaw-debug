@@ -61,65 +61,11 @@ public class ActivityPopulate extends AppCompatActivity {
         }
     }
 
-    // Implementation of AsyncTask used to download Headings from XML feed.
-    private class DownloadHeadingsXmlTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                return loadXmlFromNetwork(urls[0]);
-            } catch (IOException e) {
-                return "connection error";
-            } catch (XmlPullParserException e) {
-                return "xml error";
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-        }
-    }
 
     // Uses AsyncTask to download the XML feed from laws-lois.justice.gc.ca.
     public void loadPage() {
 
-        // TODO: delete or keep the DownloadHeadingsXmlTask (as it's faster for loading a TOC straight up)
-            new DownloadHeadingsXmlTask().execute(URL);
             new DownloadSectionXmlTask().execute(URL);
-
-    }
-
-    // Uploads XML from online source
-    private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
-
-        InputStream stream = null;
-
-        List<Heading> headings = null;
-
-        // Instantiate the parser
-        HeadingXmlParser xmlParser = new HeadingXmlParser();
-
-        try {
-            // TODO: use downloadUrl as source when updating
-            //stream = downloadUrl(urlString);
-
-            stream = getResources().openRawResource(R.raw.c46mod);
-
-            headings = xmlParser.parse(stream);
-
-            // Makes sure that the InputStream is closed after the app is
-            // finished using it.
-        } finally {
-            if (stream != null) {
-                stream.close();
-            }
-        }
-
-        if (headings.size() > 0) {
-            Log.e("XML sections.get(0)", "" + headings.get(0));
-        }
-
-        return ""+headings.size();
 
     }
 

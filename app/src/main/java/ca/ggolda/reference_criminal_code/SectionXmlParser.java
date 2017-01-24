@@ -745,7 +745,6 @@ public class SectionXmlParser {
             Section resultObject = new Section(9, "nopinpoint", section, text);
             dbHelper.insertSectionDetail(resultObject);
 
-            Log.e("XML", "db add Historical Note (  9  , " + "nopinpoint" + section + " " + text + " )");
         }
 
         if (parser.next() == XmlPullParser.START_TAG) {

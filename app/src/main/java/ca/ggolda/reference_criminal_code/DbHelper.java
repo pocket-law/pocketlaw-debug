@@ -137,7 +137,8 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section sectionData = new Section(-777,"dbhelper","dbhelper","dbhelper");
+                    Section sectionData = new Section(1,-777,"dbhelper","dbhelper","dbhelper");
+                    sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
                     sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
                     sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
                     sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
@@ -179,7 +180,8 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section sectionData = new Section(-777,"dbhelper","dbhelper","dbhelper");
+                    Section sectionData = new Section(1,-777,"dbhelper","dbhelper","dbhelper");
+                    sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
                     sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
                     sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
                     sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
