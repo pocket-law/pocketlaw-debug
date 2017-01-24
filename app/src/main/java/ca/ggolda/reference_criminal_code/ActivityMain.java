@@ -30,6 +30,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private ImageView mBtnSearch;
     private ImageView mBtnSearchOpen;
+    private EditText mEdtSearch;
 
     private ImageView mBtnParts;
     public static LinearLayout mParts;
@@ -61,10 +62,12 @@ public class ActivityMain extends AppCompatActivity {
         layoutSearchbar = (RelativeLayout) findViewById(R.id.lyt_search);
         mBtnSearchOpen = (ImageView) findViewById(R.id.btn_search_open);
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
+        mEdtSearch = (EditText) findViewById(R.id.edt_search);
 
 
 
-        // bring parts up or down
+
+        // bring searchbar up
         mBtnParts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,10 +80,16 @@ public class ActivityMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layoutSearchbar.setVisibility(View.VISIBLE);
+
+                // Kinda hackish, get keyboard and edittext focus onclick
+                mEdtSearch.requestFocus();
+                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(mEdtSearch,0);
             }
         });
 
-        // bring parts up or down
+        // bring searchbar down
+        // TODO: also search
         mBtnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
