@@ -129,7 +129,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE;
+        // TODO: Display section 849
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE section != '849'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -172,7 +173,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE type = '0'";
+        // TODO: Display section 849
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE type = '0' AND section != '849'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
