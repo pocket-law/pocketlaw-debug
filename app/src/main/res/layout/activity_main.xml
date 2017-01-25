@@ -132,6 +132,7 @@
                         android:backgroundTint="#FFFFFF"
                         android:hint="search..."
                         android:maxLines="1"
+                        android:lines="1"
                         android:paddingBottom="8dp"
                         android:layout_marginBottom="12dp"
                         android:paddingTop="12dp"
@@ -264,7 +265,9 @@
                     android:id="@+id/listview_heading"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:divider="@null" />
+                    android:divider="@null"
+                    android:fastScrollAlwaysVisible="true"
+                    android:fastScrollEnabled="true"/>
 
 
             </LinearLayout>
