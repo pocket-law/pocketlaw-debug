@@ -32,7 +32,7 @@ public class ExportImportDB extends Activity {
 
         }
         exportDB();
-        importDB();
+       // importDB();
 
     }
     //importing database
@@ -44,9 +44,9 @@ public class ExportImportDB extends Activity {
             File data  = Environment.getDataDirectory();
 
             if (sd.canWrite()) {
-                String  currentDBPath= "//data//" + "PackageName"
-                        + "//databases//" + "DatabaseName";
-                String backupDBPath  = "/BackupFolder/DatabaseName";
+                String  currentDBPath= "//data//" + "ca.ggolda.reference_criminal_code"
+                        + "//databases//" + "CriminalCode";
+                String backupDBPath  = "/BackupFolder/CriminalCode";
 
                 //next two lines reversed for an export
                 File  backupDB= new File(data, currentDBPath);
@@ -77,9 +77,9 @@ public class ExportImportDB extends Activity {
             File data = Environment.getDataDirectory();
 
             if (sd.canWrite()) {
-                String  currentDBPath= "//data//" + "PackageName"
-                        + "//databases//" + "DatabaseName";
-                String backupDBPath  = "/BackupFolder/DatabaseName";
+                String  currentDBPath= "//data//" + "ca.ggolda.reference_criminal_code"
+                        + "//databases//" + "CriminalCode";
+                String backupDBPath  = "/BackupFolder/CriminalCode";
 
                 //next two lines reversed for an import
                 File currentDB = new File(data, currentDBPath);

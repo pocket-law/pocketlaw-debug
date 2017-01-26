@@ -13,7 +13,7 @@ import android.widget.Button;
 
 public class ActivityTestLaunch extends AppCompatActivity {
 
-    Button btn_next, btn_db;
+    Button btn_next, btn_db, btn_exp;
     DbHelper dbHelper;
 
 
@@ -27,6 +27,8 @@ public class ActivityTestLaunch extends AppCompatActivity {
 
         btn_next = (Button) findViewById(R.id.btn_add);
         btn_db = (Button) findViewById(R.id.btn_db);
+        btn_exp = (Button) findViewById(R.id.btn_exp);
+
 
 
         // add to db
@@ -54,6 +56,16 @@ public class ActivityTestLaunch extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // export db
+        btn_exp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ActivityTestLaunch.this,ActivityExportDB.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:background="#FF0000"
-        android:text="CCC Test Mode"
+        android:text="DB Exporter"
         android:textSize="40sp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp" />
@@ -30,33 +30,25 @@
 
         <Button
             android:layout_margin="2dp"
-            android:id="@+id/btn_db"
+            android:id="@+id/btn_delete"
             android:layout_width="200dp"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:background="#1010b2"
-            android:text="DB"
+            android:text="Delete"
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_export"
             android:layout_width="200dp"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:background="#11be11"
-            android:text="Add"
-            android:textColor="#ffffff"
-            android:layout_margin="2dp"/>
-
-        <Button
-            android:id="@+id/btn_exp"
-            android:layout_width="200dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="20dp"
-            android:background="#605f33"
             android:text="Export"
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
+
+
 
     </LinearLayout>
 </LinearLayout>
