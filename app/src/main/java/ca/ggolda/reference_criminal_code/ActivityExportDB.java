@@ -53,7 +53,7 @@ public class ActivityExportDB extends Activity implements OnClickListener {
         File data = Environment.getDataDirectory();
         FileChannel source=null;
         FileChannel destination=null;
-        String currentDBPath = "/data/"+ "ca.ggolda.reference_criminal_code" +"/databases/"+SAMPLE_DB_NAME;
+        String currentDBPath = "/data/"+ "ca.ggolda.reference_criminal_code" +"/databases/" + SAMPLE_DB_NAME;
         String backupDBPath = SAMPLE_DB_NAME;
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);

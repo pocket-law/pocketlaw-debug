@@ -6,6 +6,7 @@ package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,27 +39,46 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
         final Section current = getItem(position);
 
-        TextView headingOne = (TextView) convertView.findViewById(R.id.marginal_note);
-        TextView headingTwo = (TextView) convertView.findViewById(R.id.heading2);
-
+        TextView headingOne = (TextView) convertView.findViewById(R.id.heading);
         TextView sectionOne = (TextView) convertView.findViewById(R.id.section);
-        TextView sectionTwo = (TextView) convertView.findViewById(R.id.section2);
-
         LinearLayout levelOne = (LinearLayout) convertView.findViewById(R.id.level1);
-        LinearLayout levelTwo = (LinearLayout) convertView.findViewById(R.id.level2);
+
 
         listviewSection = (ListView) ((ActivityMain)mContext).findViewById(R.id.listview_section);
 
         // Set section and heading text
         levelOne.setVisibility(View.VISIBLE);
         headingOne.setText("" + current.getFulltext());
-        levelTwo.setVisibility(View.GONE);
         sectionOne.setText("" + current.getSection());
+
+        //Change background color based on heading type
+        //TODO: make switch
+        if (current.getPinpoint().equals("level1")) {
+            headingOne.setBackgroundColor(Color.parseColor("#8C292e34"));
+            sectionOne.setBackgroundColor(Color.parseColor("#8C292e34"));
+        } else if (current.getPinpoint().equals("level2")) {
+            headingOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+            sectionOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+        } else if (current.getPinpoint().equals("level3")) {
+            headingOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+            sectionOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+        } else if (current.getPinpoint().equals("schedules")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+        }else if (current.getPinpoint().equals("forms")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+        } else if (current.getPinpoint().equals("related_provs")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+        } else if (current.getPinpoint().equals("amendments_nif")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+        }
 
 
         Log.e("XMLXML1", ""+current.getID());
-
-
 
         //TODO: open corresponding part
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +88,9 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 // Set section listview on basis of TOC selection
                 listviewSection.setSelection(current.getID() - 1);
                 ActivityMain.partsHideShow();
-
-
             }
         });
+
 
         return convertView;
 

@@ -77,7 +77,7 @@ public class ActivityPopulate extends AppCompatActivity {
         List<Section> sections = new ArrayList<>();
 
         // Instantiate the parser
-        SectionXmlParser xmlParser = new SectionXmlParser();
+        XmlParser xmlParser = new XmlParser();
 
         try {
             // TODO: use downloadUrl as source when updating

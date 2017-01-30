@@ -92,7 +92,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView text = (TextView) convertView.findViewById(R.id.text_section);
 
         // MarginalNote text
-        TextView marginalNote = (TextView) convertView.findViewById(R.id.marginal_note);
+        TextView marginalNote = (TextView) convertView.findViewById(R.id.heading);
         TextView marginalNumber = (TextView) convertView.findViewById(R.id.marginal_number);
 
         // SubMarginalNote text/number

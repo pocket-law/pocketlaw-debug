@@ -183,10 +183,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 do {
                     Section sectionData = new Section(1,-777,"dbhelper","dbhelper","dbhelper");
                     sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
-                    sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
                     sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
-                    sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
                     sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
+                    sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
+                    sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
 
                     sectionDetail.add(sectionData);
 
@@ -202,6 +202,17 @@ public class DbHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
+
+        // Add schedules, forms, related provisions, and amendments not in force
+        Section schedulesAdd = new Section(-1,737,"schedules","S","Schedules");
+        sectionDetail.add(schedulesAdd);
+        Section formsAdd = new Section(-2,737,"forms","F","Forms");
+        sectionDetail.add(formsAdd);
+        Section relatedProvsAdd = new Section(-3,737,"related_provs","RP","Related Provisions");
+        sectionDetail.add(relatedProvsAdd);
+        Section amendmentsNIFAdd = new Section(-4,737,"amendments_nif","ANIF","Amendments Not In Force");
+        sectionDetail.add(amendmentsNIFAdd);
+
 
         return sectionDetail;
 

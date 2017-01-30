@@ -16,7 +16,7 @@ import java.util.List;
  * Created by gcgol on 01/09/2017.
  */
 
-public class SectionXmlParser {
+public class XmlParser {
 
     private Context mContext;
     private DbHelper dbHelper = DbHelper.getInstance(this.mContext);
@@ -105,6 +105,7 @@ public class SectionXmlParser {
 
                 // Get the section number from the Heading Code
                 String section = "";
+                String pinpoint = "";
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
 
@@ -125,12 +126,16 @@ public class SectionXmlParser {
                             section = split_code[0];
                         }
                     }
+                }
+                if ((parser.getAttributeValue(null, "level")) != null) {
+                    String[] level = parser.getAttributeValue(null, "level").split("\"");
+                    pinpoint = "level" + level[0];
 
-
-
+                    Log.e("XML", "subsectionTrue : " + pinpoint);
                 }
 
-                readHeading(parser, section);
+
+                readHeading(parser, section, pinpoint);
 
             } else {
                 skip(parser);
@@ -141,8 +146,10 @@ public class SectionXmlParser {
     }
 
     // Parses the contents of a Heading
-    private void readHeading(XmlPullParser parser, String section) throws XmlPullParserException, IOException {
+    private void readHeading(XmlPullParser parser, String section, String pinpoint) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Heading");
+
+
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -151,7 +158,7 @@ public class SectionXmlParser {
             String name = parser.getName();
             if (name.equals("TitleText")) {
 
-                readTitleText(parser, section);
+                readTitleText(parser, section, pinpoint);
 
             } else {
                 skip(parser);
@@ -810,17 +817,17 @@ public class SectionXmlParser {
     }
 
     // For the tags TitleText and level values.
-    private void readTitleText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+    private void readTitleText(XmlPullParser parser, String section, String pinpoint) throws IOException, XmlPullParserException {
 
         parser.next();
 
         String text = parser.getText();
 
 
-        Section resultObject = new Section(0, "titletext", section, text);
+        Section resultObject = new Section(0, pinpoint, section, text);
         dbHelper.insertSectionDetail(resultObject);
 
-        Log.e("XML", "db add TitleText (  0  , " + "titletext" + section + " " + text + " )");
+        Log.e("XML", "db add TitleText (  0  , " + pinpoint + "," + section + " " + text + " )");
 
 
         if (parser.next() == XmlPullParser.START_TAG) {
