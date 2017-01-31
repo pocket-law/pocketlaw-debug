@@ -51,9 +51,14 @@ public class ActivityExportDB extends Activity implements OnClickListener {
     private void exportDB(){
         File sd = Environment.getExternalStorageDirectory();
         File data = Environment.getDataDirectory();
-        FileChannel source=null;
-        FileChannel destination=null;
-        String currentDBPath = "/data/"+ "ca.ggolda.reference_criminal_code" +"/databases/" + SAMPLE_DB_NAME;
+        FileChannel source = null;
+        FileChannel destination = null;
+
+        Toast.makeText(this, "Exporting!", Toast.LENGTH_SHORT).show();
+
+        String currentDBPath = "\\data\\"+ "ca.ggolda.reference_criminal_code" +"\\databases\\" + "CriminalCode.db";
+
+
         String backupDBPath = SAMPLE_DB_NAME;
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
