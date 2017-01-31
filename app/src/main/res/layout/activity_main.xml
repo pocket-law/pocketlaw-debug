@@ -59,26 +59,6 @@
 
     <!-- Comments -->
     <LinearLayout
-        android:id="@+id/comments"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FFFFFF"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="gone">
-
-        <ListView
-            android:id="@+id/comments_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/dummy"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -192,21 +172,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#c3c3c3"
-                android:orientation="vertical"
-                android:visibility="gone"
-                tools:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="web view local html"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                android:orientation="vertical">
 
                 <WebView
-                    android:id="@+id/webview_local"
+                    android:id="@+id/webview"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
@@ -215,33 +186,6 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/online"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#c3c3c3"
-                android:orientation="vertical"
-                android:visibility="gone"
-                tools:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="web view online"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <WebView
-                    android:id="@+id/webview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-
-            </LinearLayout>
-
 
             <ListView
                 android:id="@+id/listview_section"
@@ -249,6 +193,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBackground"
                 android:divider="@null"
+                tools:visibility="visible"
                 android:fastScrollAlwaysVisible="true"
                 android:fastScrollEnabled="true" />
 
@@ -295,6 +240,26 @@
                 tools:visibility="visible" />
 
         </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <ListView
+            android:id="@+id/comments_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF" />
 
 
     </LinearLayout>
