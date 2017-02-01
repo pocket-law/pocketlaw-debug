@@ -124,7 +124,7 @@ public class DbHelperImport extends SQLiteOpenHelper {
 
         // Close the SQLiteOpenHelper so it will commit the created empty
         // database to internal storage.
-        String dbPath = "android.resource://ca.ggolda.reference_criminal_code/" + R.raw.criminal_code_db;;
+        String dbPath = "android.resource://ca.ggolda.reference_criminal_code/" + R.raw.criminal_code_db;
 
         close();
         File newDb = new File(dbPath);
