@@ -1,93 +1,70 @@
 package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
+import android.content.ContextWrapper;
 import android.content.Intent;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 /**
  * Created by gcgol on 01/26/2017.
  */
 
 
-
-
 public class ActivityImportDB extends Activity {
 
 
-    public static String DB_FILEPATH = "/data/data/ca.ggolda.reference_criminal_code/databases/CriminalCode.db";
+    public static String DB_PATH = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_import);
 
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        DB_PATH = cw.getFilesDir().getAbsolutePath() + "/databases/";
+
+        copyDataBase();
+
+    }
+
+
+    private void copyDataBase() {
+        Log.i("Database",
+                "New database is being copied to device!");
+        byte[] buffer = new byte[1024];
+        OutputStream myOutput = null;
+        int length;
+        // Open your local db as the input stream
+        InputStream myInput = null;
         try {
-            importDatabase();
+            myInput = getApplicationContext().getAssets().open("criminal_code_db.db");
+            // transfer bytes from the inputfile to the
+            // outputfile
+            myOutput = new FileOutputStream(DB_PATH + "CriminalCode.db");
+            while ((length = myInput.read(buffer)) > 0) {
+                myOutput.write(buffer, 0, length);
+            }
+            myOutput.close();
+            myOutput.flush();
+            myInput.close();
+            Log.i("Database",
+                    "New database has been copied to device!");
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Intent intent = new Intent(ActivityImportDB.this, ActivityMain.class);
+        startActivity(intent);
     }
-
-
-    /**
-     * Copies the database file at the specified location over the current
-     * internal application database.
-     */
-    public void importDatabase() throws IOException {
-
-        Log.e("SUCCESSIO","importDatabase called");
-        // Close the SQLiteOpenHelper so it will commit the created empty
-        // database to internal storage.
-        String dbPath = "android.resource://ca.ggolda.reference_criminal_code/" + R.raw.criminal_code_db;;
-
-        Log.e("SUCCESSIO",""+dbPath);
-
-        File newDb = new File(dbPath);
-        File oldDb = new File(DB_FILEPATH);
-        if (newDb.exists()) {
-            CopyFile(new FileInputStream(newDb), new FileOutputStream(oldDb));
-            // Access the copied database so SQLiteHelper will cache it and mark
-            // it as created.
-
-            Log.e("SUCCESSIO","DbHELPER copied DB");
-
-            Intent intent = new Intent(ActivityImportDB.this, ActivityMain.class);
-            startActivity(intent);
-        }
-    }
-
-
-
-    public static void CopyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
-        FileChannel fromChannel = null;
-        FileChannel toChannel = null;
-        try {
-            fromChannel = fromFile.getChannel();
-            toChannel = toFile.getChannel();
-            fromChannel.transferTo(0, fromChannel.size(), toChannel);
-        } finally {
-            try {
-                if (fromChannel != null) {
-                    fromChannel.close();
-                }
-            } finally {
-                if (toChannel != null) {
-                    toChannel.close();
-                }
-            }
-        }
-    }
-
 }

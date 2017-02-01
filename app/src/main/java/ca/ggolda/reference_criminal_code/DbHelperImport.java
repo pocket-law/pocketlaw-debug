@@ -80,85 +80,91 @@ public class DbHelperImport extends SQLiteOpenHelper {
 //                ")";
 //        db.execSQL(CREATE_USERDETAIL_TABLE);
 
-        try {
-            importDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            importDatabase();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
-
-    /*
-       Called when the database needs to be upgraded.
-       This method will only be called if a database already exists on disk with the same DATABASE_NAME,
-       but the DATABASE_VERSION is different than the version of the database that exists on disk.
-       */
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion != newVersion) {
-            // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRIMINAL_CODE);
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-            try {
-                importDatabase();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
-
-    /*
-   Insert a  user detail into database
-   */
-
-
-
-    public static String DB_FILEPATH = "/data/data/ca.ggolda.reference_criminal_code/databases/CriminalCode.db";
-
-    /**
-     * Copies the database file at the specified location over the current
-     * internal application database.
-     */
-    public void importDatabase() throws IOException {
-
-        // Close the SQLiteOpenHelper so it will commit the created empty
-        // database to internal storage.
-        String dbPath = "android.resource://ca.ggolda.reference_criminal_code/" + R.raw.criminal_code_db;
-
-        close();
-        File newDb = new File(dbPath);
-        File oldDb = new File(DB_FILEPATH);
-        if (newDb.exists()) {
-            CopyFile(new FileInputStream(newDb), new FileOutputStream(oldDb));
-            // Access the copied database so SQLiteHelper will cache it and mark
-            // it as created.
-            getWritableDatabase().close();
-
-            Log.e("SUCCESS","DbHELPER copied DB");
-        }
-    }
-
-
-
-    public static void CopyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
-        FileChannel fromChannel = null;
-        FileChannel toChannel = null;
-        try {
-            fromChannel = fromFile.getChannel();
-            toChannel = toFile.getChannel();
-            fromChannel.transferTo(0, fromChannel.size(), toChannel);
-        } finally {
-            try {
-                if (fromChannel != null) {
-                    fromChannel.close();
-                }
-            } finally {
-                if (toChannel != null) {
-                    toChannel.close();
-                }
-            }
-        }
-    }
-
 }
+
+//
+//    /*
+//       Called when the database needs to be upgraded.
+//       This method will only be called if a database already exists on disk with the same DATABASE_NAME,
+//       but the DATABASE_VERSION is different than the version of the database that exists on disk.
+//       */
+//    @Override
+//    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//        if (oldVersion != newVersion) {
+//            // Simplest implementation is to drop all old tables and recreate them
+//            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRIMINAL_CODE);
+//
+//            try {
+//                importDatabase();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//    }
+//
+//    /*
+//   Insert a  user detail into database
+//   */
+//
+//
+//
+//    public static String DB_FILEPATH = "/data/data/ca.ggolda.reference_criminal_code/databases/CriminalCode.db";
+//
+//    /**
+//     * Copies the database file at the specified location over the current
+//     * internal application database.
+//     */
+//    public void importDatabase() throws IOException {
+//
+//        // Close the SQLiteOpenHelper so it will commit the created empty
+//        // database to internal storage.
+////        String dbPath = "android.resource://ca.ggolda.reference_criminal_code/" + R.raw.criminal_code_db;
+//
+//        close();
+////        File newDb = new File(dbPath);
+//        File oldDb = new File(DB_FILEPATH);
+//        if (newDb.exists()) {
+//            CopyFile(new FileInputStream(newDb), new FileOutputStream(oldDb));
+//            // Access the copied database so SQLiteHelper will cache it and mark
+//            // it as created.
+//            getWritableDatabase().close();
+//
+//            Log.e("SUCCESS","DbHELPER copied DB");
+//        }
+//    }
+//
+//
+//
+//    public static void CopyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
+//        FileChannel fromChannel = null;
+//        FileChannel toChannel = null;
+//        try {
+//            fromChannel = fromFile.getChannel();
+//            toChannel = toFile.getChannel();
+//            fromChannel.transferTo(0, fromChannel.size(), toChannel);
+//        } finally {
+//            try {
+//                if (fromChannel != null) {
+//                    fromChannel.close();
+//                }
+//            } finally {
+//                if (toChannel != null) {
+//                    toChannel.close();
+//                }
+//            }
+//        }
+//    }
+//
+//}
