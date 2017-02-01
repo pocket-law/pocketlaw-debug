@@ -4,8 +4,15 @@ package ca.ggolda.reference_criminal_code;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 /**
  * Created by gcgol on 01/18/2017.
@@ -13,8 +20,10 @@ import android.widget.Button;
 
 public class ActivityTestLaunch extends AppCompatActivity {
 
-    Button btn_next, btn_db, btn_exp;
+    Button btn_next, btn_db, btn_exp, btn_imp;
     DbHelper dbHelper;
+
+
 
 
     @Override
@@ -28,7 +37,7 @@ public class ActivityTestLaunch extends AppCompatActivity {
         btn_next = (Button) findViewById(R.id.btn_add);
         btn_db = (Button) findViewById(R.id.btn_db);
         btn_exp = (Button) findViewById(R.id.btn_exp);
-
+        btn_imp = (Button) findViewById(R.id.btn_imp);
 
 
         // add to db
@@ -52,7 +61,7 @@ public class ActivityTestLaunch extends AppCompatActivity {
         btn_db.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ActivityTestLaunch.this,ActivityMain.class);
+                Intent intent = new Intent(ActivityTestLaunch.this,ActivityMain.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +70,18 @@ public class ActivityTestLaunch extends AppCompatActivity {
         btn_exp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ActivityTestLaunch.this,ActivityExportDB.class);
+                Intent intent = new Intent(ActivityTestLaunch.this,ActivityExportDB.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        // import db
+        btn_imp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityTestLaunch.this,ActivityImportDB.class);
                 startActivity(intent);
             }
         });

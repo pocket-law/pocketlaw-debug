@@ -63,6 +63,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
         String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
@@ -72,6 +74,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 PINPOINT + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
+
+
 
     }
 
@@ -137,7 +141,7 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section sectionData = new Section(1,-777,"dbhelper","dbhelper","dbhelper");
+                    Section sectionData = new Section(1, -777, "dbhelper", "dbhelper", "dbhelper");
                     sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
                     sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
                     sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
@@ -145,8 +149,6 @@ public class DbHelper extends SQLiteOpenHelper {
                     sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
 
                     sectionDetail.add(sectionData);
-
-
 
 
                 } while (cursor.moveToNext());
@@ -181,7 +183,7 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    Section sectionData = new Section(1,-777,"dbhelper","dbhelper","dbhelper");
+                    Section sectionData = new Section(1, -777, "dbhelper", "dbhelper", "dbhelper");
                     sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
                     sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
                     sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
@@ -189,8 +191,6 @@ public class DbHelper extends SQLiteOpenHelper {
                     sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
 
                     sectionDetail.add(sectionData);
-
-
 
 
                 } while (cursor.moveToNext());
@@ -204,13 +204,13 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         // Add schedules, forms, related provisions, and amendments not in force
-        Section schedulesAdd = new Section(-1,737,"schedules","S","Schedules");
+        Section schedulesAdd = new Section(-1, 737, "schedules", "S", "Schedules");
         sectionDetail.add(schedulesAdd);
-        Section formsAdd = new Section(-2,737,"forms","F","Forms");
+        Section formsAdd = new Section(-2, 737, "forms", "F", "Forms");
         sectionDetail.add(formsAdd);
-        Section relatedProvsAdd = new Section(-3,737,"related_provs","RP","Related Provisions");
+        Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
-        Section amendmentsNIFAdd = new Section(-4,737,"amendments_nif","ANIF","Amendments Not In Force");
+        Section amendmentsNIFAdd = new Section(-4, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
         sectionDetail.add(amendmentsNIFAdd);
 
 

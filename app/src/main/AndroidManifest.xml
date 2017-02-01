@@ -32,6 +32,8 @@
 
         <activity android:name="ca.ggolda.reference_criminal_code.ActivityExportDB" android:screenOrientation="portrait"/>
 
+        <activity android:name="ca.ggolda.reference_criminal_code.ActivityImportDB" android:screenOrientation="portrait"/>
+
 
     </application>
 
