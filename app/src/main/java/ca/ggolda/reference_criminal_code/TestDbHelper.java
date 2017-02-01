@@ -1,5 +1,13 @@
 package ca.ggolda.reference_criminal_code;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,23 +16,25 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by gcgol on 01/18/2017.
+ * Created by gcgol on 02/01/2017.
  */
 
-public class DbHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "DbHelper";
 
-    // Database Info
-    private static final String DATABASE_NAME = "CriminalCode";
-    private static final int DATABASE_VERSION = 1;
+public class TestDbHelper extends SQLiteOpenHelper
+{
+    private static String TAG = "TestDbHelper"; // Tag just for the LogCat window
+
+
+    //destination path (location) of our database on device
+    private static String DB_PATH = "";
+    private static String DB_NAME ="CriminalCode";// Database name
 
     //Table Names
     private static final String TABLE_CRIMINAL_CODE = "criminalcode";
+
 
     // Criminal Code Table Columns
     private static final String _ID = "_id";
@@ -33,76 +43,114 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SECTION = "section";
     private static final String PINPOINT = "pinpoint";
 
-    private static DbHelper mDbHelper;
+    private SQLiteDatabase mDataBase;
+    private final Context mContext;
+
+    public TestDbHelper(Context context)
+    {
+        super(context, DB_NAME, null, 1);// 1? Its database Version
+        if(android.os.Build.VERSION.SDK_INT >= 17){
+            DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
+        }
+        else
+        {
+            DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+        }
+        this.mContext = context;
+    }
+
+    public void createDataBase() throws IOException {
+        //If the database does not exist, copy it from the assets.
+
+        boolean mDataBaseExist = checkDataBase();
+        if(!mDataBaseExist)
+        {
+            this.getReadableDatabase();
+            this.close();
+            try
+            {
+                //Copy the database from assests
+                copyDataBase();
+                Log.e(TAG, "createDatabase database created");
+            }
+            catch (IOException mIOException)
+            {
+                throw new Error("ErrorCopyingDataBase");
+            }
+        }
+    }
+
+    //Check that the database exists here: /data/data/your package/databases/Da Name
+    private boolean checkDataBase()
+    {
+        File dbFile = new File(DB_PATH + DB_NAME);
+        //Log.v("dbFile", dbFile + "   "+ dbFile.exists());
+        return dbFile.exists();
+    }
+
+    //Copy the database from assets
+    private void copyDataBase() throws IOException {
+        InputStream mInput = mContext.getAssets().open(DB_NAME);
+        String outFileName = DB_PATH + DB_NAME;
+        OutputStream mOutput = new FileOutputStream(outFileName);
+        byte[] mBuffer = new byte[1024];
+        int mLength;
+        while ((mLength = mInput.read(mBuffer))>0)
+        {
+            mOutput.write(mBuffer, 0, mLength);
+        }
+        mOutput.flush();
+        mOutput.close();
+        mInput.close();
+    }
+
+    //Open the database, so we can query it
+    public boolean openDataBase() throws SQLException
+    {
+        String mPath = DB_PATH + DB_NAME;
+        //Log.v("mPath", mPath);
+        mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
+        //mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        return mDataBase != null;
+    }
+
+    @Override
+    public synchronized void close()
+    {
+        if(mDataBase != null)
+            mDataBase.close();
+        super.close();
+    }
 
 
-    public static synchronized DbHelper getInstance(Context context) {
+    //TODO: find out if activitymain really needs this
+    public static synchronized TestDbHelper getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
 
-        if (mDbHelper == null) {
-            mDbHelper = new DbHelper(context.getApplicationContext());
-        }
+        TestDbHelper mDbHelper = new TestDbHelper(context.getApplicationContext());
+
         return mDbHelper;
     }
 
 
-    /**
-     * Constructor should be private to prevent direct instantiation.
-     * Make a call to the static method "getInstance()" instead.
-     */
-    private DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-   /*
-    Called when the database is created for the FIRST time.
-    If a database already exists on disk with the same DATABASE_NAME, this method will NOT be called.
-    */
+    }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-
-
-        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
-                "(" +
-                _ID + " INTEGER PRIMARY KEY ," +
-                FULLTEXT + " TEXT, " +
-                TYPE + " TEXT, " +
-                SECTION + " TEXT, " +
-                PINPOINT + " TEXT" +
-                ")";
-        db.execSQL(CREATE_USERDETAIL_TABLE);
-
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-
-
-    /*
-       Called when the database needs to be upgraded.
-       This method will only be called if a database already exists on disk with the same DATABASE_NAME,
-       but the DATABASE_VERSION is different than the version of the database that exists on disk.
-       */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion != newVersion) {
-            // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRIMINAL_CODE);
-
-            onCreate(db);
-        }
-    }
-
-    /*
+    // TODO: work this in with version control
+     /*
    Insert a  user detail into database
    */
 
     public void insertSectionDetail(Section userData) {
 
-        SQLiteDatabase db = getWritableDatabase();
-
-        db.beginTransaction();
+        mDataBase.beginTransaction();
 
         try {
             ContentValues values = new ContentValues();
@@ -111,18 +159,20 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put(SECTION, userData.getSection());
             values.put(PINPOINT, userData.getPinpoint());
 
-            db.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
-            db.setTransactionSuccessful();
+            mDataBase.insertOrThrow(TABLE_CRIMINAL_CODE, null, values);
+            mDataBase.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
             Log.d(TAG, "Error while trying to add post to database");
         } finally {
 
-            db.endTransaction();
+            mDataBase.endTransaction();
         }
 
 
     }
+
+
 
    /*
    fetch all data from UserTable
@@ -134,8 +184,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE;
 
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
+        Cursor cursor = mDataBase.rawQuery(USER_DETAIL_SELECT_QUERY, null);
 
         try {
             if (cursor.moveToFirst()) {
@@ -176,8 +225,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // TODO: Display section 849
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE type = '0'";
 
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
+        Cursor cursor = mDataBase.rawQuery(USER_DETAIL_SELECT_QUERY, null);
 
         try {
             if (cursor.moveToFirst()) {

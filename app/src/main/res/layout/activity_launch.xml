@@ -54,7 +54,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:background="#605f33"
-            android:text="Export"
+            android:text="testDB"
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
 
@@ -64,7 +64,7 @@
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:background="#cfcd84"
-            android:text="Import"
+            android:text="null"
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
 

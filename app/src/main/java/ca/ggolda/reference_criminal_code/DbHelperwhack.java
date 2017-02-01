@@ -5,22 +5,22 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gcgol on 01/18/2017.
+ * Created by gcgol on 02/01/2017.
  */
 
-public class DbHelper extends SQLiteOpenHelper {
+public class DbHelperwhack extends SQLiteAssetHelper {
 
-    private static final String TAG = "DbHelper";
+    private String TAG = this.getClass().getName();
 
-    // Database Info
-    private static final String DATABASE_NAME = "CriminalCode";
+    private static final String DATABASE_NAME = "criminal_code";
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
@@ -33,68 +33,45 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SECTION = "section";
     private static final String PINPOINT = "pinpoint";
 
-    private static DbHelper mDbHelper;
+
+    public DbHelperwhack(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
 
-    public static synchronized DbHelper getInstance(Context context) {
+    //TODO: find out if activitymain really needs this
+    public static synchronized DbHelperwhack getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
 
-        if (mDbHelper == null) {
-            mDbHelper = new DbHelper(context.getApplicationContext());
-        }
+        DbHelperwhack mDbHelper = new DbHelperwhack(context.getApplicationContext());
+
         return mDbHelper;
     }
 
 
-    /**
-     * Constructor should be private to prevent direct instantiation.
-     * Make a call to the static method "getInstance()" instead.
-     */
-    private DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
-   /*
-    Called when the database is created for the FIRST time.
-    If a database already exists on disk with the same DATABASE_NAME, this method will NOT be called.
-    */
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-
-        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_CRIMINAL_CODE +
-                "(" +
-                _ID + " INTEGER PRIMARY KEY ," +
-                FULLTEXT + " TEXT, " +
-                TYPE + " TEXT, " +
-                SECTION + " TEXT, " +
-                PINPOINT + " TEXT" +
-                ")";
-        db.execSQL(CREATE_USERDETAIL_TABLE);
+    // TODO: use this query builder !
+//    public Cursor getEmployees() {
+//
+//        SQLiteDatabase db = getReadableDatabase();
+//        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+//
+//        String [] sqlSelect = {"0 _id", "FirstName", "LastName"};
+//        String sqlTables = "Employees";
+//
+//        qb.setTables(sqlTables);
+//        Cursor c = qb.query(db, sqlSelect, null, null,
+//                null, null, null);
+//
+//        c.moveToFirst();
+//        return c;
+//
+//    }
 
 
 
-    }
-
-
-    /*
-       Called when the database needs to be upgraded.
-       This method will only be called if a database already exists on disk with the same DATABASE_NAME,
-       but the DATABASE_VERSION is different than the version of the database that exists on disk.
-       */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion != newVersion) {
-            // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CRIMINAL_CODE);
-
-            onCreate(db);
-        }
-    }
-
-    /*
+    // TODO: work this in with version control
+     /*
    Insert a  user detail into database
    */
 
@@ -123,6 +100,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     }
+
+
 
    /*
    fetch all data from UserTable

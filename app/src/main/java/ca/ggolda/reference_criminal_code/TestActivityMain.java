@@ -3,8 +3,8 @@ package ca.ggolda.reference_criminal_code;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,11 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import java.io.IOException;
+
 /**
  * Created by gcgol on 01/18/2017.
  */
 
-public class ActivityMain extends AppCompatActivity {
+public class TestActivityMain extends AppCompatActivity {
 
     private ListView mListViewSections;
     private AdapterSection mAdapterSection;
@@ -35,7 +37,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private RelativeLayout layoutSearchbar;
 
-    DbHelper dbHelper;
+    TestDbHelper dbHelper;
 
     public static int partsVisible = 0;
 
@@ -44,16 +46,30 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbHelper = DbHelper.getInstance(getApplicationContext());
+
+        dbHelper = TestDbHelper.getInstance(getApplicationContext());
+
+        try {
+            dbHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dbHelper.openDataBase();
+
+//        Cursor testdata = mDbHelper.getTestData();
+//
+//        mDbHelper.close();
+
+
 
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
 
-        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllUser());
+        mAdapterSection = new AdapterSection(TestActivityMain.this, R.layout.card_section, dbHelper.getAllUser());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
         mListViewSections.setAdapter(mAdapterSection);
 
-        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
+        mAdapterHeading = new AdapterHeading(TestActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
         mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
         mListViewHeadings.setAdapter(mAdapterHeading);
 
