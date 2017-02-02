@@ -37,7 +37,7 @@ public class TestActivityMain extends AppCompatActivity {
 
     private RelativeLayout layoutSearchbar;
 
-    TestDbHelper dbHelper;
+    private TestDbHelper dbHelper;
 
     public static int partsVisible = 0;
 

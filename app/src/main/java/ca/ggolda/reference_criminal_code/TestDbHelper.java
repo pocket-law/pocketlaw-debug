@@ -28,6 +28,7 @@ public class TestDbHelper extends SQLiteOpenHelper
     private static String TAG = "TestDbHelper"; // Tag just for the LogCat window
 
 
+
     //destination path (location) of our database on device
     private static String DB_PATH = "";
     private static String DB_NAME ="CriminalCode";// Database name
@@ -45,6 +46,21 @@ public class TestDbHelper extends SQLiteOpenHelper
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;
+
+    private static TestDbHelper mDbHelper;
+
+
+    //TODO: find out if activitymain really needs this
+    public static synchronized TestDbHelper getInstance(Context context) {
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+
+        if (mDbHelper == null) {
+            mDbHelper = new TestDbHelper(context.getApplicationContext());
+        }
+        return mDbHelper;
+    }
+
 
     public TestDbHelper(Context context)
     {
@@ -123,15 +139,7 @@ public class TestDbHelper extends SQLiteOpenHelper
     }
 
 
-    //TODO: find out if activitymain really needs this
-    public static synchronized TestDbHelper getInstance(Context context) {
-        // Use the application context, which will ensure that you
-        // don't accidentally leak an Activity's context.
 
-        TestDbHelper mDbHelper = new TestDbHelper(context.getApplicationContext());
-
-        return mDbHelper;
-    }
 
 
     @Override
@@ -224,6 +232,7 @@ public class TestDbHelper extends SQLiteOpenHelper
 
         // TODO: Display section 849
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE type = '0'";
+
 
         Cursor cursor = mDataBase.rawQuery(USER_DETAIL_SELECT_QUERY, null);
 
