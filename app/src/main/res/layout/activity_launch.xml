@@ -49,7 +49,7 @@
             android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/btn_exp"
+            android:id="@+id/btn_imp"
             android:layout_width="200dp"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
@@ -59,12 +59,22 @@
             android:layout_margin="2dp"/>
 
         <Button
-            android:id="@+id/btn_imp"
+            android:id="@+id/btn_imp_two"
+            android:layout_width="200dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="20dp"
+            android:background="#605f33"
+            android:text="Imp"
+            android:textColor="#ffffff"
+            android:layout_margin="2dp"/>
+
+        <Button
+            android:id="@+id/btn_exp"
             android:layout_width="200dp"
             android:layout_height="64dp"
             android:layout_marginTop="20dp"
             android:background="#cfcd84"
-            android:text="null"
+            android:text="Exp"
             android:textColor="#ffffff"
             android:layout_margin="2dp"/>
 
