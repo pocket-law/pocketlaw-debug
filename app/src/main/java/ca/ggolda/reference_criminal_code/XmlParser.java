@@ -405,14 +405,13 @@ public class XmlParser {
 
                 Log.e("XML", "Subsection Subaragraph");
 
-                String subpara_section = null;
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
-                    subpara_section = "(" + code[7] + ")";
+                    pinpoint = "(" + code[7] + ")";
 
                 }
 
-                readSubsectionSubParagraph(parser, subpara_section, pinpoint);
+                readSubsectionSubParagraph(parser, section, pinpoint);
 
             } else if (parser.getName().equals("ContinuedParagraph")) {
 
@@ -562,7 +561,7 @@ public class XmlParser {
         }
     }
 
-    // For Subsection SubParagraph text values.
+    // For Subsection Continued Subsection text values.
     private void readContinuedSubsectionText(XmlPullParser parser, String section, String pinpoint) throws
             IOException, XmlPullParserException {
 
