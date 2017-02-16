@@ -2,7 +2,6 @@ package ca.ggolda.reference_criminal_code;
 
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +25,7 @@ import java.nio.channels.FileChannel;
 
 public class ActivityDebug extends AppCompatActivity {
 
-    Button btn_next, btn_db, btn_exp, btn_imp_two;
+    Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
 
 
@@ -41,6 +41,7 @@ public class ActivityDebug extends AppCompatActivity {
         btn_db = (Button) findViewById(R.id.btn_view);
         btn_imp_two = (Button) findViewById(R.id.btn_imp_two);
         btn_exp = (Button) findViewById(R.id.btn_exp);
+        btn_init = (Button) findViewById(R.id.btn_init);
 
 
         // add to db
@@ -103,6 +104,15 @@ public class ActivityDebug extends AppCompatActivity {
             }
         });
 
+        // skip to db
+        btn_init.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityDebug.this, ActivityImport.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -136,31 +146,46 @@ public class ActivityDebug extends AppCompatActivity {
     }
 
     private void importDB() throws IOException {
-        //Open your local db as the input stream
+
+        //Open your assets db as the input stream
         InputStream in = getApplicationContext().getAssets().open("CriminalCode");
 
-        String destPath = "/data/data/" + "ca.ggolda.reference_criminal_code" + "/databases/CriminalCode";
+        String destPath = getApplicationContext().getDatabasePath("CriminalCode").getPath();
 
         // Create empty file at destination path
-        // TODO: can in future put a check here
         File f = new File(destPath);
 
         //Open the empty db as the output stream
-        OutputStream out = new FileOutputStream(destPath);
+        try {
 
-        Log.e("EEEP", "trying... dfafa 2");
+            Log.e("EEEP", "inside import try");
 
-        byte[] buffer = new byte[1024];
-        int length;
-        while ((length = in.read(buffer)) > 0) {
-            out.write(buffer, 0, length);
+            OutputStream out = new FileOutputStream(new File(destPath));
+
+            Log.e("EEEP", "trying... dfafa 2");
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+            in.close();
+            out.close();
+
+            Toast.makeText(ActivityDebug.this, "DB imported!", Toast.LENGTH_SHORT).show();
+
+            Log.e("EEEP", "horray... 7");
+
+
+        } catch (FileNotFoundException e) {
+            Log.e("EEEP", "Filenotfoound");
         }
-        in.close();
-        out.close();
 
-        Toast.makeText(ActivityDebug.this, "DB imported!", Toast.LENGTH_SHORT).show();
 
-        Log.e("EEEP", "horray... 7");
+
+
+
+
     }
 
 }

@@ -30,6 +30,8 @@ public class ActivityMain extends AppCompatActivity {
     private ImageView mBtnSearchOpen;
     private EditText mEdtSearch;
 
+    private LinearLayout loadCover;
+
     private ImageView mBtnParts;
     public static LinearLayout mParts;
 
@@ -49,7 +51,7 @@ public class ActivityMain extends AppCompatActivity {
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
 
-        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllUser());
+        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
         mListViewSections.setAdapter(mAdapterSection);
 
@@ -62,6 +64,7 @@ public class ActivityMain extends AppCompatActivity {
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
 
+        loadCover = (LinearLayout) findViewById(R.id.load_cover);
 
 
 
@@ -94,6 +97,18 @@ public class ActivityMain extends AppCompatActivity {
                 layoutSearchbar.setVisibility(View.GONE);
             }
         });
+
+
+        // If the no sections in database, import via ActivityImport
+        // TODO: figure out why activity main must be accessed before the import func in ActivityImport / ActivityDebug work
+        if (dbHelper.getAllSection().size() < 1) {
+            Intent intent = new Intent(ActivityMain.this, ActivityImport.class);
+            startActivity(intent);
+        } else {
+
+            //TODO: fix, still loading via white screen
+            loadCover.setVisibility(View.GONE);
+        }
 
 
 

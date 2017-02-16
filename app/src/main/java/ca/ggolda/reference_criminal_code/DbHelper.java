@@ -128,7 +128,7 @@ public class DbHelper extends SQLiteOpenHelper {
    fetch all data from UserTable
     */
 
-    public List<Section> getAllUser() {
+    public List<Section> getAllSection() {
 
         List<Section> sectionDetail = new ArrayList<>();
 
