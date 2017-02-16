@@ -2,6 +2,7 @@ package ca.ggolda.reference_criminal_code;
 
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 
 /**
@@ -22,23 +25,20 @@ import java.nio.channels.FileChannel;
 
 public class ActivityDebug extends AppCompatActivity {
 
-    Button btn_next, btn_db, btn_imp, btn_exp, btn_imp_two;
+    Button btn_next, btn_db, btn_exp, btn_imp_two;
     DbHelper dbHelper;
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch);
+        setContentView(R.layout.activity_debug);
 
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
         btn_next = (Button) findViewById(R.id.btn_add);
-        btn_db = (Button) findViewById(R.id.btn_db);
-        btn_imp = (Button) findViewById(R.id.btn_imp);
+        btn_db = (Button) findViewById(R.id.btn_view);
         btn_imp_two = (Button) findViewById(R.id.btn_imp_two);
         btn_exp = (Button) findViewById(R.id.btn_exp);
 
@@ -54,7 +54,7 @@ public class ActivityDebug extends AppCompatActivity {
 //                    dbHelper.insertSectionDetail(userData);
 //                }
 
-                Intent intent=new Intent(ActivityDebug.this, ActivityPopulate.class);
+                Intent intent = new Intent(ActivityDebug.this, ActivityPopulate.class);
                 startActivity(intent);
             }
         });
@@ -64,20 +64,10 @@ public class ActivityDebug extends AppCompatActivity {
         btn_db.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityDebug.this,ActivityMain.class);
+                Intent intent = new Intent(ActivityDebug.this, ActivityMain.class);
                 startActivity(intent);
             }
         });
-
-        // run imported db
-        btn_imp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityDebug.this, TestActivityMain.class);
-                startActivity(intent);
-            }
-        });
-
 
 
         // export db
@@ -99,27 +89,31 @@ public class ActivityDebug extends AppCompatActivity {
         btn_imp_two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("EEEP","trying... 0");
+                Log.e("EEEP", "trying... 0");
 
                 Toast.makeText(ActivityDebug.this, "CLICKED!", Toast.LENGTH_SHORT).show();
 
-                importDB();
+                try {
+                    importDB();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-                Log.e("EEEP","trying... 999");
+                Log.e("EEEP", "trying... 999");
             }
         });
 
 
-
     }
 
-    private void exportDB(){
+    private void exportDB() {
 
+        // SD card
         File sd = Environment.getExternalStorageDirectory();
         File data = Environment.getDataDirectory();
-        FileChannel source=null;
-        FileChannel destination=null;
-        String currentDBPath = "/data/"+ "ca.ggolda.reference_criminal_code" +"/databases/CriminalCode";
+        FileChannel source = null;
+        FileChannel destination = null;
+        String currentDBPath = "/data/" + "ca.ggolda.reference_criminal_code" + "/databases/CriminalCode";
         String backupDBPath = "/tmp/CriminalCode";
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
@@ -136,47 +130,37 @@ public class ActivityDebug extends AppCompatActivity {
 
             Toast.makeText(ActivityDebug.this, "DB Exported!", Toast.LENGTH_LONG).show();
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void importDB() throws IOException {
+        //Open your local db as the input stream
+        InputStream in = getApplicationContext().getAssets().open("CriminalCode");
 
-    private void importDB(){
+        String destPath = "/data/data/" + "ca.ggolda.reference_criminal_code" + "/databases/CriminalCode";
 
-        Log.e("EEEP","trying... 1");
+        // Create empty file at destination path
+        // TODO: can in future put a check here
+        File f = new File(destPath);
 
-        File sd = Environment.getExternalStorageDirectory();
-        File data = Environment.getDataDirectory();
-        FileChannel source=null;
-        FileChannel destination=null;
-        String currentDBPath = "/data/"+ "ca.ggolda.reference_criminal_code" +"/databases/CriminalCode";
-        String backupDBPath = "/tmp/CriminalCode";
-        File backupDB = new File(data, currentDBPath);
-        File currentDB = new File(sd, backupDBPath);
-        try {
+        //Open the empty db as the output stream
+        OutputStream out = new FileOutputStream(destPath);
 
-            Log.e("EEEP","trying... 2");
+        Log.e("EEEP", "trying... dfafa 2");
 
-            source = new FileInputStream(currentDB).getChannel();
-
-            Log.e("EEEP","source.size()" + source.size());
-
-            destination = new FileOutputStream(backupDB).getChannel();
-
-            destination.transferFrom(source, 0, source.size());
-
-            Log.e("EEEP","destination.size()" + destination.size());
-
-            source.close();
-            destination.close();
-
-            Log.e("EEEP","boom... 3");
-
-            Toast.makeText(ActivityDebug.this, "DB Imported!", Toast.LENGTH_LONG).show();
-
-        } catch(IOException e) {
-            e.printStackTrace();
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = in.read(buffer)) > 0) {
+            out.write(buffer, 0, length);
         }
+        in.close();
+        out.close();
+
+        Toast.makeText(ActivityDebug.this, "DB imported!", Toast.LENGTH_SHORT).show();
+
+        Log.e("EEEP", "horray... 7");
     }
+
 }
