@@ -21,21 +21,21 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private Context mContext;
 
     // Layouts
-    LinearLayout subsectionParagraphLayout;
-    LinearLayout subMarginalLayout;
-    LinearLayout marginalLayout;
-    LinearLayout sectionLayout;
-    LinearLayout subSectionLayout;
-    LinearLayout paragraphLayout;
-    LinearLayout headingLayout;
-    LinearLayout subparagraphLayout;
-    LinearLayout subsectionSubparagraphLayout;
-    LinearLayout definedNameLayout;
-    LinearLayout definitionTextLayout;
-    LinearLayout historicalLayout;
-    LinearLayout continuedParagraphLayout;
-    LinearLayout continuedSubsectionParagraphLayout;
-    LinearLayout continuedSubsectionLayout;
+    private LinearLayout subsectionParagraphLayout;
+    private LinearLayout subMarginalLayout;
+    private LinearLayout marginalLayout;
+    private LinearLayout sectionLayout;
+    private LinearLayout subSectionLayout;
+    private LinearLayout paragraphLayout;
+    private LinearLayout headingLayout;
+    private LinearLayout subparagraphLayout;
+    private LinearLayout subsectionSubparagraphLayout;
+    private LinearLayout definedNameLayout;
+    private LinearLayout definitionTextLayout;
+    private LinearLayout historicalLayout;
+    private LinearLayout continuedParagraphLayout;
+    private LinearLayout continuedSubsectionParagraphLayout;
+    private LinearLayout continuedSubsectionLayout;
 
 
 
@@ -296,5 +296,6 @@ public class AdapterSection extends ArrayAdapter<Section> {
         //TODO: consider nulling all textviews as well
 
     }
+
 
 }

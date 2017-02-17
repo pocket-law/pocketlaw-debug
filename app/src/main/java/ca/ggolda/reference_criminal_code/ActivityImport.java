@@ -13,13 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-
-
 /**
  * Created by gcgol on 01/10/2017.
  */
 
 public class ActivityImport extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,7 @@ public class ActivityImport extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -49,7 +49,6 @@ public class ActivityImport extends AppCompatActivity {
             Intent intent = new Intent(ActivityImport.this, ActivityMain.class);
             startActivity(intent);
         }
-
 
     }
 
@@ -84,5 +83,12 @@ public class ActivityImport extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        finish();
+    }
 
 }

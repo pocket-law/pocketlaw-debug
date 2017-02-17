@@ -81,8 +81,10 @@
                     android:background="@color/brandRed"
                     android:elevation="8dp">
 
+                    <!-- TODO: note you've set this invis! -->
                     <ImageView
                         android:id="@+id/btn_search_open"
+                        android:visibility="gone"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_alignParentRight="true"

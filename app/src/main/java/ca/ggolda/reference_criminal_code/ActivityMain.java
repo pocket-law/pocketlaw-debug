@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -23,8 +24,8 @@ public class ActivityMain extends AppCompatActivity {
     private ListView mListViewSections;
     private AdapterSection mAdapterSection;
 
-    private AdapterHeading mAdapterHeading;
     private ListView mListViewHeadings;
+    private AdapterHeading mAdapterHeading;
 
     private ImageView mBtnSearch;
     private ImageView mBtnSearchOpen;
@@ -48,9 +49,6 @@ public class ActivityMain extends AppCompatActivity {
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
 
-        mBtnParts = (ImageView) findViewById(R.id.btn_parts);
-        mParts = (LinearLayout) findViewById(R.id.parts);
-
         mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
         mListViewSections.setAdapter(mAdapterSection);
@@ -59,24 +57,26 @@ public class ActivityMain extends AppCompatActivity {
         mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
         mListViewHeadings.setAdapter(mAdapterHeading);
 
+        mBtnParts = (ImageView) findViewById(R.id.btn_parts);
+        mParts = (LinearLayout) findViewById(R.id.parts);
+
         layoutSearchbar = (RelativeLayout) findViewById(R.id.lyt_search);
         mBtnSearchOpen = (ImageView) findViewById(R.id.btn_search_open);
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
-
         loadCover = (LinearLayout) findViewById(R.id.load_cover);
 
 
-
-        // bring searchbar up
+        // bring parts up or down
         mBtnParts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 partsHideShow();
             }
         });
 
-        // bring parts up or down
+        // bring searchbar up
         mBtnSearchOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,9 +109,6 @@ public class ActivityMain extends AppCompatActivity {
             //TODO: fix, still loading via white screen
             loadCover.setVisibility(View.GONE);
         }
-
-
-
 
     }
 
@@ -146,8 +143,7 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, ActivityDebug.class);
-        startActivity(intent);
+
         finish();
     }
 

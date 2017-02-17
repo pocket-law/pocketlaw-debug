@@ -49,12 +49,6 @@ public class ActivityDebug extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // tODO: something here where it goes straight to DB if already populated
-//                if (!et_fulltext.getText().toString().isEmpty()) {
-//                    Section userData = new Section(0, "", "", et_fulltext.getText().toString());
-//                    dbHelper.insertSectionDetail(userData);
-//                }
-
                 Intent intent = new Intent(ActivityDebug.this, ActivityPopulate.class);
                 startActivity(intent);
             }
