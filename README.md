@@ -7,7 +7,7 @@
 
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/phone0005.jpg" width="144">
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0004.jpg" width="160">
-<img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0003.jpg" width="144">
+<img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0003.jpg" width="160">
 
 ## Todo
 * Search
