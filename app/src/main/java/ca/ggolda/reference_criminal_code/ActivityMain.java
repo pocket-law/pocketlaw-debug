@@ -95,6 +95,16 @@ public class ActivityMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layoutSearchbar.setVisibility(View.GONE);
+
+                String query = mEdtSearch.getText().toString();
+
+                Log.e("EEEP", ""+query);
+
+                if(!query.equals("")) {
+                    mAdapterSection.clear();
+                    mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getSearchResults(query));
+                    mListViewSections.setAdapter(mAdapterSection);
+                }
             }
         });
 
@@ -107,6 +117,7 @@ public class ActivityMain extends AppCompatActivity {
         } else {
 
             //TODO: fix, still loading via white screen
+            // TODO: maybe remove loadCover, vis already set gone in XML as it doesn't seem to work
             loadCover.setVisibility(View.GONE);
         }
 

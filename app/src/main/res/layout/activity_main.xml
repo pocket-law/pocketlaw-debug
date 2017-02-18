@@ -75,94 +75,99 @@
                 android:layout_height="wrap_content">
 
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <LinearLayout
                     android:background="@color/brandRed"
-                    android:elevation="8dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <!-- TODO: note you've set this invis! -->
+
                     <ImageView
-                        android:id="@+id/btn_search_open"
-                        android:visibility="gone"
+                        android:id="@+id/btn_parts"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="4dp"
-                        android:padding="6dp"
-                        android:src="@drawable/search_white" />
-
-
-                    <RelativeLayout
-                        android:id="@+id/lyt_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:visibility="gone"
-                        tools:visibility="visible">
-
-                        <ImageView
-                            android:layout_width="248dp"
-                            android:layout_height="60dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="8dp"
-                            android:src="@drawable/search_bubble" />
-
-                        <EditText
-                            android:id="@+id/edt_search"
-                            android:layout_width="168dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginBottom="12dp"
-                            android:layout_toLeftOf="@+id/btn_search"
-                            android:backgroundTint="#FFFFFF"
-                            android:hint="search..."
-                            android:lines="1"
-                            android:maxLines="1"
-                            android:paddingBottom="8dp"
-                            android:paddingTop="12dp"
-                            android:textColor="#aaffffff"
-                            android:textColorHint="#f2f0f0"
-                            android:textSize="24sp"
-                            android:textStyle="italic" />
-
-                        <ImageView
-                            android:id="@+id/btn_search"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="4dp"
-                            android:padding="6dp"
-                            android:src="@drawable/search_white" />
-
-                    </RelativeLayout>
+                        android:padding="8dp"
+                        android:src="@drawable/menu_white" />
 
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:id="@+id/view"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/brandRed"
+                            android:elevation="8dp">
 
 
-                        <ImageView
-                            android:id="@+id/btn_parts"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:padding="8dp"
-                            android:src="@drawable/menu_white" />
+                            <!-- TODO: note you've set this visible! -->
+                            <ImageView
+                                android:id="@+id/btn_search_open"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="4dp"
+                                android:padding="6dp"
+                                android:src="@drawable/search_white"
+                                android:visibility="visible" />
 
 
-                        <View
-                            android:id="@+id/view"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                            <RelativeLayout
+                                android:id="@+id/lyt_search"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                tools:visibility="visible">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="8dp"
+                                    android:src="@drawable/search_bubble" />
+
+                                <EditText
+                                    android:id="@+id/edt_search"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginBottom="12dp"
+                                    android:layout_toLeftOf="@+id/btn_search"
+                                    android:backgroundTint="#FFFFFF"
+                                    android:hint="search..."
+                                    android:lines="1"
+                                    android:maxLines="1"
+                                    android:paddingBottom="8dp"
+                                    android:paddingTop="12dp"
+                                    android:layout_marginLeft="8dp"
+                                    android:textColor="#aaffffff"
+                                    android:textColorHint="#f2f0f0"
+                                    android:textSize="24sp"
+                                    android:textStyle="italic" />
+
+                                <ImageView
+                                    android:id="@+id/btn_search"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="4dp"
+                                    android:padding="6dp"
+                                    android:src="@drawable/search_white" />
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
 
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
             </RelativeLayout>
@@ -274,13 +279,14 @@
 
 
     <LinearLayout
+        android:id="@+id/load_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/brandRed"
-        android:id="@+id/load_cover"
-        tools:visibility="gone"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="gone">
 
 
         <TextView
@@ -294,16 +300,16 @@
 
 
         <TextView
-            android:layout_marginBottom="-8dp"
-            android:layout_marginTop="-4dp"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="-8dp"
+            android:layout_marginTop="-4dp"
             android:text="of"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
-            android:textStyle="bold"
-            android:id="@+id/textView3" />
+            android:textStyle="bold" />
 
 
         <TextView
@@ -322,31 +328,31 @@
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="160dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="40dp"
                 android:src="@drawable/leaf"
-                android:tint="@color/brandBlue"
-                android:layout_alignParentTop="true" />
+                android:tint="@color/brandBlue" />
 
             <ProgressBar
-                android:layout_centerInParent="true"
-                android:paddingTop="20dp"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_margin="40dp" />
+                android:layout_centerInParent="true"
+                android:layout_margin="40dp"
+                android:paddingTop="20dp" />
 
         </RelativeLayout>
 
         <TextView
-            android:layout_marginTop="16dp"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Populating database..."
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
-            android:textStyle="bold"
-            android:id="@+id/textView4" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

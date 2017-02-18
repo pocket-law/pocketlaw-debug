@@ -75,7 +75,10 @@ public class ActivityImport extends AppCompatActivity {
             in.close();
             out.close();
 
+            Log.e("DB Import", "imported");
+
             checkImportStatus();
+
 
         } catch (FileNotFoundException e) {
             Log.e("DB Import", "File not foound" + e);

@@ -125,7 +125,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
    /*
-   fetch all data from UserTable
+   fetch all Sections from database
     */
 
     public List<Section> getAllSection() {
@@ -166,7 +166,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
      /*
-   fetch all headings from UserTable
+   fetch all Headings from database
     */
 
     public List<Section> getAllHeading() {
@@ -216,5 +216,65 @@ public class DbHelper extends SQLiteOpenHelper {
         return sectionDetail;
 
     }
+
+
+   /*
+   fetch search results from database
+    */
+
+    public List<Section> getSearchResults(String query) {
+
+        List<Section> sectionDetail = new ArrayList<>();
+
+        // TODO: there's gotta be a cleaner way than using both the list and arraylist...
+
+        String[] queryList = query.split(" ");
+
+        // Add words from Query List to Query Array, and pad blanks at end if less than 6 words
+        ArrayList queryArray = new ArrayList<>();
+        for (int i = 0; i < 6; i++){
+            if(i < queryList.length) {
+                queryArray.add(queryList[i]);
+            } else {
+                queryArray.add("");
+            }
+        }
+
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_CRIMINAL_CODE + " WHERE "
+                + FULLTEXT + " LIKE '%" + queryArray.get(0) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(1) +"%' AND "
+                + FULLTEXT + " LIKE '%" + queryArray.get(2) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(3) +"%' AND "
+                + FULLTEXT + " LIKE '%" + queryArray.get(4) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(5) +"%'";
+
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
+
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    Section sectionData = new Section(1, -777, "dbhelper", "dbhelper", "dbhelper");
+                    sectionData.setID(Integer.valueOf(cursor.getString(cursor.getColumnIndex(_ID))));
+                    sectionData.setFulltext(cursor.getString(cursor.getColumnIndex(FULLTEXT)));
+                    sectionData.setType(Integer.valueOf(cursor.getString(cursor.getColumnIndex(TYPE))));
+                    sectionData.setSection(cursor.getString(cursor.getColumnIndex(SECTION)));
+                    sectionData.setPinpoint(cursor.getString(cursor.getColumnIndex(PINPOINT)));
+
+                    sectionDetail.add(sectionData);
+
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return sectionDetail;
+
+    }
+
 
 }
