@@ -1,10 +1,12 @@
 package ca.ggolda.reference_criminal_code;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
 
 /**
  * Created by gcgol on 01/18/2017.
@@ -77,6 +80,7 @@ public class ActivityMain extends AppCompatActivity {
             public void onClick(View view) {
 
                 partsHideShow();
+
             }
         });
 
@@ -88,26 +92,37 @@ public class ActivityMain extends AppCompatActivity {
 
                 // Kinda hackish, get keyboard and edittext focus onclick
                 mEdtSearch.requestFocus();
-                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(mEdtSearch,0);
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.showSoftInput(mEdtSearch, 0);
             }
         });
 
-        // bring searchbar down
-        // TODO: also search
+
+        // Search on enter press
+        mEdtSearch.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+                //If the keyevent is a key-down event on the "enter" button
+                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                    hideSoftKeyboard(ActivityMain.this);
+
+                    actionSearch();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        // Search on search button click
         mBtnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                layoutSearchbar.setVisibility(View.GONE);
 
-                String query = mEdtSearch.getText().toString();
+                hideSoftKeyboard(ActivityMain.this);
 
-                if(!query.equals("")) {
-                    mListViewQuery.setVisibility(View.VISIBLE);
+                actionSearch();
 
-                    mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
-                    mListViewQuery.setAdapter(mAdapterQuery);
-                }
             }
         });
 
@@ -126,6 +141,24 @@ public class ActivityMain extends AppCompatActivity {
 
     }
 
+
+    private void actionSearch() {
+        layoutSearchbar.setVisibility(View.GONE);
+        String query = mEdtSearch.getText().toString();
+
+        if (!query.equals("")) {
+            mListViewQuery.setVisibility(View.VISIBLE);
+
+            mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
+            mListViewQuery.setAdapter(mAdapterQuery);
+        }
+
+        mEdtSearch.setText("");
+
+        // Hide headings listview (inside mParts linearlayout) if it's up
+        mParts.setVisibility(View.GONE);
+    }
+
     public static void partsHideShow() {
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
@@ -136,6 +169,13 @@ public class ActivityMain extends AppCompatActivity {
         }
     }
 
+    private void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
 
 
     // TODO: determine why this is here....
@@ -143,26 +183,19 @@ public class ActivityMain extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View v = getCurrentFocus();
-            if ( v instanceof EditText) {
+            if (v instanceof EditText) {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
             }
         }
-        return super.dispatchTouchEvent( event );
+        return super.dispatchTouchEvent(event);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
 
-        //TODO: if TOC or Query ListView are up, then close those instead of app
-
-        finish();
-    }
 
 }

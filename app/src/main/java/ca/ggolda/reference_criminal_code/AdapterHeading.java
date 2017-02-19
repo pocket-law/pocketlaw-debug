@@ -22,6 +22,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
     private Context mContext;
     private ListView listviewSection;
+    private ListView listviewQuery;
     private WebView webView;
 
 
@@ -44,8 +45,9 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         TextView headingOne = (TextView) convertView.findViewById(R.id.heading);
         TextView sectionOne = (TextView) convertView.findViewById(R.id.section);
 
-        // Get listView and webView from main activity
+        // Get listViews and webView from main activity
         listviewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);
+        listviewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
         webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
 
         // Set section and heading text
@@ -60,6 +62,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    listviewQuery.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     listviewSection.setVisibility(View.VISIBLE);
                     // Set section listview on basis of TOC selection
@@ -81,6 +84,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
+                    listviewQuery.setVisibility(View.GONE);
+
                     webView.setVisibility(View.GONE);
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
@@ -93,6 +98,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         }
 
         if (current.getPinpoint().equals("level3")) {
+
+            listviewQuery.setVisibility(View.GONE);
             // Set section listview on basis of TOC selection
             listviewSection.setVisibility(View.VISIBLE);
 
@@ -121,6 +128,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
+                    listviewQuery.setVisibility(View.GONE);
+
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
                     webView.loadUrl("file:///android_res/raw/schedules.html");
@@ -137,6 +146,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
@@ -155,6 +166,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
+                    listviewQuery.setVisibility(View.GONE);
+
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
@@ -172,6 +185,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);

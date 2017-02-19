@@ -141,6 +141,7 @@
                                     android:backgroundTint="#FFFFFF"
                                     android:hint="search..."
                                     android:lines="1"
+                                    android:inputType="text"
                                     android:maxLines="1"
                                     android:paddingBottom="8dp"
                                     android:paddingTop="12dp"
