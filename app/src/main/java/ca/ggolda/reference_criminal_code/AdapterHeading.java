@@ -183,9 +183,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
         }
 
-
         return convertView;
-
 
     }
 

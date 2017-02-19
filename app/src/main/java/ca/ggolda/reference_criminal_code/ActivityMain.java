@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,6 +25,9 @@ public class ActivityMain extends AppCompatActivity {
 
     private ListView mListViewHeadings;
     private AdapterHeading mAdapterHeading;
+
+    private ListView mListViewQuery;
+    private AdapterQuery mAdapterQuery;
 
     private ImageView mBtnSearch;
     private ImageView mBtnSearchOpen;
@@ -56,6 +58,8 @@ public class ActivityMain extends AppCompatActivity {
         mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
         mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
         mListViewHeadings.setAdapter(mAdapterHeading);
+
+        mListViewQuery = (ListView) findViewById(R.id.listview_query);
 
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
@@ -98,12 +102,11 @@ public class ActivityMain extends AppCompatActivity {
 
                 String query = mEdtSearch.getText().toString();
 
-                Log.e("EEEP", ""+query);
-
                 if(!query.equals("")) {
-                    mAdapterSection.clear();
-                    mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getSearchResults(query));
-                    mListViewSections.setAdapter(mAdapterSection);
+                    mListViewQuery.setVisibility(View.VISIBLE);
+
+                    mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
+                    mListViewQuery.setAdapter(mAdapterQuery);
                 }
             }
         });
@@ -134,6 +137,8 @@ public class ActivityMain extends AppCompatActivity {
     }
 
 
+
+    // TODO: determine why this is here....
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -154,6 +159,8 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+        //TODO: if TOC or Query ListView are up, then close those instead of app
 
         finish();
     }
