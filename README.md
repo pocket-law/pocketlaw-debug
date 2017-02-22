@@ -10,7 +10,6 @@
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0003.jpg" width="160">
 
 ## Todo
-* Search
 * Bookmarks
 * Comments
 * Options like adjustable text-size
