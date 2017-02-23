@@ -72,9 +72,7 @@ public class ActivityDebug extends AppCompatActivity {
 
                 Toast.makeText(ActivityDebug.this, "CLICKED!", Toast.LENGTH_SHORT).show();
 
-
                 exportDB();
-
 
             }
         });
@@ -174,11 +172,6 @@ public class ActivityDebug extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             Log.e("EEEP", "Filenotfoound");
         }
-
-
-
-
-
 
     }
 
