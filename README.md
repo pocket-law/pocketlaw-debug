@@ -18,8 +18,6 @@
 * Comments
 * Options like adjustable text-size
 
-### Issues
-* French word (Marginal Note) shows for Section Definitions but not Subsection Definitions
 
 
 
