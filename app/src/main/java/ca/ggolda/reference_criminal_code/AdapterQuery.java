@@ -6,11 +6,10 @@ package ca.ggolda.reference_criminal_code;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,6 +26,7 @@ public class AdapterQuery extends ArrayAdapter<Section> {
 
     private ListView listViewQuery;
     private ListView listViewSection;
+    private WebView webView;
 
 
     public AdapterQuery(Context context, int resource, List<Section> objects) {
@@ -52,9 +52,10 @@ public class AdapterQuery extends ArrayAdapter<Section> {
         resultLocation.setText(current.getSection());
         resultText.setText(current.getFulltext());
 
-        // Get section and query listViews from main activity
+        // Get section and query listViews and webview from main activity
         listViewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);
         listViewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
+        webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
 
 
         // TODO: move to corresponding provision on click of query result
@@ -63,9 +64,11 @@ public class AdapterQuery extends ArrayAdapter<Section> {
             public void onClick(View v) {
 
                 // Set section listview on basis of TOC selection
+                listViewSection.setVisibility(View.VISIBLE);
                 listViewSection.setSelection(current.getID() - 1);
 
                 listViewQuery.setVisibility(View.GONE);
+                webView.setVisibility(View.GONE);
 
             }
         });
