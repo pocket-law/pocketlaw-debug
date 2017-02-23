@@ -239,6 +239,14 @@ public class XmlParser {
 
                 readSubMarginalText(parser, section, pinpoint);
 
+            } else if (parser.getName().equals("Definition")) {
+
+                //readDefinition(parser, section, pinpoint);
+
+                //TODO: remove below
+                Log.e("readSubsection", "See readSubsection for definition parse there");
+                skip(parser);
+
             } else if (parser.getName().equals("Paragraph")) {
 
                 if ((parser.getAttributeValue(null, "Code")) != null) {
@@ -301,7 +309,7 @@ public class XmlParser {
 
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
-                    pinpoint = "(" + code[5] + ")";
+                    pinpoint = "(" + code[(code.length - 1)] + ")";
                 }
 
                 readDefinitionParagraph(parser, section, pinpoint);
@@ -802,12 +810,15 @@ public class XmlParser {
 
         String text = parser.getText();
 
+        // Skip tags within the marginal note, grab only text
+        // TODO: consider a diff approach
+        if (text != null) {
 
-        Section resultObject = new Section(10, pinpoint, section, text);
-        dbHelper.insertSectionDetail(resultObject);
+            Section resultObject = new Section(10, pinpoint, section, text);
+            dbHelper.insertSectionDetail(resultObject);
 
-        Log.e("XML", "db add Definition Marginal Note (  10  , " + pinpoint + section + " " + text + " )");
-
+            Log.e("XML", "db add Definition Marginal Note (  10  , " + pinpoint + section + " " + text + " )");
+        }
 
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
