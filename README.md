@@ -10,8 +10,6 @@
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/phone0007.jpg" width="144">
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/phone0006.jpg" width="144">
 
-<br>
-
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0004.jpg" width="160">
 <img src="https://github.com/simplegr33n/android-reference-criminal-code/blob/master/screenshots/tablet0003.jpg" width="160">
 
