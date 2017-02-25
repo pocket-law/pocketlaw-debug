@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 /**
@@ -98,11 +100,25 @@ public class ActivityMain extends AppCompatActivity {
         });
 
 
+//
+//        mEdtSearch.setOnKeyListener(new View.OnKeyListener() {
+//            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+//                //If the keyevent is a key-down event on the "enter" button
+//                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//
+//
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+
         // Search on enter press
-        mEdtSearch.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
-                //If the keyevent is a key-down event on the "enter" button
-                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+        mEdtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
 
                     hideSoftKeyboard(ActivityMain.this);
 
@@ -113,6 +129,8 @@ public class ActivityMain extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
         // Search on search button click
         mBtnSearch.setOnClickListener(new View.OnClickListener() {

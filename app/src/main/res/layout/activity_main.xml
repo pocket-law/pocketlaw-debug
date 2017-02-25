@@ -131,6 +131,7 @@
                                     android:src="@drawable/search_bubble" />
 
                                 <EditText
+                                    android:imeOptions="actionSearch"
                                     android:id="@+id/edt_search"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
