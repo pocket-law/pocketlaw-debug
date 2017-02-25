@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,15 +36,15 @@ public class ActivityMain extends AppCompatActivity {
     private AdapterQuery mAdapterQuery;
 
     private ImageView mBtnSearch;
-    private ImageView mBtnSearchOpen;
     private EditText mEdtSearch;
+    private TextView mTotalResults;
 
     private LinearLayout loadCover;
 
     private ImageView mBtnParts;
     public static LinearLayout mParts;
 
-    private RelativeLayout layoutSearchbar;
+    private String LAST_SEARCH = "";
 
     DbHelper dbHelper;
 
@@ -69,9 +70,10 @@ public class ActivityMain extends AppCompatActivity {
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
 
-        layoutSearchbar = (RelativeLayout) findViewById(R.id.lyt_search);
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
+        mTotalResults = (TextView) findViewById(R.id.total_results);
+
         loadCover = (LinearLayout) findViewById(R.id.load_cover);
 
 
@@ -103,16 +105,25 @@ public class ActivityMain extends AppCompatActivity {
         });
 
 
-
         // Search on search button click
         mBtnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                hideSoftKeyboard(ActivityMain.this);
+                mEdtSearch.requestFocus();
 
-                actionSearch();
+                //TODO: this is not a perfect solution to returning focus
+                if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH))) {
+                    hideSoftKeyboard(ActivityMain.this);
+                    actionSearch();
 
+                } else {
+
+                    // TODO: Kinda hackish, get keyboard and edittext focus onclick
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.showSoftInput(mEdtSearch, 0);
+                }
             }
         });
 
@@ -133,8 +144,10 @@ public class ActivityMain extends AppCompatActivity {
 
 
     private void actionSearch() {
-      //  layoutSearchbar.setVisibility(View.GONE);
+        //  layoutSearchbar.setVisibility(View.GONE);
         String query = mEdtSearch.getText().toString();
+
+        LAST_SEARCH = query;
 
         if (!query.equals("")) {
             mListViewQuery.setVisibility(View.VISIBLE);
@@ -143,7 +156,15 @@ public class ActivityMain extends AppCompatActivity {
             mListViewQuery.setAdapter(mAdapterQuery);
         }
 
-        mEdtSearch.setText("");
+        if (mAdapterQuery.getCount() > 0) {
+            mTotalResults.setText("" + mAdapterQuery.getCount() + " Results");
+        } else {
+            mTotalResults.setText("No Results");
+        }
+
+        // TODO: maybe don't remove the text here
+        // keeping for now for mBtnSearch onClick if statement's sake
+        //mEdtSearch.setText("");
 
         // Hide headings listview (inside mParts linearlayout) if it's up
         mParts.setVisibility(View.GONE);
@@ -185,7 +206,6 @@ public class ActivityMain extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(event);
     }
-
 
 
 }
