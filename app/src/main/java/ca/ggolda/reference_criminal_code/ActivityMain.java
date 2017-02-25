@@ -70,7 +70,6 @@ public class ActivityMain extends AppCompatActivity {
         mParts = (LinearLayout) findViewById(R.id.parts);
 
         layoutSearchbar = (RelativeLayout) findViewById(R.id.lyt_search);
-        mBtnSearchOpen = (ImageView) findViewById(R.id.btn_search_open);
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
         loadCover = (LinearLayout) findViewById(R.id.load_cover);
@@ -86,33 +85,6 @@ public class ActivityMain extends AppCompatActivity {
             }
         });
 
-        // bring searchbar up
-        mBtnSearchOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layoutSearchbar.setVisibility(View.VISIBLE);
-
-                // Kinda hackish, get keyboard and edittext focus onclick
-                mEdtSearch.requestFocus();
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.showSoftInput(mEdtSearch, 0);
-            }
-        });
-
-
-//
-//        mEdtSearch.setOnKeyListener(new View.OnKeyListener() {
-//            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
-//                //If the keyevent is a key-down event on the "enter" button
-//                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//
-//
-//
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
 
         // Search on enter press
         mEdtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -161,7 +133,7 @@ public class ActivityMain extends AppCompatActivity {
 
 
     private void actionSearch() {
-        layoutSearchbar.setVisibility(View.GONE);
+      //  layoutSearchbar.setVisibility(View.GONE);
         String query = mEdtSearch.getText().toString();
 
         if (!query.equals("")) {

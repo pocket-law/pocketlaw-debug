@@ -4,26 +4,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <LinearLayout
+        android:id="@+id/load_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brandRed"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criminal Code"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="56dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-8dp"
+            android:layout_marginTop="-4dp"
+            android:text="of"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canada"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="44dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/leaf"
+                android:tint="@color/brandBlue" />
+
+            <ProgressBar
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="40dp"
+                android:paddingTop="20dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Populating database..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/brandBlue"
+            android:background="#36376d"
             android:elevation="4dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+
+
+            <ImageView
+                android:layout_margin="4dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/leaf" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="12dp"
                 android:text="Criminal Code of Canada"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
@@ -39,10 +129,11 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_margin="2dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/leaf" />
+                    android:src="@drawable/icon_pocket_simple" />
 
 
                 <ImageView
@@ -81,12 +172,7 @@
                     android:background="@color/brandRed">
 
 
-                    <ImageView
-                        android:id="@+id/btn_parts"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:padding="8dp"
-                        android:src="@drawable/menu_white" />
+
 
 
                     <LinearLayout
@@ -103,32 +189,30 @@
                             android:elevation="8dp">
 
 
-                            <!-- TODO: note you've set this visible! -->
-                            <ImageView
-                                android:id="@+id/btn_search_open"
-                                android:layout_width="64dp"
-                                android:layout_height="64dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginRight="4dp"
-                                android:padding="6dp"
-                                android:src="@drawable/search_white"
-                                android:visibility="visible" />
-
-
                             <RelativeLayout
                                 android:id="@+id/lyt_search"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                tools:visibility="visible">
+                                android:focusableInTouchMode="true">
+
+
 
                                 <ImageView
+                                    android:padding="4dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="60dp"
+                                    android:layout_alignParentLeft="true"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginRight="8dp"
                                     android:src="@drawable/search_bubble" />
+
+                                <ImageView
+                                    android:tint="@color/brandBlue"
+                                    android:id="@+id/btn_parts"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/menu_white" />
 
                                 <EditText
                                     android:imeOptions="actionSearch"
@@ -136,22 +220,25 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginBottom="12dp"
-                                    android:layout_marginLeft="8dp"
                                     android:layout_toLeftOf="@+id/btn_search"
+                                    android:layout_toRightOf="@+id/btn_parts"
                                     android:backgroundTint="#FFFFFF"
-                                    android:hint="search..."
+                                    android:textCursorDrawable="@drawable/cursor_color"
+                                    android:hint=" search..."
                                     android:lines="1"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="8dp"
                                     android:inputType="text"
                                     android:maxLines="1"
-                                    android:paddingBottom="8dp"
-                                    android:paddingTop="12dp"
-                                    android:textColor="#aaffffff"
-                                    android:textColorHint="#f2f0f0"
+                                    android:textColor="#da060606"
+                                    android:textColorHint="#cecbcb"
                                     android:textSize="24sp"
-                                    android:textStyle="italic" />
+                                    android:textStyle="italic|bold" />
+
+
 
                                 <ImageView
+                                    android:tint="@color/brandBlue"
                                     android:id="@+id/btn_search"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
@@ -160,7 +247,11 @@
                                     android:padding="6dp"
                                     android:src="@drawable/search_white" />
 
+
+
                             </RelativeLayout>
+
+
 
 
                         </RelativeLayout>
@@ -293,85 +384,6 @@
 
         </LinearLayout>
 
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/load_cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/brandRed"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="gone">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Criminal Code"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="56dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-8dp"
-            android:layout_marginTop="-4dp"
-            android:text="of"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Canada"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="44dp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="40dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/leaf"
-                android:tint="@color/brandBlue" />
-
-            <ProgressBar
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_centerInParent="true"
-                android:layout_margin="40dp"
-                android:paddingTop="20dp" />
-
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Populating database..."
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
