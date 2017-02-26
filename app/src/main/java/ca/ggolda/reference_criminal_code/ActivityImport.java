@@ -87,6 +87,7 @@ public class ActivityImport extends AppCompatActivity {
     }
 
 
+    // TODO: see if onPause is causing the problem with loading straight to this activity
     @Override
     public void onPause() {
         super.onPause();

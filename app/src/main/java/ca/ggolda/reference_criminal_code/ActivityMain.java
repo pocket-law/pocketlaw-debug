@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -49,6 +50,7 @@ public class ActivityMain extends AppCompatActivity {
     DbHelper dbHelper;
 
     public static int partsVisible = 0;
+    public static int resultsVisible = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,11 +118,7 @@ public class ActivityMain extends AppCompatActivity {
                 if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH))) {
                     hideSoftKeyboard(ActivityMain.this);
                     actionSearch();
-
                 } else {
-
-                    // TODO: Kinda hackish, get keyboard and edittext focus onclick
-
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.showSoftInput(mEdtSearch, 0);
                 }
@@ -144,7 +142,7 @@ public class ActivityMain extends AppCompatActivity {
 
 
     private void actionSearch() {
-        //  layoutSearchbar.setVisibility(View.GONE);
+
         String query = mEdtSearch.getText().toString();
 
         LAST_SEARCH = query;
@@ -162,12 +160,10 @@ public class ActivityMain extends AppCompatActivity {
             mTotalResults.setText("No Results");
         }
 
-        // TODO: maybe don't remove the text here
-        // keeping for now for mBtnSearch onClick if statement's sake
-        //mEdtSearch.setText("");
-
         // Hide headings listview (inside mParts linearlayout) if it's up
         mParts.setVisibility(View.GONE);
+
+        resultsVisible = 1;
     }
 
     public static void partsHideShow() {
@@ -188,24 +184,31 @@ public class ActivityMain extends AppCompatActivity {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
-
-    // TODO: determine why this is here....
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if (v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
+    public void onBackPressed() {
+
+        if (resultsVisible == 1 || partsVisible == 1) {
+          //  mListViewSections.setVisibility(View.VISIBLE);
+
+            mParts.setVisibility(View.GONE);
+            mListViewQuery.setVisibility(View.GONE);
+
+            LAST_SEARCH = "";
+            mEdtSearch.setText(LAST_SEARCH);
+
+            resultsVisible = 0;
+            partsVisible = 0;
+        } else {
+
+            if (!LAST_SEARCH.equals("")) {
+
+                mEdtSearch.setText(LAST_SEARCH);
+                actionSearch();
+
+            } else {
+                super.onBackPressed();
             }
         }
-        return super.dispatchTouchEvent(event);
+
     }
-
-
 }
