@@ -147,6 +147,7 @@ public class ActivityMain extends AppCompatActivity {
     private void actionSearch() {
 
         String query = mEdtSearch.getText().toString();
+        mEdtSearch.clearFocus();
 
         LAST_SEARCH = query;
 
@@ -182,7 +183,7 @@ public class ActivityMain extends AppCompatActivity {
         }
     }
 
-    private void hideSoftKeyboard(Activity activity) {
+    public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(
                         Activity.INPUT_METHOD_SERVICE);
@@ -199,7 +200,7 @@ public class ActivityMain extends AppCompatActivity {
             mParts.setVisibility(View.GONE);
             mListViewQuery.setVisibility(View.GONE);
 
-            mListViewQuery.requestFocus();
+            mEdtSearch.clearFocus();
             mTotalResults.setText("");
 
             LAST_SEARCH = "";
@@ -220,4 +221,5 @@ public class ActivityMain extends AppCompatActivity {
         }
 
     }
+
 }

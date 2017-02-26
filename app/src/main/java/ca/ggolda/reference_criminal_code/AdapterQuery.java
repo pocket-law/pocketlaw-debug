@@ -87,6 +87,9 @@ public class AdapterQuery extends ArrayAdapter<Section> {
 
                 ActivityMain.resultsVisible = 0;
 
+                ActivityMain.hideSoftKeyboard((ActivityMain) mContext);
+
+
             }
         });
 
