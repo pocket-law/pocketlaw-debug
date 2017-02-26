@@ -2,14 +2,11 @@
     package="ca.ggolda.reference_criminal_code">
 
     <!--
-    TODO: add again for update function
+    TODO: add again for update function/debugging
     <uses-permission android:name="android.permission.INTERNET" />
-    -->
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    -->
 
     <application
         android:allowBackup="true"

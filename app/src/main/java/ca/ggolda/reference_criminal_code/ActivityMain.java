@@ -193,6 +193,9 @@ public class ActivityMain extends AppCompatActivity {
             mParts.setVisibility(View.GONE);
             mListViewQuery.setVisibility(View.GONE);
 
+            mListViewQuery.requestFocus();
+            mTotalResults.setText("");
+
             LAST_SEARCH = "";
             mEdtSearch.setText(LAST_SEARCH);
 
