@@ -100,7 +100,7 @@ public class ActivityDebug extends AppCompatActivity {
         btn_init.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityDebug.this, ActivityImport.class);
+                Intent intent = new Intent(ActivityDebug.this, ActivityMain.class);
                 startActivity(intent);
             }
         });

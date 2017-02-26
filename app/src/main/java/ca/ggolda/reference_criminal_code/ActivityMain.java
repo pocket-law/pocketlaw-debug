@@ -20,6 +20,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 /**
  * Created by gcgol on 01/18/2017.
@@ -58,6 +65,8 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
+
+        tryImport();
 
         mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
         mListViewSections = (ListView) findViewById(R.id.listview_section);
@@ -128,18 +137,6 @@ public class ActivityMain extends AppCompatActivity {
             }
         });
 
-
-        // If the no sections in database, import via ActivityImport
-        // TODO: figure out why activity main must be accessed before the import func in ActivityImport / ActivityDebug work
-        if (dbHelper.getAllSection().size() < 1) {
-            Intent intent = new Intent(ActivityMain.this, ActivityImport.class);
-            startActivity(intent);
-        } else {
-
-            //TODO: fix, still loading via white screen
-            // TODO: maybe remove loadCover, vis already set gone in XML as it doesn't seem to work
-            loadCover.setVisibility(View.GONE);
-        }
 
     }
 
@@ -221,5 +218,72 @@ public class ActivityMain extends AppCompatActivity {
         }
 
     }
+
+    private void tryImport() {
+        try {
+            importDB();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // If the no sections in database, import via ActivityImport
+            if (dbHelper.getAllSection().size() > 1) {
+                Log.d("LoadSections:", "Success");
+            } else {
+                tryImport();
+            }
+        }
+    }
+
+    private void checkImportStatus() {
+
+        String destPath = getApplicationContext().getDatabasePath("CriminalCode").getPath();
+
+        // Create empty file at destination path
+        boolean test = new File(destPath).exists();
+
+        if (!test) {
+
+            Log.e("EEEEP", "doesn't exist");
+
+        } else {
+            Log.e("EEEEP", "exists");
+        }
+
+    }
+
+
+    private void importDB() throws IOException {
+
+        //Open your assets db as the input stream
+        InputStream in = getApplicationContext().getAssets().open("CriminalCode");
+
+        String destPath = getApplicationContext().getDatabasePath("CriminalCode").getPath();
+
+        // Create empty file at destination path
+        File f = new File(destPath);
+
+        //Open the empty db as the output stream
+        try {
+            OutputStream out = new FileOutputStream(new File(destPath));
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+            in.close();
+            out.close();
+
+            Log.e("DB Import", "imported");
+
+            checkImportStatus();
+
+
+        } catch (FileNotFoundException e) {
+            Log.e("DB Import", "File not foound" + e);
+        }
+
+    }
+
 
 }
