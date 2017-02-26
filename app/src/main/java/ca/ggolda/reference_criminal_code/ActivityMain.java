@@ -84,6 +84,9 @@ public class ActivityMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                mEdtSearch.setText("");
+                hideSoftKeyboard(ActivityMain.this);
+
                 partsHideShow();
 
             }
@@ -167,8 +170,11 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     public static void partsHideShow() {
+
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
+            mParts.requestFocus();
+
             partsVisible = 1;
         } else if (partsVisible == 1) {
             mParts.setVisibility(View.GONE);
