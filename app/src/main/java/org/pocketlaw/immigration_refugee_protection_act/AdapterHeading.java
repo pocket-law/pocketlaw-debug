@@ -159,6 +159,27 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             });
         }
 
+        if (current.getPinpoint().equals("amendments_nif")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    listviewQuery.setVisibility(View.GONE);
+
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/amendments_nif.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
 
         return convertView;
 

@@ -27,6 +27,7 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
+    private String DATABASE_NAME = "i2_5";
 
 
     @Override
@@ -117,8 +118,8 @@ public class ActivityDebug extends AppCompatActivity {
         File data = Environment.getDataDirectory();
         FileChannel source = null;
         FileChannel destination = null;
-        String currentDBPath = "/data/" + getApplicationContext().getPackageName() + "/databases/c5";
-        String backupDBPath = "/tmp/c5";
+        String currentDBPath = "/data/" + getApplicationContext().getPackageName() + "/databases/" + DATABASE_NAME;
+        String backupDBPath = "/tmp/" + DATABASE_NAME;
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
         try {
@@ -142,9 +143,9 @@ public class ActivityDebug extends AppCompatActivity {
     private void importDB() throws IOException {
 
         //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open("c5");
+        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
 
-        String destPath = getApplicationContext().getDatabasePath("c5").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         File f = new File(destPath);

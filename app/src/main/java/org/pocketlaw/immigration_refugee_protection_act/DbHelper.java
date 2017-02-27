@@ -207,6 +207,8 @@ public class DbHelper extends SQLiteOpenHelper {
         sectionDetail.add(schedulesAdd);
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
+        Section amendmentsNifAdd = new Section(-3, 737, "amendments_nif", "RP", "Amendments Not In Force");
+        sectionDetail.add(amendmentsNifAdd);
 
 
         return sectionDetail;

@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   inkscape:export-filename="C:\Users\gcgol\Desktop\Projects\Android Studio\pocketlaw\canada-evidence-act\screenshots\logos\logo.png"
+   inkscape:export-filename="C:\Users\gcgol\Desktop\Projects\Android Studio\pocketlaw-debug\screenshots\logos\logo.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="logo.svg">
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="276.10251"
-     inkscape:cy="-1.4232957"
+     inkscape:zoom="0.35"
+     inkscape:cx="-427.0198"
+     inkscape:cy="-380.38959"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -85,8 +85,8 @@
        id="rect5631"
        width="1688.9342"
        height="1468.7312"
-       x="-905.22406"
-       y="1129.988" />
+       x="-982.42639"
+       y="1131.3151" />
     <g
        transform="scale(0.74288808,1.3460978)"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:180.09358215px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -149,60 +149,192 @@
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 249.63325,777.55079 2.6819,-44.4574 -71.33859,10.8559 11.80037,-20.1609 -47.2015,-51.6946 20.91884,-4.6525 -5.3638,-26.3642 28.42816,4.6525 7.50933,-20.1609 30.03732,33.6015 -21.45523,-75.4741 20.38246,4.1355 30.27509,-31.07341 28.47352,30.89741 20.38246,-4.1355 -21.45522,75.4741 30.03731,-33.6015 7.50932,20.1609 28.42817,-4.6525 -5.36381,26.3642 20.91885,4.6525 -47.20149,51.6946 11.80037,20.1609 -71.3386,-10.8559 2.6819,44.4574 -5.77356,-0.429 z"
+       d="m 251.93096,788.80095 2.87727,-47.69622 -76.53576,11.64678 12.66005,-21.62967 -50.64024,-55.46067 22.44282,-4.99144 -5.75456,-28.2849 30.49922,4.99145 8.0564,-21.62968 32.22562,36.04946 -23.01831,-80.97258 21.86738,4.43679 32.4807,-33.33719 30.54787,33.14837 21.86738,-4.43678 -23.01829,80.97256 32.2256,-36.04946 8.05638,21.62968 30.49924,-4.99145 -5.75458,28.2849 22.44284,4.99144 -50.64022,55.46067 12.66005,21.62967 -76.53578,-11.64678 2.87727,47.69622 -6.19418,-0.46025 z"
        id="path5749-2" />
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 244.93978,774.59045 2.6819,-44.4574 -71.33859,10.8559 11.80037,-20.1609 -47.2015,-51.6946 20.91884,-4.6525 -5.3638,-26.3642 28.42816,4.6525 7.50933,-20.1609 30.03732,33.6015 -21.45523,-75.4741 20.38246,4.1355 30.27509,-31.07341 28.47352,30.89741 20.38246,-4.1355 -21.45522,75.4741 30.03731,-33.6015 7.50932,20.1609 28.42817,-4.6525 -5.36381,26.3642 20.91885,4.6525 -47.20149,51.6946 11.80037,20.1609 -71.3386,-10.8559 2.6819,44.4574 -5.77356,-0.429 z"
+       d="m 246.89556,785.62494 2.87727,-47.69622 -76.53577,11.64677 12.66006,-21.62966 -50.64024,-55.46068 22.44282,-4.99145 -5.75456,-28.28487 30.49921,4.99142 8.0564,-21.62965 32.22562,36.04944 -23.01829,-80.97257 21.86737,4.43678 32.4807,-33.33717 30.54787,33.14836 21.86738,-4.43677 -23.01829,80.97256 32.2256,-36.04946 8.0564,21.62967 30.49922,-4.99144 -5.75458,28.28489 22.44283,4.99145 -50.64022,55.46066 12.66006,21.62968 -76.53578,-11.64678 2.87729,47.69622 -6.1942,-0.46025 z"
        id="path5749-0" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:130.48773193px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="345.71698"
-       y="674.87622"
+       x="-732.11884"
+       y="1760.5892"
        id="text5617-7-0"
        sodipodi:linespacing="125%"
-       transform="scale(0.74226594,1.347226)"><tspan
+       transform="scale(0.74226595,1.347226)"><tspan
          sodipodi:role="line"
          id="tspan4220"
-         x="345.71698"
-         y="674.87622">EVIDENCE</tspan></text>
+         x="-732.11884"
+         y="1760.5892">EVIDENCE</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:143.67056274px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="316.92087"
-       y="849.66986"
+       x="-662.01556"
+       y="2045.0697"
        id="text5617-7-0-9"
        sodipodi:linespacing="125%"
        transform="scale(0.81725513,1.2236081)"><tspan
-         y="849.66986"
-         x="316.92087"
+         y="2045.0697"
+         x="-662.01556"
          sodipodi:role="line"
          id="tspan4240">ACT</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:130.48773193px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="342.10519"
-       y="671.94513"
+       x="-735.73065"
+       y="1757.6582"
        id="text5617-7-0-92"
        sodipodi:linespacing="125%"
-       transform="scale(0.74226594,1.347226)"><tspan
+       transform="scale(0.74226595,1.347226)"><tspan
          sodipodi:role="line"
          id="tspan4220-2"
-         x="342.10519"
-         y="671.94513">EVIDENCE</tspan></text>
+         x="-735.73065"
+         y="1757.6582">EVIDENCE</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:143.67056274px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="314.12744"
-       y="847.10382"
+       x="-664.80902"
+       y="2042.5037"
        id="text5617-7-0-9-9"
        sodipodi:linespacing="125%"
        transform="scale(0.81725513,1.2236081)"><tspan
-         y="847.10382"
-         x="314.12744"
+         y="2042.5037"
+         x="-664.80902"
          sodipodi:role="line"
          id="tspan4240-2">ACT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:81.04944611px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="243.14246"
+       y="1618.8713"
+       id="text5617-7-0-92-1-6-68"
+       sodipodi:linespacing="125%"
+       transform="scale(0.82787953,1.2079052)"><tspan
+         sodipodi:role="line"
+         id="tspan4246-4"
+         x="243.14246"
+         y="1618.8713">IMMIGRATION</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:81.04944611px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="237.55176"
+       y="1686.4261"
+       id="text5617-7-0-92-1-6-6-7"
+       sodipodi:linespacing="125%"
+       transform="scale(0.82787953,1.2079052)"><tspan
+         sodipodi:role="line"
+         id="tspan4290-1"
+         x="237.55176"
+         y="1686.4261">AND REFUGEE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:73.18435669px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="270.92346"
+       y="1580.347"
+       id="text5617-7-0-92-1-6-6-6-4"
+       sodipodi:linespacing="125%"
+       transform="scale(0.74754159,1.3377182)"><tspan
+         y="1580.347"
+         x="270.92346"
+         sodipodi:role="line"
+         id="tspan4310-2">PROTECTION ACT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:231.34049988px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="353.2597"
+       y="761.40112"
+       id="text5617-7-0-92-1-6-68-2"
+       sodipodi:linespacing="125%"
+       transform="scale(0.74276144,1.3463273)"><tspan
+         sodipodi:role="line"
+         id="tspan4307"
+         x="353.2597"
+         y="761.40112">IRPA</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96.89414215px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="323.66605"
+       y="1685.4448"
+       id="text5617-7-0-92-1-6-68-2-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.72519372,1.3789419)"><tspan
+         sodipodi:role="line"
+         id="tspan4246-4-0-7"
+         x="323.66605"
+         y="1685.4448">IMMIGRATION</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96.89414215px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="321.16125"
+       y="1764.0084"
+       id="text5617-7-0-92-1-6-6-7-2-0"
+       sodipodi:linespacing="125%"
+       transform="scale(0.72519372,1.3789419)"><tspan
+         sodipodi:role="line"
+         id="tspan4290-1-0-3"
+         x="321.16125"
+         y="1764.0084">AND REFUGEE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:87.49147034px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="360.42358"
+       y="1663.6403"
+       id="text5617-7-0-92-1-6-6-6-4-7-6"
+       sodipodi:linespacing="125%"
+       transform="scale(0.65482049,1.5271361)"><tspan
+         y="1663.6403"
+         x="360.42358"
+         sodipodi:role="line"
+         id="tspan4310-2-9-1">PROTECTION ACT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96.89414215px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="320.52786"
+       y="1682.8667"
+       id="text5617-7-0-92-1-6-68-2-3-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.72519372,1.3789419)"><tspan
+         sodipodi:role="line"
+         id="tspan4246-4-0-5-7"
+         x="320.52786"
+         y="1682.8667">IMMIGRATION</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96.89414215px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="318.02307"
+       y="1761.4304"
+       id="text5617-7-0-92-1-6-6-7-2-9-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.72519372,1.3789419)"><tspan
+         sodipodi:role="line"
+         id="tspan4290-1-0-8-7"
+         x="318.02307"
+         y="1761.4304">AND REFUGEE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:87.49147034px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="356.94815"
+       y="1661.3123"
+       id="text5617-7-0-92-1-6-6-6-4-7-2-9"
+       sodipodi:linespacing="125%"
+       transform="scale(0.65482049,1.5271361)"><tspan
+         y="1661.3123"
+         x="356.94815"
+         sodipodi:role="line"
+         id="tspan4310-2-9-7-5">PROTECTION ACT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:231.34049988px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="346.73715"
+       y="759.01587"
+       id="text5617-7-0-92-1-6-68-2-0"
+       sodipodi:linespacing="125%"
+       transform="scale(0.74276144,1.3463273)"><tspan
+         sodipodi:role="line"
+         id="tspan4307-3"
+         x="346.73715"
+         y="759.01587">IRPA</tspan></text>
   </g>
 </svg>
