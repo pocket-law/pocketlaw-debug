@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.immigration_refugee_protection_act;
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,12 +42,12 @@ public class ActivityMain extends AppCompatActivity {
     private EditText mEdtSearch;
     private TextView mTotalResults;
 
-    private LinearLayout loadCover;
-
     private ImageView mBtnParts;
     public static LinearLayout mParts;
 
     private String LAST_SEARCH = "";
+
+    private String DATABASE_NAME = "i2_5";
 
     DbHelper dbHelper;
 
@@ -79,8 +79,6 @@ public class ActivityMain extends AppCompatActivity {
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
         mTotalResults = (TextView) findViewById(R.id.total_results);
-
-        loadCover = (LinearLayout) findViewById(R.id.load_cover);
 
 
         // bring parts up or down
@@ -231,7 +229,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private void checkImportStatus() {
 
-        String destPath = getApplicationContext().getDatabasePath("c5").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         boolean test = new File(destPath).exists();
@@ -250,9 +248,9 @@ public class ActivityMain extends AppCompatActivity {
     private void importDB() throws IOException {
 
         //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open("c5");
+        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
 
-        String destPath = getApplicationContext().getDatabasePath("c5").getPath();
+        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
 
         // Create empty file at destination path
         File f = new File(destPath);

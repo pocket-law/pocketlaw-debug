@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.immigration_refugee_protection_act;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.immigration_refugee_protection_act;
 
 /**
  * Created by gcgol on 01/06/2017.

@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.immigration_refugee_protection_act;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -20,11 +20,11 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TAG = "DbHelper";
 
     // Database Info
-    private static final String DATABASE_NAME = "c5";
+    private static final String DATABASE_NAME = "i2_5";
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
-    private static final String TABLE_EVIDENCE_ACT = "c5";
+    private static final String TABLE_EVIDENCE_ACT = "i2_5";
 
     // Evidence Act Table Columns
     private static final String _ID = "_id";

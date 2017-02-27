@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.immigration_refugee_protection_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -83,7 +83,7 @@ public class ActivityPopulate extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-            stream = getResources().openRawResource(R.raw.c5);
+            stream = getResources().openRawResource(R.raw.i2_5);
 
             sections = xmlParser.parse(stream);
 
