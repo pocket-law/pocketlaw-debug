@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.divorce_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ActivityPopulate extends AppCompatActivity {
     public static final String ANY = "Any";
-    private static final String URL = "http://laws-lois.justice.gc.ca/eng/XML/P-21.xml";
+    private static final String URL = "http://laws-lois.justice.gc.ca/eng/XML/D-3.4.xml";
 
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
@@ -83,7 +83,11 @@ public class ActivityPopulate extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-            stream = getResources().openRawResource(R.raw.p21stripped);
+         //   stream = getResources().openRawResource(R.raw.p21stripped);
+
+            stream = getResources().openRawResource(
+                    getResources().getIdentifier(ActivityMain.DATABASE_NAME,
+                            "raw", getPackageName()));
 
             sections = xmlParser.parse(stream);
 

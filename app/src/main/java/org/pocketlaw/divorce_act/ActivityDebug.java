@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.divorce_act;
 
 
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class ActivityDebug extends AppCompatActivity {
 
     Button btn_next, btn_db, btn_exp, btn_imp_two, btn_init;
     DbHelper dbHelper;
-    private String DATABASE_NAME = "p21stripped";
+    private String DATABASE_NAME = ActivityMain.DATABASE_NAME;
 
 
     @Override

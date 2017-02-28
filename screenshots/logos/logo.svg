@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="268.87424"
-     inkscape:cy="332.28546"
+     inkscape:cx="187.69618"
+     inkscape:cy="355.85503"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -242,16 +242,14 @@
          id="tspan4310-2">PROTECTION ACT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:138.17686462px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:138.17499997px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="324.49335"
        y="719.61499"
        id="text5617-7-0-92-1-6-68-2"
        sodipodi:linespacing="125%"
        transform="scale(0.78954698,1.2665491)"><tspan
          sodipodi:role="line"
-         id="tspan4207"
-         x="324.49335"
-         y="719.61499">PRIVACY</tspan></text>
+         id="tspan4191">DIVORCE</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:96.89414215px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -362,27 +360,27 @@
          y="828.19519">ACT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:138.17686462px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="322.20627"
-       y="718.05176"
-       id="text5617-7-0-92-1-6-68-2-6"
-       sodipodi:linespacing="125%"
-       transform="scale(0.78954697,1.2665491)"><tspan
-         sodipodi:role="line"
-         id="tspan4207-8"
-         x="322.20627"
-         y="718.05176">PRIVACY</tspan></text>
-    <text
-       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:137.49330139px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="309.98257"
-       y="826.85895"
+       x="310.61914"
+       y="827.66046"
        id="text5617-7-0-92-1-6-68-2-0-8"
        sodipodi:linespacing="125%"
        transform="scale(0.79344287,1.2603302)"><tspan
          sodipodi:role="line"
          id="tspan4227-2"
-         x="309.98257"
-         y="826.85895">ACT</tspan></text>
+         x="310.61914"
+         y="827.66046">ACT</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:138.17500305px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="322.1969"
+       y="719.4444"
+       id="text5617-7-0-92-1-6-68-2-5"
+       sodipodi:linespacing="125%"
+       transform="scale(0.78954697,1.2665491)"><tspan
+         y="719.4444"
+         x="322.1969"
+         sodipodi:role="line"
+         id="tspan4191-4">DIVORCE</tspan></text>
   </g>
 </svg>

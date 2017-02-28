@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.divorce_act;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -20,11 +20,11 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TAG = "DbHelper";
 
     // Database Info
-    private static final String DATABASE_NAME = "p21stripped";
+    private static final String DATABASE_NAME = ActivityMain.DATABASE_NAME;
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
-    private static final String TABLE_NAME = "p21stripped";
+    private static final String TABLE_NAME = ActivityMain.DATABASE_NAME; // TODO: change to table name (will require other changes for this differentiation)
 
     //Table Columns
     private static final String _ID = "_id";
@@ -201,12 +201,8 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         // Add schedule and related provisions
-        Section schedulesAdd = new Section(-1, 737, "schedule", "S", "Schedule");
-        sectionDetail.add(schedulesAdd);
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
-        Section amendmentsNifAdd = new Section(-3, 737, "amendments_nif", "RP", "Amendments Not In Force");
-        sectionDetail.add(amendmentsNifAdd);
 
 
         return sectionDetail;

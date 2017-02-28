@@ -3,8 +3,8 @@ import re
 
 
 # Set input and output file names
-inputFile = 'p21.xml'	 
-outputFile = 'p21stripped.xml'
+inputFile = 'd3_4.xml'	 
+outputFile = 'd3_4stripped.xml'
 
 tree = ET.parse(inputFile) 
 root = tree.getroot()
@@ -45,6 +45,14 @@ pattern = re.compile(REG_EX)
 flip = pattern.sub('', flop)
 
 REG_EX = r'</Langu.*?>'
+pattern = re.compile(REG_EX)
+flop = pattern.sub('', flip)
+
+REG_EX = r'<Repea.*?>'
+pattern = re.compile(REG_EX)
+flip = pattern.sub('', flop)
+
+REG_EX = r'</Repea.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
 

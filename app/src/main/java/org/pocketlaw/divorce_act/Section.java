@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.divorce_act;
 
 import java.io.Serializable;
 

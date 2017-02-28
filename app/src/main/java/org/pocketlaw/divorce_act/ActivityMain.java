@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.divorce_act;
 
 import android.app.Activity;
 import android.content.Context;
@@ -47,7 +47,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private String LAST_SEARCH = "";
 
-    private String DATABASE_NAME = "p21stripped";
+    public static String DATABASE_NAME = "d3_4stripped";
 
     //Hacky override to comparing to last search
     private boolean triedSearch = false;
