@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 import android.app.Activity;
 import android.content.Context;
@@ -47,7 +47,10 @@ public class ActivityMain extends AppCompatActivity {
 
     private String LAST_SEARCH = "";
 
-    private String DATABASE_NAME = "i2_5";
+    private String DATABASE_NAME = "p21stripped";
+
+    //Hacky override to comparing to last search
+    private boolean triedSearch = false;
 
     DbHelper dbHelper;
 
@@ -120,10 +123,14 @@ public class ActivityMain extends AppCompatActivity {
                 mEdtSearch.requestFocus();
 
                 //TODO: this is not a perfect solution to returning focus
-                if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH))) {
+                if ((mEdtSearch.length() != 0) && !(mEdtSearch.getText().toString().equals(LAST_SEARCH)) || (triedSearch == true)) {
+                    triedSearch = false;
                     hideSoftKeyboard(ActivityMain.this);
                     actionSearch();
                 } else {
+                    if (mEdtSearch.getText().toString().equals(LAST_SEARCH)) {
+                        triedSearch = true;
+                    }
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.showSoftInput(mEdtSearch, 0);
                 }
@@ -165,7 +172,6 @@ public class ActivityMain extends AppCompatActivity {
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
             mParts.requestFocus();
-
             partsVisible = 1;
         } else if (partsVisible == 1) {
             mParts.setVisibility(View.GONE);

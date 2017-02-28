@@ -14,6 +14,8 @@ xmlStringIn = ET.tostring(root).decode('utf-8')
 # flip and flop to pass string back and forth
 flop = xmlStringIn
 
+print("Stripping " + inputFile + "...")
+
 REG_EX = r'<XRef.*?>'
 pattern = re.compile(REG_EX)
 flip = pattern.sub('', flop)
@@ -51,3 +53,5 @@ print("Strip Complete!")
 text_file = open(outputFile, "w")
 text_file.write(flop)
 text_file.close()
+
+print("Saved to: " + outputFile)

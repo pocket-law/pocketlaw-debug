@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 import java.io.Serializable;
 

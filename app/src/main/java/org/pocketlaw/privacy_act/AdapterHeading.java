@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 /**
  * Created by gcgol on 01/06/2017.
@@ -24,6 +24,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
     private ListView listviewSection;
     private ListView listviewQuery;
     private WebView webView;
+    private TextView results;
 
 
     public AdapterHeading(Context context, int resource, List<Section> objects) {
@@ -50,6 +51,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         listviewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
         webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
 
+        results = (TextView) ((ActivityMain) mContext).findViewById(R.id.total_results);
+
         // Set section and heading text
         headingOne.setText("" + current.getFulltext());
         sectionOne.setText("" + current.getSection());
@@ -62,6 +65,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     listviewSection.setVisibility(View.VISIBLE);
@@ -84,6 +89,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
+                    results.setText("");
+
                     listviewQuery.setVisibility(View.GONE);
 
                     webView.setVisibility(View.GONE);
@@ -99,6 +106,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
         if (current.getPinpoint().equals("level3")) {
 
+
+
             listviewQuery.setVisibility(View.GONE);
             // Set section listview on basis of TOC selection
             listviewSection.setVisibility(View.VISIBLE);
@@ -111,6 +120,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    results.setText("");
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
@@ -127,6 +137,8 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    results.setText("");
 
                     listviewQuery.setVisibility(View.GONE);
 
@@ -147,8 +159,9 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
-                    listviewQuery.setVisibility(View.GONE);
+                    results.setText("");
 
+                    listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
@@ -167,8 +180,9 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 @Override
                 public void onClick(View v) {
 
-                    listviewQuery.setVisibility(View.GONE);
+                    results.setText("");
 
+                    listviewQuery.setVisibility(View.GONE);
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);

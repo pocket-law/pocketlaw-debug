@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ActivityPopulate extends AppCompatActivity {
     public static final String ANY = "Any";
-    private static final String URL = "http://laws-lois.justice.gc.ca/eng/XML/C-5.xml";
+    private static final String URL = "http://laws-lois.justice.gc.ca/eng/XML/P-21.xml";
 
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
@@ -83,7 +83,7 @@ public class ActivityPopulate extends AppCompatActivity {
             // TODO: use downloadUrl as source when updating
             //stream = downloadUrl(urlString);
 
-            stream = getResources().openRawResource(R.raw.i2_5);
+            stream = getResources().openRawResource(R.raw.p21stripped);
 
             sections = xmlParser.parse(stream);
 

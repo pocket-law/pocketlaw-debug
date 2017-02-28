@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

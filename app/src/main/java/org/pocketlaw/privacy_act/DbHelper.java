@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.privacy_act;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -20,13 +20,13 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String TAG = "DbHelper";
 
     // Database Info
-    private static final String DATABASE_NAME = "i2_5";
+    private static final String DATABASE_NAME = "p21stripped";
     private static final int DATABASE_VERSION = 1;
 
     //Table Names
-    private static final String TABLE_EVIDENCE_ACT = "i2_5";
+    private static final String TABLE_NAME = "p21stripped";
 
-    // Evidence Act Table Columns
+    //Table Columns
     private static final String _ID = "_id";
     private static final String FULLTEXT = "fulltext";
     private static final String TYPE = "type";
@@ -64,7 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_EVIDENCE_ACT +
+        String CREATE_USERDETAIL_TABLE = "CREATE TABLE " + TABLE_NAME +
                 "(" +
                 _ID + " INTEGER PRIMARY KEY ," +
                 FULLTEXT + " TEXT, " +
@@ -73,8 +73,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 PINPOINT + " TEXT" +
                 ")";
         db.execSQL(CREATE_USERDETAIL_TABLE);
-
-
 
     }
 
@@ -88,7 +86,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVIDENCE_ACT);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
             onCreate(db);
         }
@@ -111,7 +109,7 @@ public class DbHelper extends SQLiteOpenHelper {
             values.put(SECTION, userData.getSection());
             values.put(PINPOINT, userData.getPinpoint());
 
-            db.insertOrThrow(TABLE_EVIDENCE_ACT, null, values);
+            db.insertOrThrow(TABLE_NAME, null, values);
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +130,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT;
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -174,7 +172,7 @@ public class DbHelper extends SQLiteOpenHelper {
         List<Section> sectionDetail = new ArrayList<>();
 
         // TODO: Display section 849
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT + " WHERE type = '0'";
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE type = '0'";
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(USER_DETAIL_SELECT_QUERY, null);
@@ -238,7 +236,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_EVIDENCE_ACT + " WHERE "
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE "
                 + FULLTEXT + " LIKE '%" + queryArray.get(0) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(1) +"%' AND "
                 + FULLTEXT + " LIKE '%" + queryArray.get(2) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(3) +"%' AND "
                 + FULLTEXT + " LIKE '%" + queryArray.get(4) +"%' AND " + FULLTEXT + " LIKE '%" + queryArray.get(5) +"%'";
