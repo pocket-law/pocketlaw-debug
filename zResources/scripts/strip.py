@@ -1,17 +1,18 @@
 import xml.etree.ElementTree as ET
 import re
 
-tree = ET.parse('p21.xml') # Set this
+
+# Set input and output file names
+inputFile = 'p21.xml'	 
+outputFile = 'p21stripped.xml'
+
+tree = ET.parse(inputFile) 
 root = tree.getroot()
 
 xmlStringIn = ET.tostring(root).decode('utf-8')
 
-print(xmlStringIn)
-
+# flip and flop to pass string back and forth
 flop = xmlStringIn
-
-print(flop)
-
 
 REG_EX = r'<XRef.*?>'
 pattern = re.compile(REG_EX)
@@ -45,11 +46,8 @@ REG_EX = r'</Langu.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
 
+print("Strip Complete!")
 
-print(flop)
-
-# treeOut = ET.ElementTree(ET.fromstring(flop));
-
-text_file = open("p21stripped.xml", "w")
+text_file = open(outputFile, "w")
 text_file.write(flop)
 text_file.close()
