@@ -1,4 +1,4 @@
-package org.pocketlaw.divorce_act;
+package org.pocketlaw.access_to_information_act;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -201,8 +201,16 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         // Add schedule and related provisions
+
+
+        Section relatedScheduleI = new Section(-3, 737, "schedule_i", "S", "Schedule I");
+        sectionDetail.add(relatedScheduleI);
+        Section relatedScheduleII = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
+        sectionDetail.add(relatedScheduleII);
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
+        Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
+        sectionDetail.add(amendmentsAdd);
 
 
         return sectionDetail;

@@ -1,4 +1,4 @@
-package org.pocketlaw.divorce_act;
+package org.pocketlaw.access_to_information_act;
 
 /**
  * Created by gcgol on 01/06/2017.
@@ -150,6 +150,50 @@ public class AdapterHeading extends ArrayAdapter<Section> {
                 }
             });
         }
+
+        if (current.getPinpoint().equals("schedule_i")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedule_i.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
+        if (current.getPinpoint().equals("schedule_ii")) {
+            headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            sectionOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedule_ii.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
 
         if (current.getPinpoint().equals("related_provs")) {
             headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));

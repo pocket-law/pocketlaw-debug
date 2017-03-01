@@ -1,4 +1,4 @@
-package org.pocketlaw.divorce_act;
+package org.pocketlaw.access_to_information_act;
 
 
 import android.content.Intent;
