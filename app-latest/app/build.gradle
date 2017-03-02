@@ -4,11 +4,11 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "org.pocketlaw.income_tax_act"
+        applicationId "org.pocketlaw.feature_test"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "0.010"
+        versionName "0.010t"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

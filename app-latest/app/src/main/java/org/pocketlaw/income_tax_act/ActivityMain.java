@@ -47,7 +47,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private String LAST_SEARCH = "";
 
-    public static String DATABASE_NAME = "i3_3stripped";
+    public static String DATABASE_NAME = "i3_3";
 
     //Hacky override to comparing to last search
     private boolean triedSearch = false;

@@ -171,7 +171,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         List<Section> sectionDetail = new ArrayList<>();
 
-        // TODO: Display section 849
         String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE type = '0'";
 
         SQLiteDatabase db = getReadableDatabase();
@@ -203,7 +202,6 @@ public class DbHelper extends SQLiteOpenHelper {
         // Add after section parts
         Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
         sectionDetail.add(schedOneAdd);
-
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
         Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
