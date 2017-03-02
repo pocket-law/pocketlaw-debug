@@ -1,4 +1,4 @@
-package org.pocketlaw.access_to_information_act;
+package org.pocketlaw.competition_act;
 
 import android.app.Activity;
 import android.content.Context;
@@ -47,7 +47,7 @@ public class ActivityMain extends AppCompatActivity {
 
     private String LAST_SEARCH = "";
 
-    public static String DATABASE_NAME = "a1stripped";
+    public static String DATABASE_NAME = "c34stripped";
 
     //Hacky override to comparing to last search
     private boolean triedSearch = false;

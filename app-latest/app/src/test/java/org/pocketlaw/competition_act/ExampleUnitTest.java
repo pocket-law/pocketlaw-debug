@@ -1,4 +1,4 @@
-package org.pocketlaw.access_to_information_act;
+package org.pocketlaw.competition_act;
 
 import org.junit.Test;
 

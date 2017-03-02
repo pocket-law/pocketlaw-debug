@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.pocketlaw.access_to_information_act">
+    package="org.pocketlaw.competition_act">
 
     <!--
     TODO: add again for update function/debugging
@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityMain"
+            android:name="org.pocketlaw.competition_act.ActivityMain"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -30,12 +30,12 @@
         </activity>
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityDebug"
+            android:name="org.pocketlaw.competition_act.ActivityDebug"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityPopulate"
+            android:name="org.pocketlaw.competition_act.ActivityPopulate"
             android:screenOrientation="portrait" />
 
 
