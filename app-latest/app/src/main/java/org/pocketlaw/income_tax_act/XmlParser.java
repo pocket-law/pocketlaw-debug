@@ -125,6 +125,8 @@ public class XmlParser {
                 // Get the section number from the Heading Code
                 String section = "";
                 String pinpoint = "";
+
+                // TODO: Because section getting is done in readHeading, I think this if statement can be deleted
                 if ((parser.getAttributeValue(null, "Code")) != null) {
                     String[] code = parser.getAttributeValue(null, "Code").split("\"");
 
@@ -132,13 +134,14 @@ public class XmlParser {
 
                     section = split_code[split_code.length - 1];
 
-                    Log.e("EEEE", "readHeading for code" + split_code);
-                    Log.e("EEEE", "readHeading for split" + section);
+                    Log.e("EEEE", "to readHeading for section: " + section);
 
                 }
+
+
                 if ((parser.getAttributeValue(null, "level")) != null) {
                     String[] level = parser.getAttributeValue(null, "level").split("\"");
-                    pinpoint = "level" + level[0];
+                    pinpoint = "level" + level[0]; // using pinpoint for level here as no further pinpoint necessary
 
                     Log.e("XML", "subsectionTrue : " + pinpoint);
                 }
@@ -165,6 +168,30 @@ public class XmlParser {
             }
             String name = parser.getName();
             if (name.equals("TitleText")) {
+
+//                String regexStr = "^[0-9]*$";
+                String regexStr = "(.*)[A-Z](.*)";    //RegEx to attempt override if not already a number
+
+                if((section.trim().matches(regexStr))) {
+
+                    Log.e("EEEE", "heading section MATCH REGEX: " + section);
+
+                    if ((parser.getAttributeValue(null, "Code")) != null) {
+                        String[] code = parser.getAttributeValue(null, "Code").split("\"");
+
+                        String[] split_code = code[code.length - 4].split("_");
+                        section = split_code[split_code.length - 1];
+
+                        Log.e("EEEE", "readTitleText for heading section: " + section);
+
+                    }
+
+
+                } else {
+                    Log.e("EEEE", "heading section NO MATCH REGEX: " + section);
+                }
+
+                Log.e("PRE-heading", "" + parser.getName() + ", " + section + ", " + pinpoint + ")");
 
                 readTitleText(parser, section, pinpoint);
 

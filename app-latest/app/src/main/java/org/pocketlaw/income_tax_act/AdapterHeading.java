@@ -81,54 +81,62 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
         if (current.getPinpoint().equals("level2")) {
 
-
-            headingOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-            sectionOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     results.setText("");
 
                     listviewQuery.setVisibility(View.GONE);
-
                     webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
-                    listviewSection.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
-
-
+            headingOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+            sectionOne.setBackgroundColor(Color.parseColor("#00FFFFFF"));
         }
 
         if (current.getPinpoint().equals("level3")) {
 
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    results.setText("");
 
-
-            listviewQuery.setVisibility(View.GONE);
-            // Set section listview on basis of TOC selection
-            listviewSection.setVisibility(View.VISIBLE);
-
-            webView.setVisibility(View.GONE);
-
+                    listviewQuery.setVisibility(View.GONE);
+                    webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setSelection(current.getID() - 1);
+                    ActivityMain.partsHideShow();
+                }
+            });
             headingOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
             sectionOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+        }
+
+        if (current.getPinpoint().equals("level4")) {
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     results.setText("");
 
+                    listviewQuery.setVisibility(View.GONE);
+                    webView.setVisibility(View.GONE);
+                    listviewSection.setVisibility(View.VISIBLE);
                     // Set section listview on basis of TOC selection
                     listviewSection.setSelection(current.getID() - 1);
                     ActivityMain.partsHideShow();
                 }
             });
-
+            headingOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
+            sectionOne.setBackgroundColor(Color.parseColor("#12FFFFFF"));
         }
+
+
 
         if (current.getPinpoint().equals("schedule")) {
             headingOne.setBackgroundColor(Color.parseColor("#66e13f0d"));
