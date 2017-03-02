@@ -1,14 +1,16 @@
 import Image
 import os
 
+increment = 0
+
 for filename in os.listdir('.'):
     if filename.endswith(".png"): 
-	
-        print("here's one!")
-        print(os.path.join(filename))
+        increment += 1
+		
+        print("here's one: " + os.path.join(filename))
 	  
         im = Image.open(filename)
-        im.save('phone1.jpg')
+        im.save('screenshot' + str(increment) + '.jpg')
 		
         continue
     else:
