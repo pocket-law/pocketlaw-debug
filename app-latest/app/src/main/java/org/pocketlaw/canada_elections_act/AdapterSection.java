@@ -36,6 +36,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private LinearLayout continuedSubsectionParagraphLayout;
     private LinearLayout continuedSubsectionLayout;
     private LinearLayout subparagraphClauseLayout;
+    private LinearLayout debugLayout;
 
 
 
@@ -59,6 +60,12 @@ public class AdapterSection extends ArrayAdapter<Section> {
         // Subsection text/number
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
+
+        // Subsection text/number
+
+        TextView debugText = (TextView) convertView.findViewById(R.id.debug_text);
+        TextView debugNumber = (TextView) convertView.findViewById(R.id.debug_number);
+        debugLayout = (LinearLayout) convertView.findViewById(R.id.debug_layout);
 
         //Definition name
         TextView definedName = (TextView) convertView.findViewById(R.id.defined_name);
@@ -134,11 +141,13 @@ public class AdapterSection extends ArrayAdapter<Section> {
         final Section current = getItem(position);
 
         //TODO: probably remove this CURRENT ITEM log altogether
+
       //  Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + ", section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
         // hide all predefined views to allow visibility setting via type
         hideAll();
 
+        // TODO: switch. Damn.
         // Section Heading
         if (current.getType() == 0) {
 
@@ -267,6 +276,11 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         } else {
 
+
+            debugText.setText("" + current.getFulltext());
+            debugNumber.setText("" + current.getPinpoint());
+
+            debugLayout.setVisibility(View.VISIBLE);
         }
 
 
@@ -305,6 +319,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         continuedSubsectionParagraphLayout.setVisibility(View.GONE);
         continuedSubsectionLayout.setVisibility(View.GONE);
         subparagraphClauseLayout.setVisibility(View.GONE);
+        debugLayout.setVisibility(View.GONE);
 
         //TODO: consider nulling all textviews as well
 
