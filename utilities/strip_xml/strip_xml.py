@@ -3,8 +3,8 @@ import re
 
 
 # Set input and output file names
-inputFile = 'E-2.01.xml'	 
-outputFile = 'e2_01.xml'
+inputFile = 'I-3.3.xml'	 
+outputFile = 'i3_3.xml'
 
 tree = ET.parse(inputFile) 
 root = tree.getroot()

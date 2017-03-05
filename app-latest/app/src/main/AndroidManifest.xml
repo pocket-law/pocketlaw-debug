@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.pocketlaw.canada_elections_act">
+    package="org.pocketlaw.pocketlaw_debug">
 
     <!--
     TODO: add again for update function/debugging
@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="org.pocketlaw.canada_elections_act.ActivityMain"
+            android:name="org.pocketlaw.pocketlaw_debug.ActivityDebug"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -31,12 +31,12 @@
         </activity>
 
         <activity
-            android:name="org.pocketlaw.canada_elections_act.ActivityDebug"
+            android:name="org.pocketlaw.pocketlaw_debug.ActivityMain"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="org.pocketlaw.canada_elections_act.ActivityPopulate"
+            android:name="org.pocketlaw.pocketlaw_debug.ActivityPopulate"
             android:screenOrientation="portrait" />
 
 
