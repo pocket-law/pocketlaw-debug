@@ -39,7 +39,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private LinearLayout debugLayout;
     private LinearLayout subclauseLayout;
     private LinearLayout formulaTermLayout;
-
+    private LinearLayout continuedSubsectionSubparagraphLayout;
 
 
     public AdapterSection(Context context, int resource, List<Section> objects) {
@@ -68,6 +68,10 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView formulaTermText = (TextView) convertView.findViewById(R.id.term_text);
         formulaTermLayout = (LinearLayout) convertView.findViewById(R.id.term_layout);
 
+        // coninuedSubsectionSubparagraph text
+        TextView continuedSubsectionSubparagraphText = (TextView) convertView.findViewById(R.id.cont_subpara_text);
+        continuedSubsectionSubparagraphLayout = (LinearLayout) convertView.findViewById(R.id.cont_subparagraph_layout);
+
         // debug text/number
         TextView debugText = (TextView) convertView.findViewById(R.id.debug_text);
         TextView debugNumber = (TextView) convertView.findViewById(R.id.debug_number);
@@ -75,7 +79,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
         // subclause text/number
         TextView subclauseText = (TextView) convertView.findViewById(R.id.subclause_text);
-        TextView subclauseNumber = (TextView) convertView.findViewById(R.id.sub_number);
+        TextView subclauseNumber = (TextView) convertView.findViewById(R.id.subclause_number);
         subclauseLayout = (LinearLayout) convertView.findViewById(R.id.subclause_layout);
 
         //Definition name
@@ -301,6 +305,12 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             subclauseLayout.setVisibility(View.VISIBLE);
 
+        } else if (current.getType() == 18) {
+
+            continuedSubsectionSubparagraphText.setText("" + current.getFulltext());
+
+            continuedSubsectionSubparagraphLayout.setVisibility(View.VISIBLE);
+
         } else {
 
 
@@ -349,6 +359,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
         debugLayout.setVisibility(View.GONE);
         formulaTermLayout.setVisibility(View.GONE);
         subclauseLayout.setVisibility(View.GONE);
+        continuedSubsectionSubparagraphLayout.setVisibility(View.GONE);
 
 
     }
