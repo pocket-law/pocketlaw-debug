@@ -37,6 +37,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private LinearLayout continuedSubsectionLayout;
     private LinearLayout subparagraphClauseLayout;
     private LinearLayout debugLayout;
+    private LinearLayout formulaLayout;
+    private LinearLayout formulaTermLayout;
 
 
 
@@ -60,6 +62,14 @@ public class AdapterSection extends ArrayAdapter<Section> {
         // Subsection text/number
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
+
+        // Subsection text/number
+        TextView formulaText = (TextView) convertView.findViewById(R.id.formula_text);
+        formulaLayout = (LinearLayout) convertView.findViewById(R.id.formula_layout);
+
+        // Subsection text/number
+        TextView formulaTermText = (TextView) convertView.findViewById(R.id.term_text);
+        formulaTermLayout = (LinearLayout) convertView.findViewById(R.id.term_layout);
 
         // Subsection text/number
 
@@ -274,6 +284,20 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             subparagraphClauseLayout.setVisibility(View.VISIBLE);
 
+        } else if (current.getType() == 99) {
+
+
+            formulaText.setText("" + current.getFulltext());
+
+            formulaLayout.setVisibility(View.VISIBLE);
+
+        } else if (current.getType() == 98) {
+
+
+            formulaTermText.setText("" + current.getFulltext());
+
+            formulaTermLayout.setVisibility(View.VISIBLE);
+
         } else {
 
 
@@ -320,6 +344,8 @@ public class AdapterSection extends ArrayAdapter<Section> {
         continuedSubsectionLayout.setVisibility(View.GONE);
         subparagraphClauseLayout.setVisibility(View.GONE);
         debugLayout.setVisibility(View.GONE);
+        formulaLayout.setVisibility(View.GONE);
+        formulaTermLayout.setVisibility(View.GONE);
 
         //TODO: consider nulling all textviews as well
 

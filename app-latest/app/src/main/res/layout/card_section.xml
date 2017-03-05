@@ -581,9 +581,63 @@
 
     </LinearLayout>
 
+
+
     <LinearLayout
         android:paddingLeft="8dp"
         android:paddingRight="16dp"
+        android:layout_marginBottom="4dp"
+        android:id="@+id/term_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible" >
+
+
+        <TextView
+            android:id="@+id/term_text"
+            android:textAlignment="center"
+            android:background="#FFF000"
+            android:layout_width="0dp"
+            android:paddingLeft="4dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            android:text="formula term"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="8dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="4dp"
+        android:id="@+id/formula_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible" >
+
+
+        <TextView
+            android:id="@+id/formula_text"
+            android:textAlignment="center"
+            android:background="#FF00FF"
+            android:layout_width="0dp"
+            android:paddingLeft="4dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="formula text"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="8dp"
+        android:paddingRight="16dp"
+        android:layout_marginBottom="4dp"
         android:id="@+id/debug_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -612,6 +666,7 @@
             android:textSize="12sp" />
 
     </LinearLayout>
+
 
 
 

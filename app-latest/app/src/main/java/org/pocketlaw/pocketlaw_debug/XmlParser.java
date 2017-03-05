@@ -201,6 +201,7 @@ public class XmlParser {
 
                 readFormulaDefinition(parser, section, pinpoint);
 
+
             } else {
 
                 skip(parser);
@@ -226,7 +227,7 @@ public class XmlParser {
 
                 Log.e("eeee", "FORMULATEXT FOUND");
 
-                readFormulaText(parser, section, pinpoint);
+                readFormulaTerm(parser, section, pinpoint);
 
             } else {
 
@@ -253,7 +254,7 @@ public class XmlParser {
 
                 Log.e("eeee", "FORMULATERM  FOUND");
 
-                readFormulaText(parser, section, pinpoint);
+                readFormulaTerm(parser, section, pinpoint);
 
             } else if (parser.getName().equals("Text")) {
 
@@ -262,10 +263,48 @@ public class XmlParser {
 
                 readFormulaText(parser, section, pinpoint);
 
+
+            } else if (parser.getName().equals("FormulaParagraph")) {
+
+
+                Log.e("eeee", "FORMULA PARAGRAPH  FOUND");
+
+                readFormulaParagraph(parser, section, pinpoint);
+
             } else {
 
                 skip(parser);
             }
+        }
+    }
+
+    // for formula definition (in income tax act)
+    private void readFormulaParagraph(XmlPullParser parser, String section, String pinpoint) throws
+            IOException, XmlPullParserException {
+
+        Log.e("eeee", "in readFormulaParagraph");
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            Log.e("eeee", "readFormulaParagraph in while parser.getName()" + parser.getName());
+
+
+            if (parser.getName().equals("Label")) {
+
+                Log.e("eeee", "Label  FOUND");
+
+                readFormulaParagraphLabel(parser, section);
+
+
+            } else {
+
+                skip(parser);
+            }
+
+
         }
     }
 
@@ -289,6 +328,64 @@ public class XmlParser {
 //
 //        Log.e("XML", "db add readFormulaText (  nothing doing for now )");
 //
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+
+    }
+
+    // For the tags FormulaText
+    private void readFormulaTerm(XmlPullParser parser, String section, String pinpoint) throws IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+        Log.e("XML", "db add readFormulaTerm ( 98, " + pinpoint + section + text + ")");
+        Section resultObject = new Section(98, pinpoint, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+//
+//        Log.e("XML", "db add readFormulaText (  nothing doing for now )");
+//
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+
+
+    }
+
+    // For the tags FormulaText
+    private void readFormulaParagraphLabel(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+
+        Log.e("eeee", "in readFormulaParagraphLabel");
+
+        parser.next();
+        String pinpoint = parser.getText();
+        String text = "";
+
+
+        Log.e("eeee", "1 readFormulaParagraphLabel after label .getName()" + parser.getName() + " .getText()" + parser.getText());
+
+        parser.next();
+
+        Log.e("eeee", "2 readFormulaParagraphLabel after label .getName()" + parser.getName() + " .getText()" + parser.getText());
+
+        parser.next();
+
+        Log.e("eeee", "3 readFormulaParagraphLabel after label .getName()" + parser.getName() + " .getText()" + parser.getText());
+
+        parser.next();
+
+        Log.e("eeee", "4 readFormulaParagraphLabel after label .getName()" + parser.getName() + " .getText()" + parser.getText());
+
+
+        text = parser.getText();
+
+
+        Log.e("XML", "db add readFormulaParagraphLabel ( 6, " + pinpoint + " " + section + text + ")");
+        Section resultObject = new Section(6, pinpoint, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
         }
