@@ -37,7 +37,7 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private LinearLayout continuedSubsectionLayout;
     private LinearLayout subparagraphClauseLayout;
     private LinearLayout debugLayout;
-    private LinearLayout formulaLayout;
+    private LinearLayout subclauseLayout;
     private LinearLayout formulaTermLayout;
 
 
@@ -63,19 +63,20 @@ public class AdapterSection extends ArrayAdapter<Section> {
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
 
-        // Subsection text/number
-        TextView formulaText = (TextView) convertView.findViewById(R.id.formula_text);
-        formulaLayout = (LinearLayout) convertView.findViewById(R.id.formula_layout);
 
         // Subsection text/number
         TextView formulaTermText = (TextView) convertView.findViewById(R.id.term_text);
         formulaTermLayout = (LinearLayout) convertView.findViewById(R.id.term_layout);
 
-        // Subsection text/number
-
+        // debug text/number
         TextView debugText = (TextView) convertView.findViewById(R.id.debug_text);
         TextView debugNumber = (TextView) convertView.findViewById(R.id.debug_number);
         debugLayout = (LinearLayout) convertView.findViewById(R.id.debug_layout);
+
+        // subclause text/number
+        TextView subclauseText = (TextView) convertView.findViewById(R.id.subclause_text);
+        TextView subclauseNumber = (TextView) convertView.findViewById(R.id.sub_number);
+        subclauseLayout = (LinearLayout) convertView.findViewById(R.id.subclause_layout);
 
         //Definition name
         TextView definedName = (TextView) convertView.findViewById(R.id.defined_name);
@@ -284,19 +285,21 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             subparagraphClauseLayout.setVisibility(View.VISIBLE);
 
-        } else if (current.getType() == 99) {
 
-
-            formulaText.setText("" + current.getFulltext());
-
-            formulaLayout.setVisibility(View.VISIBLE);
-
-        } else if (current.getType() == 98) {
+        } else if (current.getType() == 16) {
 
 
             formulaTermText.setText("" + current.getFulltext());
 
             formulaTermLayout.setVisibility(View.VISIBLE);
+
+        } else if (current.getType() == 17) {
+
+
+            subclauseText.setText("" + current.getFulltext());
+            subclauseNumber.setText("" + current.getPinpoint());
+
+            subclauseLayout.setVisibility(View.VISIBLE);
 
         } else {
 
@@ -344,10 +347,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
         continuedSubsectionLayout.setVisibility(View.GONE);
         subparagraphClauseLayout.setVisibility(View.GONE);
         debugLayout.setVisibility(View.GONE);
-        formulaLayout.setVisibility(View.GONE);
         formulaTermLayout.setVisibility(View.GONE);
+        subclauseLayout.setVisibility(View.GONE);
 
-        //TODO: consider nulling all textviews as well
 
     }
 
