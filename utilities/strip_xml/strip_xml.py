@@ -56,6 +56,17 @@ REG_EX = r'</Repea.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
 
+REG_EX = r'<DefinitionR.*?>'
+pattern = re.compile(REG_EX)
+flip = pattern.sub('', flop)
+
+REG_EX = r'</DefinitionR.*?>'
+pattern = re.compile(REG_EX)
+flop = pattern.sub('', flip)
+
+
+
+
 print("Strip Complete!")
 
 text_file = open(outputFile, "w")

@@ -111,6 +111,28 @@ public class XmlParser {
             }
             readFormulaDefinition(parser, section, pinpoint);
 
+        } else if (parser.getName().equals("ContinuedClause")) {
+            isSkipping = "SAVED";
+            String section = "";
+            String pinpoint = "";
+            if ((parser.getAttributeValue(null, "Code")) != null) {
+                String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                section = code[1];
+                pinpoint = code[code.length - 1];
+            }
+            readContinuedClause(parser, section, pinpoint);
+
+        } else if (parser.getName().equals("ContinuedSubclause")) {
+            isSkipping = "SAVED";
+            String section = "";
+            String pinpoint = "";
+            if ((parser.getAttributeValue(null, "Code")) != null) {
+                String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                section = code[1];
+                pinpoint = code[code.length - 1];
+            }
+            readContinuedSubclause(parser, section, pinpoint);
+
         } else if (parser.getName().equals("FormulaParagraph")) {
             isSkipping = "SAVED";
             String section = "";
@@ -133,19 +155,6 @@ public class XmlParser {
             }
             readContinuedParagraph(parser, section, pinpoint);
 
-//        } else if (parser.getName().equals("ReadAsText")) {
-//            isSkipping = "SAVED";
-////            String section = "";
-////            String pinpoint = "";
-////            if ((parser.getAttributeValue(null, "Code")) != null) {
-////                String[] code = parser.getAttributeValue(null, "Code").split("\"");
-////                section = code[1];
-////                pinpoint = code[code.length - 1];
-////            }
-//
-//            Log.e("SKIP: ", "SAVEDSAVED READASTEXT");
-//
-//           // readReadAsText(parser);
 
 
         } else {
@@ -810,6 +819,30 @@ public class XmlParser {
 
                 readSubclauseText(parser, section, pinpoint);
 
+            } else if (parser.getName().equals("Subsubclause")) {
+
+                    readSubsubclause(parser, section, pinpoint);
+
+            } else {
+                skip(parser);
+            }
+        }
+    }
+
+    // For Clause in Subparagraph
+    private void readSubsubclause(XmlPullParser parser, String section, String pinpoint) throws
+            IOException, XmlPullParserException {
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Text")) {
+
+                readSubsubclauseText(parser, section, pinpoint);
+
+
             } else {
                 skip(parser);
             }
@@ -994,25 +1027,24 @@ public class XmlParser {
         }
     }
 
-    // for formula paragraph paragraph (in income tax act)
-    private void readReadAsText(XmlPullParser parser) throws
+
+    // for formula continuedClause (in income tax act)
+    private void readContinuedClause(XmlPullParser parser, String section, String pinpoint) throws
             IOException, XmlPullParserException {
 
-        Log.e("eeee", "in readReadAsText");
+        Log.e("eeee", "in readContinuedClause");
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
 
-            Log.e("eeee", "readReadAsText in while parser.getName()" + parser.getName());
+            Log.e("eeee", "readContinuedClause in while parser.getName()" + parser.getName());
 
 
-            if (parser.getName().equals("SectionPiece")) {
+            if (parser.getName().equals("Text")) {
 
-                Log.e("eeee", "SectionPiece  FOUND");
-
-                readSectionPiece(parser);
+                readContinuedClauseText(parser, section, pinpoint);
 
 
             } else {
@@ -1022,39 +1054,34 @@ public class XmlParser {
         }
     }
 
-    // for sectionpiece(in income tax act)
-    private void readSectionPiece(XmlPullParser parser) throws
+    // for formula continuedsubClause (in income tax act)
+    private void readContinuedSubclause(XmlPullParser parser, String section, String pinpoint) throws
             IOException, XmlPullParserException {
 
-        Log.e("eeee", "in readSectionPiece");
+        Log.e("eeee", "in readContinuedSubclause");
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
 
-            if (parser.getName().equals("Clause")) {
+            Log.e("eeee", "readContinuedSubclause in while parser.getName()" + parser.getName());
 
-                Log.e("eeee", "SectionPiece Clause FOUND");
-                String pinpoint = "";
-                String section = "";
 
-                if ((parser.getAttributeValue(null, "Code")) != null) {
-                    String[] code = parser.getAttributeValue(null, "Code").split("\"");
-                    section = code[1];
-                    pinpoint = "(" + code[code.length - 1] + ")";
-                }
+            if (parser.getName().equals("Text")) {
 
-                readSubparagraphClause(parser, section, pinpoint);
+                readContinuedSubclauseText(parser, section, pinpoint);
 
 
             } else {
 
                 skip(parser);
             }
-
         }
     }
+
+
+
 
 
     /////////////////////////////////////
@@ -1416,6 +1443,24 @@ public class XmlParser {
         }
     }
 
+    // For subsubclause text values.
+    private void readSubsubclauseText(XmlPullParser parser, String section, String pinpoint) throws
+            IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+
+        Section resultObject = new Section(19, pinpoint, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
+        Log.e("XML", "db add readSubclauseText (19, " + pinpoint + section + " " + text + ")");
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+    }
+
     // For the tags TitleText and level values.
     private void readTitleText(XmlPullParser parser, String section, String pinpoint) throws IOException, XmlPullParserException {
 
@@ -1549,6 +1594,43 @@ public class XmlParser {
             skip(parser);
         }
 
+
+    }
+
+    // For the ContinuedClauseText value.
+    private void readContinuedClauseText(XmlPullParser parser, String section, String pinpoint) throws
+            IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+
+
+        Section resultObject = new Section(20, pinpoint, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
+    }
+
+    // For the ContinuedClauseText value.
+    private void readContinuedSubclauseText(XmlPullParser parser, String section, String pinpoint) throws
+            IOException, XmlPullParserException {
+
+        parser.next();
+
+        String text = parser.getText();
+
+
+        Section resultObject = new Section(21, pinpoint, section, text);
+        dbHelper.insertSectionDetail(resultObject);
+
+
+        if (parser.next() == XmlPullParser.START_TAG) {
+            skip(parser);
+        }
 
     }
 

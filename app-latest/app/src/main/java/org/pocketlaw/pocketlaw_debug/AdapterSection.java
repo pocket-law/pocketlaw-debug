@@ -40,6 +40,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
     private LinearLayout subclauseLayout;
     private LinearLayout formulaTermLayout;
     private LinearLayout continuedSubsectionSubparagraphLayout;
+    private LinearLayout subsubclauseLayout;
+    private LinearLayout continuedSubclauseLayout;
+    private LinearLayout continuedClauseLayout;
 
 
     public AdapterSection(Context context, int resource, List<Section> objects) {
@@ -62,6 +65,17 @@ public class AdapterSection extends ArrayAdapter<Section> {
         // Subsection text/number
         TextView subtext = (TextView) convertView.findViewById(R.id.sub_text);
         TextView subnumber = (TextView) convertView.findViewById(R.id.sub_number);
+
+        // continued clause text
+        TextView continuedClauseText = (TextView) convertView.findViewById(R.id.continued_clause_text);
+
+        // continued subclause text
+        TextView continuedSubclauseText = (TextView) convertView.findViewById(R.id.continued_subclause_text);
+
+
+        // Heading text/number
+        TextView subsubclauseText = (TextView) convertView.findViewById(R.id.subsubclause_text);
+        TextView subsubclauseNumber = (TextView) convertView.findViewById(R.id.subsubclause_number);
 
 
         // Subsection text/number
@@ -151,12 +165,15 @@ public class AdapterSection extends ArrayAdapter<Section> {
         continuedSubsectionParagraphLayout = (LinearLayout) convertView.findViewById(R.id.cont_subsection_paragraph_layout);
         continuedSubsectionLayout = (LinearLayout) convertView.findViewById(R.id.cont_subsection_layout);
         subparagraphClauseLayout = (LinearLayout) convertView.findViewById(R.id.subparagraph_clause_layout);
+        subsubclauseLayout = (LinearLayout) convertView.findViewById(R.id.subsubclause_layout);
+        continuedClauseLayout = (LinearLayout) convertView.findViewById(R.id.continued_clause_layout);
+        continuedSubclauseLayout = (LinearLayout) convertView.findViewById(R.id.continued_subclause_layout);
 
 
         final Section current = getItem(position);
 
         //TODO: probably remove this CURRENT ITEM log altogether
-
+        // TODO: pretty sure it slows thing down down down
       //  Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + ", section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
         // hide all predefined views to allow visibility setting via type
@@ -311,6 +328,25 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             continuedSubsectionSubparagraphLayout.setVisibility(View.VISIBLE);
 
+        } else if (current.getType() == 19) {
+
+            subsubclauseText.setText("" + current.getFulltext());
+            subsubclauseNumber.setText("" + current.getPinpoint());
+
+            subsubclauseLayout.setVisibility(View.VISIBLE);
+
+        } else if (current.getType() == 20) {
+
+            continuedClauseText.setText("" + current.getFulltext());
+
+            continuedClauseLayout.setVisibility(View.VISIBLE);
+
+        } else if (current.getType() == 21) {
+
+            continuedSubclauseText.setText("" + current.getFulltext());
+
+            subsubclauseLayout.setVisibility(View.VISIBLE);
+
         } else {
 
 
@@ -319,8 +355,6 @@ public class AdapterSection extends ArrayAdapter<Section> {
 
             debugLayout.setVisibility(View.VISIBLE);
         }
-
-
 
 
 
@@ -360,6 +394,9 @@ public class AdapterSection extends ArrayAdapter<Section> {
         formulaTermLayout.setVisibility(View.GONE);
         subclauseLayout.setVisibility(View.GONE);
         continuedSubsectionSubparagraphLayout.setVisibility(View.GONE);
+        subsubclauseLayout.setVisibility(View.GONE);
+        continuedSubclauseLayout.setVisibility(View.GONE);
+        continuedClauseLayout.setVisibility(View.GONE);
 
 
     }
