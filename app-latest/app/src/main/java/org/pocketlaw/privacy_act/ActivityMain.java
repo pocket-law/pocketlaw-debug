@@ -1,4 +1,4 @@
-package org.pocketlaw.competition_act;
+package org.pocketlaw.privacy_act;
 
 import android.app.Activity;
 import android.content.Context;

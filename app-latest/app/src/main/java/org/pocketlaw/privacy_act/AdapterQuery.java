@@ -1,4 +1,4 @@
-package org.pocketlaw.competition_act;
+package org.pocketlaw.privacy_act;
 
 /**
  * Created by gcgol on 01/06/2017.
