@@ -202,24 +202,23 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
         // Add after section parts
-        Section schedOneAdd = new Section(-3, 737, "schedule_i", "S", "Schedule I");
+        Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
         sectionDetail.add(schedOneAdd);
 
-        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
-        sectionDetail.add(schedTwoAdd);
-
-        Section schedThreeAdd = new Section(-3, 737, "schedule_iii", "S", "Schedule III");
-        sectionDetail.add(schedThreeAdd);
-
-        Section schedFourAdd = new Section(-3, 737, "schedule_iv", "S", "Schedule IV");
-        sectionDetail.add(schedFourAdd);
-
-
+//        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
+//        sectionDetail.add(schedTwoAdd);
+//
+//        Section schedThreeAdd = new Section(-3, 737, "schedule_iii", "S", "Schedule III");
+//        sectionDetail.add(schedThreeAdd);
+//
+//        Section schedFourAdd = new Section(-3, 737, "schedule_iv", "S", "Schedule IV");
+//        sectionDetail.add(schedFourAdd);
 
         Section relatedProvsAdd = new Section(-3, 737, "related_provs", "RP", "Related Provisions");
         sectionDetail.add(relatedProvsAdd);
-//        Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
-//        sectionDetail.add(amendmentsAdd);
+
+        Section amendmentsAdd = new Section(-3, 737, "amendments_nif", "ANIF", "Amendments Not In Force");
+        sectionDetail.add(amendmentsAdd);
 
 
         return sectionDetail;
@@ -284,6 +283,5 @@ public class DbHelper extends SQLiteOpenHelper {
         return sectionDetail;
 
     }
-
 
 }
