@@ -15,27 +15,12 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   inkscape:export-filename="C:\Users\gcgol\Desktop\Projects\Android Studio\pocketlaw-debug\app-latest\screenshots\logos\banner.png"
+   inkscape:export-filename="C:\Users\gcgol\Desktop\Projects\Android Studio\pocketlaw-debug\screenshots\logos\banner.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="banner.svg">
   <defs
-     id="defs4">
-    <pattern
-       y="0"
-       x="0"
-       height="6"
-       width="6"
-       patternUnits="userSpaceOnUse"
-       id="EMFhbasepattern" />
-    <pattern
-       y="0"
-       x="0"
-       height="6"
-       width="6"
-       patternUnits="userSpaceOnUse"
-       id="EMFhbasepattern-8" />
-  </defs>
+     id="defs4" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -43,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="338.82191"
-     inkscape:cy="188.87401"
+     inkscape:zoom="0.35"
+     inkscape:cx="109.5041"
+     inkscape:cy="133.74543"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -91,13 +76,6 @@
        height="1385.021"
        x="-1358.3263"
        y="1384.6323" />
-    <rect
-       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect5600"
-       width="1033.4637"
-       height="502.16391"
-       x="-7.8600988"
-       y="-0.88549364" />
   </g>
   <g
      inkscape:label="Layer 1"
@@ -110,6 +88,13 @@
        id="path3338"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccccccccccccccccccc" />
+    <rect
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5600"
+       width="1030.9384"
+       height="502.16391"
+       x="-1.4285715"
+       y="550.61676" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot5623"
@@ -156,7 +141,7 @@
          style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.00772858px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff">CRIMINAL</tspan><tspan
          sodipodi:role="line"
          x="-454.32523"
-         y="998.07343"
+         y="998.07349"
          style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.00772858px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff"
          id="tspan5621-0" /></text>
     <text
@@ -340,73 +325,71 @@
          y="2217.6511">AND REFUGEE</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.00749969px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.00749969px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="-1158.3256"
        y="2093.7097"
        id="text5617-7-0-92-1-6-6-6"
        sodipodi:linespacing="125%"
        transform="scale(0.74754159,1.3377182)"><tspan
          sodipodi:role="line"
-         id="tspan4310"
-         x="-1158.3256"
-         y="2093.7097">PROTECTION ACT</tspan></text>
+         id="tspan4310">PROTECTION ACT</tspan></text>
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 297.02299,779.08653 2.68618,-43.56485 -71.45294,10.63797 11.81928,-19.75607 -47.27716,-50.65673 20.95235,-4.55905 -5.3724,-25.8349 28.47374,4.55915 7.52137,-19.75614 30.08551,32.92685 -21.48966,-73.95874 20.41515,4.05247 30.32364,-30.44952 28.51916,30.27706 20.41512,-4.05247 -21.4896,73.95873 30.08547,-32.92686 7.52133,19.75615 28.47378,-4.55915 -5.37243,25.8349 20.9524,4.55905 -47.27715,50.65673 11.81927,19.75607 -71.45297,-10.63788 2.68618,43.56476 -5.78282,-0.42044 z"
-       id="path5749-2-1" />
+       d="m 328.95258,788.42989 2.69556,-44.684 -71.70224,10.91126 11.86052,-20.26371 -47.44212,-51.95805 21.02547,-4.67627 -5.39113,-26.4986 28.57307,4.67627 7.54761,-20.26371 30.19045,33.77284 -21.56461,-75.85888 20.48637,4.1566 30.42942,-31.23183 28.61866,31.05486 20.48637,-4.1565 -21.5646,75.85878 30.19044,-33.77274 7.54758,20.26361 28.5731,-4.67618 -5.39115,26.4986 21.02549,4.67618 -47.4421,51.95815 11.86052,20.2637 -71.70226,-10.91126 2.69556,44.684 -5.803,-0.43113 z"
+       id="path5749-2-5" />
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 294.66687,777.19648 2.68619,-43.56475 -71.45295,10.63797 11.8193,-19.75617 -47.2772,-50.65663 20.95236,-4.55915 -5.37239,-25.8348 28.47375,4.55905 7.52136,-19.75609 30.08548,32.9268 -21.48961,-73.95869 20.41513,4.05247 30.32365,-30.44951 28.51915,30.27706 20.41514,-4.05246 -21.48963,73.95866 30.08548,-32.9268 7.52136,19.75609 28.47375,-4.55905 -5.37244,25.8348 20.95239,4.55915 -47.27715,50.65663 11.81929,19.75617 -71.45298,-10.63797 2.68621,43.56475 -5.78284,-0.42034 z"
+       d="m 324.23518,785.45447 2.69556,-44.68401 -71.70225,10.91126 11.86053,-20.2637 -47.44211,-51.95815 21.02547,-4.67617 -5.39114,-26.49861 28.57307,4.67618 7.54761,-20.26361 30.19045,33.77274 -21.5646,-75.85878 20.48636,4.15651 30.42943,-31.23174 28.61865,31.05486 20.48638,-4.15651 -21.5646,75.85879 30.19043,-33.77275 7.54761,20.26361 28.57308,-4.67617 -5.39116,26.4986 21.02548,4.67617 -47.4421,51.95815 11.86053,20.26371 -71.70226,-10.91126 2.69558,44.684 -5.80301,-0.43114 z"
        id="path5749-0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:123.41969299px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="460.62186"
-       y="592.69977"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:129.44873047px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="421.70331"
+       y="713.20758"
        id="text5617-7-0-92-1-6-68-2"
        sodipodi:linespacing="125%"
-       transform="scale(0.64751835,1.5443578)"><tspan
+       transform="scale(0.78954697,1.2665491)"><tspan
+         y="713.20758"
+         x="421.70331"
          sodipodi:role="line"
-         id="tspan4194"
-         x="460.62186"
-         y="592.69977">COPYRIGHT</tspan></text>
+         id="tspan4191">DIVORCE</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:123.41969299px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="457.62088"
-       y="591.41827"
-       id="text5617-7-0-92-1-6-68-2-82"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:128.81008911px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="410.5065"
+       y="815.12317"
+       id="text5617-7-0-92-1-6-68-2-0"
        sodipodi:linespacing="125%"
-       transform="scale(0.64751835,1.5443578)"><tspan
+       transform="scale(0.79344287,1.2603302)"><tspan
          sodipodi:role="line"
-         id="tspan4192"
-         x="457.62088"
-         y="591.41827">COPYRIGHT</tspan></text>
+         id="tspan4227"
+         x="410.5065"
+         y="815.12317">ACT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:120.84654999px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="405.10809"
-       y="750.26727"
-       id="text5617-7-0-92-1-6-68-2-3"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:128.81008911px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="408.12735"
+       y="814.62213"
+       id="text5617-7-0-92-1-6-68-2-0-8"
        sodipodi:linespacing="125%"
-       transform="scale(0.72530986,1.3787211)"><tspan
+       transform="scale(0.79344287,1.2603302)"><tspan
          sodipodi:role="line"
-         id="tspan4243"
-         x="405.10809"
-         y="750.26727">ACT</tspan></text>
+         id="tspan4227-2"
+         x="408.12735"
+         y="814.62213">ACT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:120.84654999px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="402.16965"
-       y="749.01239"
-       id="text5617-7-0-92-1-6-68-2-82-5"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:129.44873047px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="419.55191"
+       y="713.04773"
+       id="text5617-7-0-92-1-6-68-2-5"
        sodipodi:linespacing="125%"
-       transform="scale(0.72530986,1.3787211)"><tspan
+       transform="scale(0.78954697,1.2665491)"><tspan
+         y="713.04773"
+         x="419.55191"
          sodipodi:role="line"
-         id="tspan4241"
-         x="402.16965"
-         y="749.01239">ACT</tspan></text>
+         id="tspan4191-4">DIVORCE</tspan></text>
   </g>
 </svg>

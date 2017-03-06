@@ -1,4 +1,4 @@
-package org.pocketlaw.copyright_act;
+package org.pocketlaw.divorce_act;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

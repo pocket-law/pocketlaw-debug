@@ -1,4 +1,4 @@
-package org.pocketlaw.copyright_act;
+package org.pocketlaw.divorce_act;
 
 import android.content.Context;
 import android.util.Log;
@@ -184,6 +184,9 @@ public class XmlParser {
             isSkipping = "SAVED";
             readIdentification(parser);
 
+        } else if (parser.getName().equals("ReaderNote")) {
+            isSkipping = "SAVED";
+            readReaderNote(parser);
 
 
         } else {
@@ -1122,6 +1125,26 @@ public class XmlParser {
             if (parser.getName().equals("Text")) {
 
                 readFootnoteText(parser);
+
+            } else {
+
+                skip(parser);
+            }
+        }
+    }
+
+    // for footnotes
+    private void readReaderNote(XmlPullParser parser) throws
+            IOException, XmlPullParserException {
+
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+
+            if (parser.getName().equals("Note")) {
+
+                readHistorySmallText(parser, "ReaderNote");
 
             } else {
 

@@ -1,4 +1,4 @@
-package org.pocketlaw.copyright_act;
+package org.pocketlaw.divorce_act;
 
 /**
  * Created by gcgol on 01/06/2017.

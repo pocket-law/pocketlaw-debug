@@ -1,4 +1,4 @@
-package org.pocketlaw.copyright_act;
+package org.pocketlaw.divorce_act;
 
 import java.io.Serializable;
 

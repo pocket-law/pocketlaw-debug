@@ -1,4 +1,4 @@
-package org.pocketlaw.copyright_act;
+package org.pocketlaw.divorce_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;
