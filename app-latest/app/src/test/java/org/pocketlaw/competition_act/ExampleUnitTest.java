@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.competition_act;
 
 import org.junit.Test;
 

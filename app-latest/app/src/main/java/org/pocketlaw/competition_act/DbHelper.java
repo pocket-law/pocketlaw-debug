@@ -1,4 +1,4 @@
-package org.pocketlaw.irpa;
+package org.pocketlaw.competition_act;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -201,9 +201,10 @@ public class DbHelper extends SQLiteOpenHelper {
             }
         }
 
-        // Add after section parts
-        Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
-        sectionDetail.add(schedOneAdd);
+//        // Add after section parts
+
+//        Section schedOneAdd = new Section(-3, 737, "schedule", "S", "Schedule");
+//        sectionDetail.add(schedOneAdd);
 
 //        Section schedTwoAdd = new Section(-3, 737, "schedule_ii", "S", "Schedule II");
 //        sectionDetail.add(schedTwoAdd);
