@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.copyright_act;
 
 import android.app.Activity;
 import android.content.Context;

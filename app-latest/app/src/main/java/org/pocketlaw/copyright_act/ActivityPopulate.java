@@ -1,4 +1,4 @@
-package org.pocketlaw.privacy_act;
+package org.pocketlaw.copyright_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;
