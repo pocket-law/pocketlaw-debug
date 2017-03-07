@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_evidence_act;
+package org.pocketlaw.youth_criminal_justice_act;
 
 import android.content.Context;
 import android.util.Log;
