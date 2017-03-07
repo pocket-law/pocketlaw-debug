@@ -1,4 +1,4 @@
-package org.pocketlaw.youth_criminal_justice_act;
+package org.pocketlaw.canada_elections_act;
 
 import android.content.Intent;
 import android.os.AsyncTask;

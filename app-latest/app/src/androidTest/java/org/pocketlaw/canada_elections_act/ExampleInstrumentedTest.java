@@ -1,4 +1,4 @@
-package org.pocketlaw.youth_criminal_justice_act;
+package org.pocketlaw.canada_elections_act;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

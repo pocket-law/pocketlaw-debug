@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="333.0698"
-     inkscape:cy="157.19674"
+     inkscape:zoom="0.7"
+     inkscape:cx="138.05423"
+     inkscape:cy="170.62042"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -335,82 +335,60 @@
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 251.10572,162.24447 1.88184,-30.51995 -50.05743,7.45256 8.28017,-13.84042 -33.12072,-35.488301 14.67848,-3.193937 -3.76371,-18.098995 19.9477,3.193934 5.26921,-13.84044 21.07686,23.067394 -15.05491,-51.812903 14.30214,2.839021 21.24368,-21.331873 19.97953,21.211055 14.30212,-2.839021 -15.05486,51.812902 21.07683,-23.067411 5.26918,13.84045 19.94773,-3.193935 -3.76373,18.099003 14.67852,3.193936 -33.12072,35.488271 8.28017,13.84045 -50.05746,-7.45256 1.88185,30.51995 -4.05125,-0.29451 z"
+       d="m 246.14393,235.28572 2.6929,-43.67392 -71.63197,10.66458 11.84889,-19.80558 -47.39562,-50.78362 21.00485,-4.57051 -5.38586,-25.89958 28.54508,4.5705 7.54022,-19.805611 30.1609,33.009351 -21.54352,-74.144055 20.46631,4.062628 30.39961,-30.525822 28.59063,30.352932 20.46627,-4.062628 -21.54344,74.144045 30.16086,-33.009367 7.54017,19.805627 28.54512,-4.57051 -5.38588,25.8996 21.0049,4.57051 -47.39561,50.78357 11.84888,19.80563 -71.63201,-10.66459 2.69292,43.67392 -5.79732,-0.42144 z"
        id="path5749-2" />
     <path
        inkscape:connector-curvature="0"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:177.97544861px;line-height:125%;font-family:'Adobe Arabic';-inkscape-font-specification:'Adobe Arabic, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 249.4551,160.9204 1.88186,-30.51995 -50.05745,7.45257 8.28019,-13.84044 -33.12075,-35.488301 14.67849,-3.193936 -3.76371,-18.09898 19.94771,3.193919 5.26921,-13.84043 21.07683,23.067404 -15.05487,-51.812913 14.30213,2.839021 21.24369,-21.3318641 19.97952,21.2110461 14.30213,-2.83901 -15.05488,51.812887 21.07684,-23.067399 5.26919,13.840438 19.94772,-3.193932 -3.76374,18.098993 14.6785,3.193943 -33.12071,35.488294 8.28018,13.84044 -50.05746,-7.45258 1.88187,30.51997 -4.05126,-0.2945 z"
+       d="m 243.7819,233.39098 2.69293,-43.67392 -71.632,10.66459 11.84892,-19.80561 -47.39566,-50.78361 21.00486,-4.57051 -5.38586,-25.899566 28.54509,4.570486 7.54022,-19.805598 30.16086,33.009358 -21.54346,-74.144062 20.46629,4.062627 30.39963,-30.525808 28.59061,30.352918 20.46629,-4.062611 -21.54347,74.144026 30.16087,-33.009353 7.54019,19.805613 28.5451,-4.570507 -5.38589,25.899587 21.00487,4.57052 -47.3956,50.7836 11.8489,19.80561 -71.63201,-10.66461 2.69295,43.67395 -5.79734,-0.42143 z"
        id="path5749-0" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:113.09390259px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="325.9313"
-       y="209.96484"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.19680786px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="330.26175"
+       y="279.19116"
        id="text5617-7-0-92-1-6-68-2"
        sodipodi:linespacing="125%"
        transform="scale(0.77834241,1.2847816)"><tspan
          sodipodi:role="line"
-         id="tspan4192"
-         x="325.9313"
-         y="209.96484">YOUTH</tspan></text>
+         id="tspan4196"
+         x="330.26175"
+         y="279.19116">ELECTIONS</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:111.40077209px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="357.1153"
-       y="349.94489"
-       id="text5617-7-0-92-1-6-68-2-3"
-       sodipodi:linespacing="125%"
-       transform="scale(0.72556308,1.3782399)"><tspan
-         sodipodi:role="line"
-         id="tspan4198"
-         x="357.1153"
-         y="349.94489">JUSTICE ACT</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:113.09374809px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       x="329.58148"
-       y="290.21283"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.19680786px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="334.01205"
+       y="361.64099"
        id="text5617-7-0-92-1-6-68-2-5"
        sodipodi:linespacing="125%"
        transform="scale(0.77834241,1.2847816)"><tspan
          sodipodi:role="line"
-         id="tspan4218">CRIMINAL</tspan></text>
+         id="tspan4198"
+         x="334.01205"
+         y="361.64099">ACT</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:113.09390259px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="322.8013"
-       y="208.6454"
-       id="text5617-7-0-92-1-6-68-2-2"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.19680786px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="327.23056"
+       y="277.14282"
+       id="text5617-7-0-92-1-6-68-2-6"
        sodipodi:linespacing="125%"
        transform="scale(0.77834241,1.2847816)"><tspan
          sodipodi:role="line"
-         id="tspan4192-9"
-         x="322.8013"
-         y="208.6454">YOUTH</tspan></text>
+         id="tspan4196-9"
+         x="327.23056"
+         y="277.14282">ELECTIONS</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:111.40077209px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="353.75763"
-       y="348.71487"
-       id="text5617-7-0-92-1-6-68-2-3-1"
-       sodipodi:linespacing="125%"
-       transform="scale(0.72556308,1.3782399)"><tspan
-         sodipodi:role="line"
-         id="tspan4198-6"
-         x="353.75763"
-         y="348.71487">JUSTICE ACT</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:113.09375px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="326.45148"
-       y="288.89337"
-       id="text5617-7-0-92-1-6-68-2-5-4"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:116.19680786px;line-height:125%;font-family:'Adobe Hebrew';-inkscape-font-specification:'Adobe Hebrew, Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="330.98087"
+       y="359.59265"
+       id="text5617-7-0-92-1-6-68-2-5-7"
        sodipodi:linespacing="125%"
        transform="scale(0.77834241,1.2847816)"><tspan
-         y="288.89337"
-         x="326.45148"
          sodipodi:role="line"
-         id="tspan4218-1">CRIMINAL</tspan></text>
+         id="tspan4198-8"
+         x="330.98087"
+         y="359.59265">ACT</tspan></text>
   </g>
 </svg>

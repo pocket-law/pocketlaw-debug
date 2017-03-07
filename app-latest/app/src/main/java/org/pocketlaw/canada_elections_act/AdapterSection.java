@@ -1,4 +1,4 @@
-package org.pocketlaw.youth_criminal_justice_act;
+package org.pocketlaw.canada_elections_act;
 
 /**
  * Created by gcgol on 01/06/2017.
