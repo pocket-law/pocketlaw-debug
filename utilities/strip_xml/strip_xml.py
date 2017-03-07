@@ -3,8 +3,8 @@ import re
 
 
 # Set input and output file names
-inputFile = 'A-1.xml'	 
-outputFile = 'a1.xml'
+inputFile = 'C-5.xml'	 
+outputFile = 'c5.xml'
 
 tree = ET.parse(inputFile) 
 root = tree.getroot()
@@ -64,13 +64,17 @@ REG_EX = r'</DefinitionR.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
 
+REG_EX = r'<Leader.*?>'
+pattern = re.compile(REG_EX)
+flip = pattern.sub('...........', flop) # note that this makes it odd (end on flip)
+
 
 
 
 print("Strip Complete!")
 
 text_file = open(outputFile, "w")
-text_file.write(flop)
+text_file.write(flip)
 text_file.close()
 
 print("Saved to: " + outputFile)

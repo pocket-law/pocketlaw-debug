@@ -1,16 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.pocketlaw.access_to_information_act">
+    package="org.pocketlaw.canada_evidence_act">
 
     <!--
     TODO: add again for update function/debugging
 
 
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     -->
 
@@ -23,7 +20,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityMain"
+            android:name="org.pocketlaw.canada_evidence_act.ActivityMain"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -36,12 +33,12 @@
         </activity>
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityDebug"
+            android:name="org.pocketlaw.canada_evidence_act.ActivityDebug"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="org.pocketlaw.access_to_information_act.ActivityPopulate"
+            android:name="org.pocketlaw.canada_evidence_act.ActivityPopulate"
             android:screenOrientation="portrait" />
 
 

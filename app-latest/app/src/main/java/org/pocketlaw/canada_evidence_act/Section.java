@@ -1,4 +1,4 @@
-package org.pocketlaw.access_to_information_act;
+package org.pocketlaw.canada_evidence_act;
 
 import java.io.Serializable;
 

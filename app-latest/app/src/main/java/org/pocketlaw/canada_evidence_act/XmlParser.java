@@ -1,4 +1,4 @@
-package org.pocketlaw.access_to_information_act;
+package org.pocketlaw.canada_evidence_act;
 
 import android.content.Context;
 import android.util.Log;
@@ -179,6 +179,15 @@ public class XmlParser {
                 section = code[1];
             }
             readProvision(parser, section);
+
+        } else if (parser.getName().equals("HistoricalNote")) {
+            isSkipping = "SAVED";
+            String section = "";
+            if ((parser.getAttributeValue(null, "Code")) != null) {
+                String[] code = parser.getAttributeValue(null, "Code").split("\"");
+                section = code[1];
+            }
+            readHistoricalNote(parser, section);
 
         } else if (parser.getName().equals("Identification")) {
             isSkipping = "SAVED";
