@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_elections_act;
+package ca.ggolda.reference_criminal_code;
 
 /**
  * Created by gcgol on 01/06/2017.

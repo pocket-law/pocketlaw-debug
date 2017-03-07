@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_elections_act;
+package ca.ggolda.reference_criminal_code;
 
 /**
  * Created by gcgol on 01/06/2017.
@@ -135,6 +135,52 @@ public class AdapterHeading extends ArrayAdapter<Section> {
             heading.setBackgroundColor(Color.parseColor("#12FFFFFF"));
             section.setBackgroundColor(Color.parseColor("#12FFFFFF"));
         }
+
+
+        if (current.getPinpoint().equals("forms")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/forms.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
+        if (current.getPinpoint().equals("schedules")) {
+            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
+            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    results.setText("");
+
+                    listviewQuery.setVisibility(View.GONE);
+
+                    // Set section listview on basis of TOC selection
+                    listviewSection.setVisibility(View.GONE);
+                    webView.loadUrl("file:///android_res/raw/schedules.html");
+                    webView.setVisibility(View.VISIBLE);
+                    ActivityMain.partsHideShow();
+                }
+            });
+        }
+
+
 
 
 

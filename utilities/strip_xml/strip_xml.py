@@ -3,8 +3,8 @@ import re
 
 
 # Set input and output file names
-inputFile = 'E-2.01.xml'	 
-outputFile = 'e2_01.xml'
+inputFile = 'C-46.xml'	 
+outputFile = 'c46.xml'
 
 tree = ET.parse(inputFile) 
 root = tree.getroot()
@@ -61,6 +61,22 @@ pattern = re.compile(REG_EX)
 flip = pattern.sub('', flop)
 
 REG_EX = r'</DefinitionR.*?>'
+pattern = re.compile(REG_EX)
+flop = pattern.sub('', flip)
+
+REG_EX = r'<ReadAsT.*?>'
+pattern = re.compile(REG_EX)
+flip = pattern.sub('', flop)
+
+REG_EX = r'</ReadAsT.*?>'
+pattern = re.compile(REG_EX)
+flop = pattern.sub('', flip)
+
+REG_EX = r'<SectionP.*?>'
+pattern = re.compile(REG_EX)
+flip = pattern.sub('', flop)
+
+REG_EX = r'</SectionP.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
 

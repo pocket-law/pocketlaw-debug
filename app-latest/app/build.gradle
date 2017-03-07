@@ -4,11 +4,11 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "org.pocketlaw.canada_elections_act"
+        applicationId "ca.ggolda.reference_criminal_code"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 3
-        versionName "0.023f"
+        versionCode 6
+        versionName "0.024"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

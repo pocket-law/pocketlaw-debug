@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_elections_act;
+package ca.ggolda.reference_criminal_code;
 
 import android.content.Context;
 import android.util.Log;
@@ -197,6 +197,32 @@ public class XmlParser {
             isSkipping = "SAVED";
             readReaderNote(parser);
 
+            //TODO: EXPERIMENT BELOW
+        } else if (parser.getName().equals("Definition")) {
+            isSkipping = "SAVED";
+            readDefinition(parser, "", "");
+
+        } else if (parser.getName().equals("Paragraph")) {
+            isSkipping = "SAVED";
+            readParagraph(parser, "", "");
+
+        } else if (parser.getName().equals("Subparagraph")) {
+            isSkipping = "SAVED";
+            readSubparagraph(parser, "", "");
+
+        } else if (parser.getName().equals("Clause")) {
+            isSkipping = "SAVED";
+            readClause(parser, "", "");
+
+        } else if (parser.getName().equals("Heading")) {
+            isSkipping = "SAVED";
+            readHeading(parser, "", "");
+
+
+
+
+            //TODO: EXPERIMENT END
+
 
         } else {
 
@@ -239,6 +265,8 @@ public class XmlParser {
             }
         }
 
+
+        // TODO: What is this returning to?
         return sections;
     }
 
@@ -677,9 +705,9 @@ public class XmlParser {
                 }
 
 
-                Log.e("eeee", "calling readSubparagraphClause");
+                Log.e("eeee", "calling readClause");
 
-                readSubparagraphClause(parser, section, pinpoint);
+                readClause(parser, section, pinpoint);
 
 
             } else {
@@ -711,9 +739,9 @@ public class XmlParser {
                 }
 
 
-                Log.e("eeee", "calling readSubparagraphClause for readSubsectionSubParagraph");
+                Log.e("eeee", "calling readClause for readSubsectionSubParagraph");
 
-                readSubparagraphClause(parser, section, pinpoint);
+                readClause(parser, section, pinpoint);
 
             } else if (parser.getName().equals("ContinuedSubparagraph")) {
 
@@ -781,6 +809,8 @@ public class XmlParser {
     // For History List Item
     private void readHistoryListItem(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
 
+        Log.e("EEEEE", "readHistoryListItem");
+
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
@@ -818,7 +848,7 @@ public class XmlParser {
 
 
     // For Clause in Subparagraph
-    private void readSubparagraphClause(XmlPullParser parser, String section, String pinpoint) throws
+    private void readClause(XmlPullParser parser, String section, String pinpoint) throws
             IOException, XmlPullParserException {
 
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -1443,27 +1473,34 @@ public class XmlParser {
 
 
     // For History List Item Text
-    private List readHistorySmallText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
+    private void readHistorySmallText(XmlPullParser parser, String section) throws IOException, XmlPullParserException {
 
         parser.next();
 
         String text = parser.getText();
 
+        Log.e("EEEEE", "readHistorySmallText parser.getText: " + text);
+
         if (text != null) {
             // if the history item starts with a space, remove it
             text = text.startsWith(" ") ? text.substring(1) : text;
 
+            //TODO: remove this conditional, just used for logging/trouble shooting income tax act
+            if (text.equals("2014, c. 39, s. 48.")) {
+                Log.e ("EEEE", "end of history?");
+            }
+
             Section resultObject = new Section(9, "nopinpoint", section, text);
             dbHelper.insertSectionDetail(resultObject);
 
-            //         Log.e("XML", "db add Historical Note (  9  , " + "nopinpoint" + section + " " + text + " )");
+                     Log.e("XML", "db add Historical Note (  9  , " + "nopinpoint" + section + " " + text + " )");
         }
 
         if (parser.next() == XmlPullParser.START_TAG) {
             skip(parser);
         }
 
-        return sections;
+ //       return sections;
     }
 
     // For Section text values.

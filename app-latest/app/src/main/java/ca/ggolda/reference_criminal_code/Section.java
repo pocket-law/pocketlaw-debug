@@ -1,4 +1,4 @@
-package org.pocketlaw.canada_elections_act;
+package ca.ggolda.reference_criminal_code;
 
 import java.io.Serializable;
 
