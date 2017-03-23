@@ -23,11 +23,3 @@ Utility to convert source xml into json format following a set standard using th
 * Bookmarks
 * Comments
 * Options like adjustable text-size
-
-
-
-
-
-
-
-https://docs.python.org/2/library/xml.etree.elementtree.html
