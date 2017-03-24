@@ -5,7 +5,7 @@ export default class TitleBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            appname: 'Canadian Legal Dictionary',
+            appname: 'Criminal Code of Canada',
             searchTerm: '',
             isVisible: 'full-list' // categories, full-list, sub-list
         }

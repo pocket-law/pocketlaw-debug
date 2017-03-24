@@ -1,4 +1,4 @@
-package org.pocketlaw.cld;
+package org.pocketlaw.debug;
 
 import android.app.Application;
 

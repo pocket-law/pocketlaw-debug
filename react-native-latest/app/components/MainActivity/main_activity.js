@@ -103,6 +103,7 @@ export default class MainActivity extends Component{
                     </View>
                     }
                 </View>
+                <View style={styles.footer}/>
             </View>
         );
     }
@@ -110,6 +111,7 @@ export default class MainActivity extends Component{
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection:'column'
     },
 
@@ -117,13 +119,19 @@ const styles = StyleSheet.create({
         height: 0
     },
 
+    listView: {
+        flex: 1
+    },
+
     titleBar: {
 
     },
 
-    listView: {
-
+    footer: {
+        height: 40,
+        backgroundColor: '#3B5198'
     }
+
 });
 
 AppRegistry.registerComponent('MainActivity', () => MainActivity);
