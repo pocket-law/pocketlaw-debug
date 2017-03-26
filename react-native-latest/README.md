@@ -1,6 +1,5 @@
 #  PocketLaw Statutes RN
 
-<hr>
 ## Info
 A React-Native rebuild of the PocketLaw statute app.
 
