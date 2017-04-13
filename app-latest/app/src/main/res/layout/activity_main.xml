@@ -34,6 +34,9 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:shadowColor="#94000000"
+                android:shadowDy="2"
+                android:shadowRadius="4"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -298,6 +301,62 @@
 
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/load_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brandRed"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PocketLaw"
+            android:shadowColor="#94000000"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="56dp"
+            android:textStyle="bold" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="144dp"
+                android:layout_height="144dp"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/leaf"
+                android:tint="@color/brandBlue"
+                android:layout_centerInParent="true" />
+
+            <ProgressBar
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dp"
+                android:layout_width="204dp"
+                android:layout_height="204dp"
+                android:layout_margin="40dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Populating database..."
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

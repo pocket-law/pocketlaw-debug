@@ -77,7 +77,7 @@ export default class MainActivity extends Component{
                         searchTerm={this.state.searchTerm}
                         searchFor={this.handleSearch.bind(this)} />
                 </View>
-                <View style={styles.listView}>
+                <View style={styles.bodyView}>
                     {this.state.isVisible == 'full-list' ?
                         <View>
                             <MainListView
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
         flexDirection:'column'
     },
 
-    noHeight: {
-        height: 0
+    bodyView: {
+        flex: 1
     },
 
-    listView: {
-        flex: 1
+    noHeight: {
+        height: 0
     },
 
     titleBar: {

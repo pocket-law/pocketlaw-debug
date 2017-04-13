@@ -10,7 +10,8 @@ for filename in os.listdir('.'):
         print("here's one: " + os.path.join(filename))
 	  
         im = Image.open(filename)
-        im.save('screenshot' + str(increment) + '.jpg')
+        outname = 'screenshot' + str(increment) + '.jpg'
+        im.save(outname)
 		
         continue
     else:

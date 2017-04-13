@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Image, Text, TextInput, View, Button, StyleSheet,TouchableOpacity} from 'react-native';
+import {AppRegistry, Image, Text, TextInput, View, StyleSheet,TouchableOpacity} from 'react-native';
 
 export default class TitleBar extends Component{
     constructor(props){
@@ -7,7 +7,7 @@ export default class TitleBar extends Component{
         this.state = {
             appname: 'Criminal Code of Canada',
             searchTerm: '',
-            isVisible: 'full-list' // categories, full-list, sub-list
+            isVisible: 'full-list' // 'full-list', 'categories', 'details', bookmarks
         }
     }
 
