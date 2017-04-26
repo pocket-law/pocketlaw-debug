@@ -286,10 +286,13 @@ public class DbHelper extends SQLiteOpenHelper {
         }
 
 
-        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE "
+        String USER_DETAIL_SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + " WHERE ("
                 + FULLTEXT + " LIKE '%" + TERM1 +"%' AND " + FULLTEXT + " LIKE '%" + TERM2 +"%' AND "
                 + FULLTEXT + " LIKE '%" + TERM3 +"%' AND " + FULLTEXT + " LIKE '%" + TERM4 +"%' AND "
-                + FULLTEXT + " LIKE '%" + TERM5 +"%' AND " + FULLTEXT + " LIKE '%" + TERM6 +"%'";
+                + FULLTEXT + " LIKE '%" + TERM5 +"%' AND " + FULLTEXT + " LIKE '%" + TERM6 +"%') OR ("
+                + PINPOINT + " LIKE '%" + TERM1 +"%' AND " + PINPOINT + " LIKE '%" + TERM2 +"%' AND "
+                + PINPOINT + " LIKE '%" + TERM3 +"%' AND " + PINPOINT + " LIKE '%" + TERM4 +"%' AND "
+                + PINPOINT + " LIKE '%" + TERM5 +"%' AND " + PINPOINT + " LIKE '%" + TERM6 +"%')";
 
 
         SQLiteDatabase db = getReadableDatabase();
