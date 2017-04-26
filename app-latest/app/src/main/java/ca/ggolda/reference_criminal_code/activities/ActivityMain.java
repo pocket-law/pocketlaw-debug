@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -83,21 +84,8 @@ public class ActivityMain extends AppCompatActivity {
         mLayoutLoad = (LinearLayout) findViewById(R.id.load_layout);
 
 
-        tryImport();
+        setListWebViews();
 
-
-        webView = (WebView) findViewById(R.id.webview);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
-
-
-        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
-        mListViewSections = (ListView) findViewById(R.id.listview_section);
-        mListViewSections.setAdapter(mAdapterSection);
-
-        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
-        mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
-        mListViewHeadings.setAdapter(mAdapterHeading);
 
         mListViewQuery = (ListView) findViewById(R.id.listview_query);
 
@@ -165,6 +153,21 @@ public class ActivityMain extends AppCompatActivity {
 
     }
 
+    private void setListWebViews() {
+        mAdapterSection = new AdapterSection(ActivityMain.this, R.layout.card_section, dbHelper.getAllSection());
+        mListViewSections = (ListView) findViewById(R.id.listview_section);
+        mListViewSections.setAdapter(mAdapterSection);
+
+        mAdapterHeading = new AdapterHeading(ActivityMain.this, R.layout.card_heading, dbHelper.getAllHeading());
+        mListViewHeadings = (ListView) findViewById(R.id.listview_heading);
+        mListViewHeadings.setAdapter(mAdapterHeading);
+
+        webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+
+
+    }
 
     private void actionSearch() {
 
@@ -240,96 +243,6 @@ public class ActivityMain extends AppCompatActivity {
             } else {
                 super.onBackPressed();
             }
-        }
-
-    }
-
-    private void tryImport() {
-
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    importDB();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    // If the no sections in database, import via ActivityImport
-                    if (dbHelper.getAllSection().size() > 1) {
-                        Log.d("LoadSections:", "Success, size: " + dbHelper.getAllSection().size());
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // Do some stuff
-                                mLayoutLoad.setVisibility(View.GONE);
-                            }
-                        });
-
-                    } else {
-                        tryImport();
-                    }
-                }
-
-            }
-        };
-
-        thread.start();
-
-    }
-
-    private void checkImportStatus() {
-
-        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
-
-        // Create empty file at destination path
-        boolean test = new File(destPath).exists();
-
-        if (!test) {
-
-            Log.e("Database ", "doesn't exist");
-
-        } else {
-            Log.e("Database ", "exists");
-        }
-
-    }
-
-
-    private void importDB() throws IOException {
-
-        //Open your assets db as the input stream
-        InputStream in = getApplicationContext().getAssets().open(DATABASE_NAME);
-
-        String destPath = getApplicationContext().getDatabasePath(DATABASE_NAME).getPath();
-
-        // Create empty file at destination path
-        File f = new File(destPath);
-
-        //Open the empty db as the output stream
-        try {
-            OutputStream out = new FileOutputStream(new File(destPath));
-
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-            in.close();
-            out.close();
-
-            Log.e("DB Import", "imported");
-
-            checkImportStatus();
-
-
-        } catch (FileNotFoundException e) {
-            Log.e("DB Import", "File not foound" + e);
         }
 
     }
