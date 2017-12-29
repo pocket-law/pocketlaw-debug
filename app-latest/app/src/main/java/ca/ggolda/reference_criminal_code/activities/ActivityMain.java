@@ -52,6 +52,8 @@ public class ActivityMain extends AppCompatActivity {
     private EditText mEdtSearch;
     private TextView mTotalResults;
 
+    private LinearLayout mViewQuery;
+
     private LinearLayout mLayoutLoad;
 
     private ImageView mBtnParts;
@@ -91,6 +93,8 @@ public class ActivityMain extends AppCompatActivity {
 
         mBtnParts = (ImageView) findViewById(R.id.btn_parts);
         mParts = (LinearLayout) findViewById(R.id.parts);
+
+        mViewQuery = (LinearLayout) findViewById(R.id.view_query);
 
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
@@ -177,16 +181,18 @@ public class ActivityMain extends AppCompatActivity {
         LAST_SEARCH = query;
 
         if (!query.equals("")) {
-            mListViewQuery.setVisibility(View.VISIBLE);
+            mViewQuery.setVisibility(View.VISIBLE);
 
             mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
             mListViewQuery.setAdapter(mAdapterQuery);
         }
 
-        if ((mAdapterQuery != null) && mAdapterQuery.getCount() > 0) {
-            mTotalResults.setText("" + mAdapterQuery.getCount() + " Results");
+        if ((mAdapterQuery != null) && mAdapterQuery.getCount() == 1) {
+            mTotalResults.setText("" + mAdapterQuery.getCount() + " result for... " + LAST_SEARCH);
+        } else if ((mAdapterQuery != null) && mAdapterQuery.getCount() > 1) {
+            mTotalResults.setText("" + mAdapterQuery.getCount() + " results for... " + LAST_SEARCH);
         } else if ((mAdapterQuery != null) && mAdapterQuery.getCount() == 0) {
-            mTotalResults.setText("No Results");
+            mTotalResults.setText("No results for... " + LAST_SEARCH);
         }
 
 
@@ -223,7 +229,7 @@ public class ActivityMain extends AppCompatActivity {
             //  mListViewSections.setVisibility(View.VISIBLE);
 
             mParts.setVisibility(View.GONE);
-            mListViewQuery.setVisibility(View.GONE);
+            mViewQuery.setVisibility(View.GONE);
 
             mEdtSearch.clearFocus();
             mTotalResults.setText("");
