@@ -29,6 +29,7 @@ import ca.ggolda.reference_criminal_code.adapters.AdapterQuery;
 import ca.ggolda.reference_criminal_code.adapters.AdapterSection;
 import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
+import ca.ggolda.reference_criminal_code.dialogs.DialogInfo;
 
 import static java.lang.Thread.sleep;
 
@@ -52,7 +53,9 @@ public class ActivityMain extends AppCompatActivity {
     private EditText mEdtSearch;
     private TextView mTotalResults;
 
-    private LinearLayout mViewQuery;
+    private ImageView mBtnInfo;
+
+    private static LinearLayout mViewQuery;
 
     private LinearLayout mLayoutLoad;
 
@@ -99,6 +102,21 @@ public class ActivityMain extends AppCompatActivity {
         mBtnSearch = (ImageView) findViewById(R.id.btn_search);
         mEdtSearch = (EditText) findViewById(R.id.edt_search);
         mTotalResults = (TextView) findViewById(R.id.total_results);
+
+        mBtnInfo = (ImageView) findViewById(R.id.btn_info);
+
+
+        mBtnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DialogInfo cdd = new DialogInfo(ActivityMain.this);
+                cdd.show();
+
+            }
+        });
+
+
 
 
         // bring parts up or down
@@ -180,8 +198,10 @@ public class ActivityMain extends AppCompatActivity {
 
         LAST_SEARCH = query;
 
+
+
         if (!query.equals("")) {
-            mViewQuery.setVisibility(View.VISIBLE);
+
 
             mAdapterQuery = new AdapterQuery(ActivityMain.this, R.layout.card_query, dbHelper.getSearchResults(query));
             mListViewQuery.setAdapter(mAdapterQuery);
@@ -195,21 +215,26 @@ public class ActivityMain extends AppCompatActivity {
             mTotalResults.setText("No results for... " + LAST_SEARCH);
         }
 
+        mViewQuery.setVisibility(View.VISIBLE);
+        mListViewQuery.setVisibility(View.VISIBLE);
 
         // Hide headings listview (inside mParts linearlayout) if it's up
         mParts.setVisibility(View.GONE);
 
         resultsVisible = 1;
+        partsVisible = 0;
     }
 
     public static void partsHideShow() {
 
         if (partsVisible == 0) {
             mParts.setVisibility(View.VISIBLE);
+
             mParts.requestFocus();
             partsVisible = 1;
         } else if (partsVisible == 1) {
             mParts.setVisibility(View.GONE);
+            mViewQuery.setVisibility(View.GONE);
             partsVisible = 0;
         }
     }
