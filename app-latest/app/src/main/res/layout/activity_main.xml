@@ -25,10 +25,10 @@
 
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:layout_margin="4dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="2dp"
                 android:src="@drawable/leaf" />
 
             <LinearLayout
@@ -36,17 +36,32 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:shadowColor="#94000000"
-                    android:shadowDy="2"
-                    android:shadowRadius="4"
-                    android:text="@string/app_name"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:shadowColor="#94000000"
+                        android:shadowDy="2"
+                        android:shadowRadius="4"
+                        android:text="@string/app_name"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:alpha="0.8"
+                        android:id="@+id/btn_info"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/info_white" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -135,8 +150,8 @@
 
                                 <ImageView
                                     android:id="@+id/btn_parts"
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:padding="8dp"
                                     android:src="@drawable/menu_white"
                                     android:tint="@color/brandBlue" />
@@ -165,8 +180,8 @@
 
                                 <ImageView
                                     android:id="@+id/btn_search"
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
                                     android:layout_alignParentRight="true"
                                     android:layout_marginRight="4dp"
                                     android:padding="6dp"
@@ -231,22 +246,22 @@
                         android:id="@+id/view_query"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:visibility="gone"
-                        tools:visibility="visible"
-                        android:orientation="vertical">
+                        tools:visibility="visible">
 
                         <TextView
                             android:id="@+id/total_results"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#3c4156"
+                            android:paddingBottom="2dp"
                             android:paddingLeft="4dp"
                             android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
+                            android:textAlignment="center"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textAlignment="center"
                             tools:text="34 results for..." />
 
                         <ListView

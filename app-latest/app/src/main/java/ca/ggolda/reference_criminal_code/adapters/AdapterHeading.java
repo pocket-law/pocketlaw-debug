@@ -155,7 +155,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/forms.html");
+                    webView.loadUrl("file:///android_asset/forms.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
@@ -177,122 +177,15 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedules.html");
+
+                    webView.loadUrl("file:///android_asset/schedules.html");
+
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
             });
         }
 
-
-
-
-
-        if (current.getPinpoint().equals("schedule")) {
-            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    results.setText("");
-
-                    listviewQuery.setVisibility(View.GONE);
-
-                    // Set section listview on basis of TOC selection
-                    listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule.html");
-                    webView.setVisibility(View.VISIBLE);
-                    ActivityMain.partsHideShow();
-                }
-            });
-        }
-
-        if (current.getPinpoint().equals("schedule_i")) {
-            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    results.setText("");
-
-                    listviewQuery.setVisibility(View.GONE);
-
-                    // Set section listview on basis of TOC selection
-                    listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_i.html");
-                    webView.setVisibility(View.VISIBLE);
-                    ActivityMain.partsHideShow();
-                }
-            });
-        }
-
-
-        if (current.getPinpoint().equals("schedule_ii")) {
-            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    results.setText("");
-
-                    listviewQuery.setVisibility(View.GONE);
-
-                    // Set section listview on basis of TOC selection
-                    listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_ii.html");
-                    webView.setVisibility(View.VISIBLE);
-                    ActivityMain.partsHideShow();
-                }
-            });
-        }
-
-        if (current.getPinpoint().equals("schedule_iii")) {
-            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    results.setText("");
-
-                    listviewQuery.setVisibility(View.GONE);
-
-                    // Set section listview on basis of TOC selection
-                    listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_iii.html");
-                    webView.setVisibility(View.VISIBLE);
-                    ActivityMain.partsHideShow();
-                }
-            });
-        }
-
-        if (current.getPinpoint().equals("schedule_iv")) {
-            heading.setBackgroundColor(Color.parseColor("#66e13f0d"));
-            section.setBackgroundColor(Color.parseColor("#66e13f0d"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    results.setText("");
-
-                    listviewQuery.setVisibility(View.GONE);
-
-                    // Set section listview on basis of TOC selection
-                    listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/schedule_iv.html");
-                    webView.setVisibility(View.VISIBLE);
-                    ActivityMain.partsHideShow();
-                }
-            });
-        }
 
 
         if (current.getPinpoint().equals("related_provs")) {
@@ -309,7 +202,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/related_provs.html");
+                    webView.loadUrl("file:///android_asset/related_provs.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
@@ -330,7 +223,7 @@ public class AdapterHeading extends ArrayAdapter<Section> {
 
                     // Set section listview on basis of TOC selection
                     listviewSection.setVisibility(View.GONE);
-                    webView.loadUrl("file:///android_res/raw/amendments_nif.html");
+                    webView.loadUrl("file:///android_asset/anif.html");
                     webView.setVisibility(View.VISIBLE);
                     ActivityMain.partsHideShow();
                 }
