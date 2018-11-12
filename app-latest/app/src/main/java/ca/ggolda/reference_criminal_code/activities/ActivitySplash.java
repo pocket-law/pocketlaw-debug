@@ -56,7 +56,7 @@ public class ActivitySplash extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // If the no sections in database, import via ActivityImport
+            // If there are no sections in database, import via ActivityImport
             if (dbHelper.getAllSection().size() > 1) {
                 Log.d("LoadSections:", "Success, size: " + dbHelper.getAllSection().size());
 
