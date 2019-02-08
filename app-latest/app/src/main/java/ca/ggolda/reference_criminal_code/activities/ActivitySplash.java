@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import ca.ggolda.reference_criminal_code.R;
-import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.utils.DbHelper;
 
 
 /**

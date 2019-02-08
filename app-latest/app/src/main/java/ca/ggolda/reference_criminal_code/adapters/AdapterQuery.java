@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.objects.Section;
 import ca.ggolda.reference_criminal_code.activities.ActivityMain;

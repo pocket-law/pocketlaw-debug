@@ -4,21 +4,26 @@ package ca.ggolda.reference_criminal_code.adapters;
  * Created by gcgol on 01/06/2017.
  */
 
+import android.speech.tts.TextToSpeech;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
+import java.util.Locale;
 
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.objects.Section;
 
 public class AdapterSection extends ArrayAdapter<Section> {
 
+    private TextToSpeech textToSpeech;
 
     private Context mContext;
 
@@ -52,11 +57,33 @@ public class AdapterSection extends ArrayAdapter<Section> {
         super(context, resource, objects);
 
         mContext = context;
+
+        textToSpeech = new TextToSpeech(mContext.getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int ttsLang = textToSpeech.setLanguage(Locale.US);
+
+                    if (ttsLang == TextToSpeech.LANG_MISSING_DATA
+                            || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "The Language is not supported!");
+                    } else {
+                        Log.i("TTS", "Language Supported.");
+                    }
+                    Log.i("TTS", "Initialization success.");
+                } else {
+                    Toast.makeText(mContext.getApplicationContext(), "TTS Initialization failed!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO: we should actually be inflating a particular view, based on the listitem type,
+        // TODO:... rather than this universal view with visibility=gone logic.
         if (convertView == null) {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.card_section, parent, false);
         }
@@ -179,10 +206,13 @@ public class AdapterSection extends ArrayAdapter<Section> {
         // TODO: pretty sure it slows thing down down down
       //  Log.e("CURRENT ITEM","" + "pinpoint: " + current.getPinpoint() + ", section: " + current.getSection() + ", text: " + current.getFulltext() + ", type: " + current.getType());
 
+        // TODO: 2019 lol
         // hide all predefined views to allow visibility setting via type
         hideAll();
 
         // TODO: switch. Damn.
+        // TODO: 2019 - rendering the same view for every listitem type (with most parts hidden)
+        // TODO:... rather than a specific for each maybe not ideal
         // Section Heading
         if (current.getType() == 0) {
 
@@ -366,6 +396,16 @@ public class AdapterSection extends ArrayAdapter<Section> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String data = current.getFulltext();
+                Log.i("TTS", "button clicked: " + data);
+                int speechStatus = textToSpeech.speak(data, TextToSpeech.QUEUE_FLUSH, null);
+
+                if (speechStatus == TextToSpeech.ERROR) {
+                    Log.e("TTS", "Error in converting Text to Speech!");
+                } else if (speechStatus == TextToSpeech.SUCCESS) {
+                    Log.i("TTS", "Success in converting Text to Speech!");
+                }
 
             }
         });
