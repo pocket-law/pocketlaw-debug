@@ -18,7 +18,7 @@ import android.widget.TextView;
 import ca.ggolda.reference_criminal_code.adapters.AdapterHeading;
 import ca.ggolda.reference_criminal_code.adapters.AdapterQuery;
 import ca.ggolda.reference_criminal_code.adapters.AdapterSection;
-import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
+import ca.ggolda.reference_criminal_code.utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.dialogs.DialogInfo;
 

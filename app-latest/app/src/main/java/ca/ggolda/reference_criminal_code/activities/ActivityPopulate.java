@@ -20,7 +20,7 @@ import java.util.List;
 
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.objects.Section;
-import ca.ggolda.reference_criminal_code.data_utils.XmlParser;
+import ca.ggolda.reference_criminal_code.utils.XmlParser;
 
 /**
  * Created by gcgol on 01/10/2017.
