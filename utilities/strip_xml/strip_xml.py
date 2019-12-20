@@ -26,11 +26,11 @@ flop = pattern.sub('', flip)
 
 REG_EX = r'<DefinedTerm.*?>'
 pattern = re.compile(REG_EX)
-flip = pattern.sub('', flop)
+flip = pattern.sub('"', flop)
 
 REG_EX = r'</DefinedTerm.*?>'
 pattern = re.compile(REG_EX)
-flop = pattern.sub('', flip)
+flop = pattern.sub('"', flip)
 
 REG_EX = r'<Emph.*?>'
 pattern = re.compile(REG_EX)
@@ -39,6 +39,8 @@ flip = pattern.sub('', flop)
 REG_EX = r'</Emph.*?>'
 pattern = re.compile(REG_EX)
 flop = pattern.sub('', flip)
+
+# Maybe leave french language references at end of definitions (des mots francais)
 
 REG_EX = r'<Langu.*?>'
 pattern = re.compile(REG_EX)

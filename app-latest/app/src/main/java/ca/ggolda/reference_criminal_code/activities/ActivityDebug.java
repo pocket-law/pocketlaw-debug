@@ -4,7 +4,6 @@ package ca.ggolda.reference_criminal_code.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +18,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 
-import ca.ggolda.reference_criminal_code.utils.DbHelper;
+import androidx.appcompat.app.AppCompatActivity;
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
 
 /**

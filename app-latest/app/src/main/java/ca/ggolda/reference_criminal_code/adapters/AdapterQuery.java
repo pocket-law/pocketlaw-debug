@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ca.ggolda.reference_criminal_code.utils.DbHelper;
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.objects.Section;
 import ca.ggolda.reference_criminal_code.activities.ActivityMain;
@@ -105,15 +105,15 @@ public class AdapterQuery extends ArrayAdapter<Section> {
         // resultText.setText(current.getFulltext());
 
         // Get section and query listViews and webview from main activity
-        listViewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);
-        listViewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
+        listViewSection = (ListView) ((Activity) mContext).findViewById(R.id.listview_section);
+        listViewQuery = (ListView) ((Activity) mContext).findViewById(R.id.listview_query);
 
-        editTextQuery = (EditText) ((ActivityMain) mContext).findViewById(R.id.edt_search);
-        resultsTotal = (TextView) ((ActivityMain) mContext).findViewById(R.id.total_results);
+        editTextQuery = (EditText) ((Activity) mContext).findViewById(R.id.edt_search);
+        resultsTotal = (TextView) ((Activity) mContext).findViewById(R.id.total_results);
 
-        viewQuery = (LinearLayout) ((ActivityMain) mContext).findViewById(R.id.view_query);
+        viewQuery = (LinearLayout) ((Activity) mContext).findViewById(R.id.view_query);
 
-        webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
+        webView = (WebView) ((Activity) mContext).findViewById(R.id.webview);
 
 
         // TODO: move to corresponding provision on click of query result
@@ -136,8 +136,7 @@ public class AdapterQuery extends ArrayAdapter<Section> {
 
                 ActivityMain.resultsVisible = 0;
 
-                ActivityMain.hideSoftKeyboard((ActivityMain) mContext);
-
+                ActivityMain.hideSoftKeyboard((Activity) mContext);
 
             }
         });

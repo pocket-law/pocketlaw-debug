@@ -5,13 +5,11 @@
     TODO: add again for update function/debugging
     TODO: REMINDER: must also change launch activity from ActivitySplash to ActivityDebug when updating DB
 
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
- -->
 
+ -->
 
 
 

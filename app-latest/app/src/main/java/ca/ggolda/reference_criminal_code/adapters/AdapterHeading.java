@@ -51,11 +51,11 @@ public class AdapterHeading extends ArrayAdapter<Section> {
         TextView section = (TextView) convertView.findViewById(R.id.section);
 
         // Get listViews and webView from main activity
-        listviewSection = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_section);
-        listviewQuery = (ListView) ((ActivityMain) mContext).findViewById(R.id.listview_query);
-        webView = (WebView) ((ActivityMain) mContext).findViewById(R.id.webview);
+        listviewSection = (ListView) ((Activity) mContext).findViewById(R.id.listview_section);
+        listviewQuery = (ListView) ((Activity) mContext).findViewById(R.id.listview_query);
+        webView = (WebView) ((Activity) mContext).findViewById(R.id.webview);
 
-        results = (TextView) ((ActivityMain) mContext).findViewById(R.id.total_results);
+        results = (TextView) ((Activity) mContext).findViewById(R.id.total_results);
 
         // Set section and heading text
         heading.setText("" + current.getFulltext());

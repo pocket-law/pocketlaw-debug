@@ -3,7 +3,6 @@ package ca.ggolda.reference_criminal_code.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -15,10 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import ca.ggolda.reference_criminal_code.adapters.AdapterHeading;
 import ca.ggolda.reference_criminal_code.adapters.AdapterQuery;
 import ca.ggolda.reference_criminal_code.adapters.AdapterSection;
-import ca.ggolda.reference_criminal_code.utils.DbHelper;
+import ca.ggolda.reference_criminal_code.data_utils.DbHelper;
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.dialogs.DialogInfo;
 
@@ -76,6 +76,7 @@ public class ActivityMain extends AppCompatActivity {
         DATABASE_NAME = getString(R.string.database_name);
 
         dbHelper = DbHelper.getInstance(getApplicationContext());
+
 
         mLayoutLoad = (LinearLayout) findViewById(R.id.load_layout);
 
@@ -231,11 +232,16 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
+        if (activity.getCurrentFocus() == null) {
+            return;
+        }
+
+            InputMethodManager inputMethodManager =
+                    (InputMethodManager) activity.getSystemService(
+                            Activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(), 0);
+
     }
 
     @Override

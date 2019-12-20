@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -18,9 +17,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import ca.ggolda.reference_criminal_code.R;
 import ca.ggolda.reference_criminal_code.objects.Section;
-import ca.ggolda.reference_criminal_code.utils.XmlParser;
+import ca.ggolda.reference_criminal_code.data_utils.XmlParser;
 
 /**
  * Created by gcgol on 01/10/2017.

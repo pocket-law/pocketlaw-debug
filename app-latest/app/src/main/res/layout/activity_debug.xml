@@ -64,7 +64,6 @@
 <!-- TODO: consider removing these two buttons, I dunno what they do
            -->
         <Button
-            android:visibility="gone"
             android:id="@+id/btn_imp_two"
             android:layout_width="200dp"
             android:layout_height="64dp"
