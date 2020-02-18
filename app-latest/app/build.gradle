@@ -7,8 +7,8 @@ android {
         applicationId "ca.ggolda.reference_criminal_code"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 12
-        versionName "0.030"
+        versionCode 13
+        versionName "0.031"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,6 +24,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'androidx.appcompat:appcompat:1.0.2'
+    compile 'androidx.appcompat:appcompat:1.1.0'
     testCompile 'junit:junit:4.12'
 }
